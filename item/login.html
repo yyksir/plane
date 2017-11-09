@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆注册</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=8,9,10">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="0">
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css">
+	</head>
+	<body>
+		<div class="bg">
+			<div class="bannerbg">
+				<div class="banner">
+					<a href="homePage.html"><img src="img/login/loginlogo.png"/></a>
+				</div>
+			
+				
+			</div>
+			
+			<div class="loginbg">
+				
+				<div class="login">
+					<div class="login-ct">
+						<h2>达令会员</h2>
+						<div class="login-tab">
+							<a class="active" href="javascript:;">登陆</a>
+							<a href="javascript:;">注册</a>
+						</div>
+						
+						<form  class="login-form mian selected" action="">
+							<div class="ctrl">
+									<span class="login-sign">
+										<span class="ico-user"></span>
+									</span>
+									<input type="text" name="mobile" class="mobile logiph" placeholder="请输入手机号"/>
+									<label id="login-mobile-error" class="error">请输入手机号</label>
+							</div>
+							<div class="ctrl">
+									<span class="login-sign">
+										<span class="ico-psd"></span>
+									</span>
+									<input type="text" name="mobile" class="mobile logpsd" placeholder="请输入密码"/>
+									<label id="login-psd-error" class="error">请输入密码</label>
+							</div>
+								<div class="forgetpsd">
+									<a href="#">忘记密码？</a>
+								</div>
+							<button type="submit" class="submit-btn login-btn" >登录</button>
+						</form>
+						<form  class="register-form mian" action="">
+							<div class="ctrl">
+									<span class="login-sign">
+										<span class="ico-user"></span>
+									</span>
+									<input type="text" name="mobile" class="mobile regiph" placeholder="请输入手机号"/>
+								<label id="register-mobile-error" class="error">请输入手机号</label>
+							</div>
+							
+							<div class="ctrl">
+									<span class="login-sign">
+										<span class="ico-confirm"></span>
+									</span>
+									<input type="text" name="confirm" class="confirm" placeholder="请输入验证码"/>
+								<span id="yz" style="background:url(img/1con.png) -10px -15px;width:80px;font-style: italic; height: 20px;border: 1px solid black;display: inline-block;"></span>
+		 						 <a href="javascript:;" id='btn'>看不清</a>
+		 						 <label id="register-yz-error" class="error">请输入验证码</label>
+							</div>
+							
+							
+							<div class="ctrl">
+									<span class="login-sign">
+										<span class="ico-psd"></span>
+									</span>
+									<input type="text" name="mobile" class="mobile regpsd" placeholder="请输入密码"/>
+									<label id="register-psd-error" class="error">请输入密码</label>
+							</div>
+							<button type="submit" class="submit-btn register-btn" >注册</button>
+							
+						</form>
+						
+						
+					</div>
+					
+				</div>
+			</div>
+
+			
+		</div>
+		<div id="foot_wrap"></div>
+	</body>
+</html>
+<script src="js/login.js"></script>
+
+<script type="text/javascript">	
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1)) + min
+	}
+	function getCode(){
+		var arr=[];
+		for(i=0;i<6;i++){
+			var ch=rand(48,122);
+			if(ch>=58&&ch<=64||ch>=91&&ch<=96){
+				i--;
+			}else{
+				arr.push(String.fromCharCode(ch))
+			}
+		}
+		return arr.join("")
+	}
+			$("#yz").html(getCode())	
+			$("#btn").click(function(){
+				getCode()
+				$("#yz").html(getCode())
+			})
+	$("#foot_wrap").load("public.html .footer")
+</script>

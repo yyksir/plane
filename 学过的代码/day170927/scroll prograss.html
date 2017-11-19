@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			#box{
+				width:250px;
+				height:20px;
+				margin:200px auto;
+			}
+			.big{
+				
+				width:200px;
+				height:20px;
+				border:1px solid green;
+				float:left;
+			}
+			.small{
+				width:i;
+				height:20px;
+			}
+			.span{
+				float:right;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		<div class="big">
+			<div class="small"></div>
+		</div>
+			<span class="span"></span>
+		</div>
+	</body>
+</html>
+<script>
+	var oBig=document.getElementsByClassName("big")[0];
+	var oSmall=document.getElementsByClassName("small")[0];
+	var oSpan=document.getElementsByClassName("span")[0];
+	
+	
+	
+	var timer=setInterval(fun,50);
+	var index=0;
+	function fun(){
+		index++;
+		oSmall.style.width=index +"px";
+		oSmall.style.backgroundColor="rgb(" +Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255) +")"; 
+		oSpan.innerHTML=parseInt((index/200)*100)+"%";
+		
+		
+		if(index==200){
+			clearInterval(timer)
+		}
+		
+		
+	}
+	
+	
+	
+</script>

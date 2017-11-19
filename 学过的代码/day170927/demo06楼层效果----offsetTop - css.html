@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>商城楼层效果</title>
+        <meta charset="UTF-8">
+        <style>
+            .container{width:1200px;}
+            *{margin:0 auto;padding:0;}
+            .header{height:300px;background-color:#395;}
+            ul{list-style:none;}
+            ul li{width:50px;height:50px;border:orange solid 1px;}
+            #floor{display:none;width:50px;background-color:#ccc;position:fixed;top:100px;margin-left:-50px;}
+            [id^="box"]{height:500px;width:100%;font-size:120px;text-align:center;line-height:500px;}
+            #box1{background-color:gold;}
+            #box2{background-color:#ccc;}
+            #box3{background-color:green;}
+            #box4{background-color:orange;}
+            #box5{background-color:#ccc;}
+            #box6{background-color:gray;}
+            #box7{background-color:#069;}
+            #box8{background-color:gold;}
+        </style>
+       
+    </head>
+    <body>
+        <div class="container">
+            <div class="header"></div>
+            <div id="floor">
+                <ul>
+                    <li class="floorli">1</li>
+                    <li class="floorli">2</li>
+                    <li class="floorli">3</li>
+                    <li class="floorli">4</li>
+                    <li class="floorli">5</li>
+                    <li class="floorli">6</li>
+                    <li class="floorli">7</li>
+                    <li class="floorli">8</li>
+                    <li id="bcTop">顶部</li>
+                </ul>
+            </div>
+            <div class="box" id="box1">--第1楼</div>
+            <div class="box" id="box2">--第2楼</div>
+            <div class="box" id="box3">--第3楼</div>
+            <div class="box" id="box4">--第4楼</div>
+            <div class="box" id="box5">--第5楼</div>
+            <div class="box" id="box6">--第6楼</div>
+            <div class="box" id="box7">--第7楼</div>
+            <div class="box" id="box8">--第8楼</div>
+        </div>
+    </body>
+</html>
+<script>
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	var oBox=document.getElementsByClassName("box");
+	var Ofloorli=document.getElementsByClassName("floorli");
+	
+	window.onscroll=function(){
+		
+		var sTop=document.body.scrollTop||document.documentElement.scrollTop;
+		if(sTop>100){
+			$("floor").style.display="block";
+		}else{
+			$("floor").style.display="none";
+		}
+		
+		for(var i=0;i<oBox.length;i++){
+			if(Math.abs(oBox[i].offsetTop-sTop)<oBox[i].offsetHeight/2){
+				Ofloorli[i].style.backgroundColor="orange";
+			}else{
+				Ofloorli[i].style.backgroundColor="gray";
+				
+			}
+			
+		}
+		
+		$("bcTop").onclick=function(){
+			document.body.scrollTop=document.documentElement.scrollTop=0
+		}
+		for(var i=0;i<Ofloorli.length;i++){
+			Ofloorli[i].index=i
+			Ofloorli[i].onclick=function(){
+				
+				for(var j=0;j<Ofloorli.length;j++){
+					Ofloorli[j].style.backgroundColor="#ccc";
+				}
+				this.style.backgroundColor="orange";
+				document.body.scrollTop=document.documentElement.scrollTop=oBox[this.index].offsetTop
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	 
+</script>

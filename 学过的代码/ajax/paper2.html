@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="uname" id="uname" />
+		<ul id="ul1"></ul>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("uname").onkeyup=function(){
+		var ajax=null;
+		
+			$("ul1").innerHTML="";
+			if(window.XMLHttpRequest){
+				ajax=new XMLHttpRequest();
+			}else{
+				ajax=new ActiveXObject("Microsoft.XMLHTTP")
+			}
+			ajax.open("get","http://127.0.0.1/ajax/paper2.json");
+			//uname=+encodeURL($("uname").value)
+			ajax.send();
+			ajax.onreadystatechange=function(){
+				if(ajax.readyState==4&&ajax.status==200){
+				var arr=JSON.parse(ajax.responseText)
+				
+				for(var i in arr){
+					var li=document.createElement("li");
+					li.innerHTML=arr[i].pname;
+					
+					if(arr[i].pname.indexOf($("uname").value)!=-1){
+						
+					$("ul1").appendChild(li);
+					}
+					
+				}
+	
+			}
+	
+		}
+			
+		}
+
+		$("ul1").onmouseover=function(e){
+			var e=e||event;
+			var target=e.target||e.srcElement;
+			if(target.nodeName=="LI"){
+				target.style.background="gray";
+			}
+		}
+		$("ul1").onmouseout=function(e){
+			var e=e||event;
+			var target=e.target||e.srcElement;
+			if(target.nodeName=="LI"){
+				target.style.background="";
+			}
+		}
+		$("ul1").onclick=function(e){
+			var e=e||event;
+			var target=e.target||e.srcElement;
+			if(target.nodeName=="LI"){
+				$("uname").value=target.innerHTML;
+				$("ul1").innerHTML="";
+			}
+		}
+		
+
+	
+	
+</script>

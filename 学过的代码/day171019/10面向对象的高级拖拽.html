@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="创建div" id = "btn" />
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 1、功能就是一个构造函数 页面加载（每单击一次按钮）创建一个对象
+	 2、操作的元素作为对象的属性
+	 3、对元素的操作就是功能
+	 4、初始化方法调用元素的各种功能    创建div
+	 */
+	var btns=document.getElementById("btn");
+	btns.onclick=function(){
+		var box=new DragBox(100,100)
+		box.init();
+	}
+	function DragBox(width,height){
+		this.w=width;
+		this.h=height;
+	}
+	DragBox.prototype.rand=function(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	
+	DragBox.prototype.init=function(){
+		this.div=document.createElement("div");
+		this.div.style.height=this.div.style.width=this.w+"px";
+		document.body.appendChild(this.div);
+		this.div.style.position="absolute";
+		this.div.style.left=this.rand(0,1000)+"px";
+		this.div.style.top=this.rand(0,700)+"px";
+		this.div.innerHTML="拖毛线啊";
+		this.div.style.background=`rgb(${this.rand(0,255)},${this.rand(0,255)},${this.rand(0,255)})`;
+		
+		this.drag();
+		
+		
+	}
+	DragBox.prototype.drag=function(){
+		var that=this;
+		this.div.onmousedown=function(e){
+			var e=e||event;
+			that.fnDown(e);
+			document.onmousemove=function(e){
+				var e=e||event;
+				that.fnMove(e);
+			}
+		}
+		document.onmouseup=function(){
+			that.fnOut();
+		}
+		
+		
+	}
+	
+	DragBox.prototype.fnDown=function(e){
+		this.disx=e.offsetX;
+		this.disy=e.offsetY;
+	}
+	DragBox.prototype.fnMove=function(e){
+//		window.getSelection().removeAllRanges();
+		window.getSelection().removeAllRanges();
+		this.div.style.left=e.pageX-this.disx+"px";
+		this.div.style.top=e.pageY-this.disy+"px";
+		
+	}
+	DragBox.prototype.fnOut=function(){
+		document.onmousemove=null;
+		document.onmouseout=null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*	
+	var oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		var dd = new DragDiv(100,100);
+		dd.init();//初始化方法
+	}
+	function DragDiv(width,height){
+		this.w = width;
+		this.h = height;
+	}
+	//随机方法
+	DragDiv.prototype.rand = function(min,max){
+		return  Math.floor(Math.random()*(max-min+1)+min);
+	}
+	//初始化方法 创建div对象
+	DragDiv.prototype.init = function(){
+		this.div = document.createElement("div");
+		this.div.style.width = this.div.style.height = this.w + "px";
+		document.body.appendChild(this.div);
+		this.div.style.position = "absolute";
+		this.div.style.left = this.rand(1,1000) + "px";
+		this.div.style.top = this.rand(1,600) + "px";
+		this.div.innerHTML = "拖拽";
+		this.color = `rgb(${this.rand(0,255)},${this.rand(0,255)},${this.rand(0,255)})`;
+		this.div.style.background = this.color;
+		
+		//每一个创建的div都有一个拖拽方法  
+		this.drag();
+	}
+	
+	//拖拽功能
+	DragDiv.prototype.drag = function(){
+		var that = this;
+		this.div.onmousedown = function(e){
+			var e = e || event;
+			that.fnDown(e);//该方法用来记录当前操作的div的内部偏移量
+			document.onmousemove = function(e){
+				var e = e || event;
+				that.fnMove(e);
+			}
+			document.onmouseup = function(){
+				that.fnUp();
+			}
+			//return false;
+		}
+	}
+	DragDiv.prototype.fnDown = function(e){
+		this.disx = e.offsetX;
+		this.disy = e.offsetY;
+	}
+	DragDiv.prototype.fnMove = function(e){
+		window.getSelection().removeAllRanges();
+		this.div.style.left = e.pageX - this.disx + "px";
+		this.div.style.top = e.pageY - this.disy + "px";
+	}
+	DragDiv.prototype.fnUp = function(){
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}*/
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	</head>
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 300px;
+			border: 2px solid saddlebrown;
+			text-align: center;
+			line-height: 300px;
+			font-size: 60px;
+		}
+		input{
+			width:100px;
+			height: 35px;
+		}
+	</style>
+	<body>
+		<input type="button" id="btn" value="开始"/><br/><br/><br/>
+		<div id="box"></div>
+		<img src="image/1.jpg" alt="" id="m1"/><br/><br/><br/><br/><br/><br/><br/><br/><br/>		
+	</body>
+</html>
+<script type="text/javascript">
+	
+	var arr=["李红1","李红2","李红3","李红4","李红5","李红6","李红7","李红8","李红9","李红10","李红11","李红12"];
+	
+	var brr=["image/1.jpg","image/2.jpg","image/3.jpg","image/4.jpg","image/5.jpg",
+	"image/6.jpg","image/7.jpg","image/8.jpg","image/9.jpg","image/10.jpg",
+	"image/11.jpg","image/12.jpg",
+	]
+		
+	function rand( min,max ){
+    	return  Math.floor(  Math.random()*( max-min + 1 )  ) + min
+	}
+			
+//	var oBtn=document.getElementById("btn");
+//	var oBox=document.getElementById("box");
+//	var oM1=document.getElementById("m1");
+/*	var flag=true;	
+	
+		oBtn.onclick=function(){
+			if(flag){	
+			 timer=setInterval(fun,100);
+			function fun(){	
+				oBox.innerHTML=arr[rand(0,11)];
+				oM1.src=brr[rand(0,11)];
+			}
+			this.value="暂停";
+			flag=false;
+				
+			}else{
+				clearInterval (timer)
+				
+			this.value="开始";
+			flag=true;
+			}		
+		}*/
+//	var timer=clearInterval(stop);
+		var flag=true;
+		$("#btn").click(function(){
+//			alert()
+			if(flag){
+				timer=setInterval(fun,100);
+				function fun(){
+					$("#box").get(0).innerHTML=arr[rand(0,11)];
+					$("#m1").get(0).src=brr[rand(0,11)];
+				}
+				$(this).get(0).value="暂停";
+				flag=false;
+				
+			}else{
+				clearInterval(timer)
+				$(this).get(0).value="开始";
+				flag=true;
+				
+			}
+			
+			
+			
+		})
+		
+			
+		
+	
+	
+	 
+</script>

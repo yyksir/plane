@@ -1,0 +1,415 @@
+@charset "utf-8";
+html,body,div,p,ul,ol,li,dl,dt,dd,table,tr,td,th,caption,form,hr,h1,h2,h3,h4,h5,h6,input,img{
+	margin:0;
+	padding:0;
+}
+ul li{
+	list-style: none;
+}
+html{
+	font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei";
+}
+a{
+	text-decoration: none;
+}
+body{
+	background: #f9f9f9;
+}
+
+
+.top{
+	width: 100%;
+	background-color: #ffffff;
+	border-bottom: 1px solid #dadada;
+	margin-bottom: 30px;
+}
+.top-inner{
+	height: 30px;
+	width: 1200px;
+	margin: 0 auto;
+	line-height: 30px;
+	
+	
+}
+.top-inner>a{
+	float: left;
+	color: #666;
+	font-size: 12px;
+}
+.top-inner-right{
+	float: right;
+}
+.top-inner-right a{
+	color: #666;
+	padding: 0 12px;
+	font-size: 12px;
+	border-right: 1px solid #956695;
+}
+.top-inner-right a:nth-of-type(3){
+	border-right: none;
+}
+.top-inner-right span{
+	font-size: 12px;
+	border-right: 1px solid #956695;
+}
+.top-inner a:hover{
+	color: #e14958;
+	text-decoration: underline;
+}
+
+
+
+.header{
+	width: 100%;
+}
+.header-inner{
+	width: 1200px;
+	margin: 0 auto;
+	height: 87px;
+}
+
+.heade-inner-right{
+	float: right;
+	margin-right: 30px;
+}
+.header-inner a:nth-child(1){
+	float: left;
+	height: 60px;
+}
+
+.header-inner a:nth-child(1) img{
+	width: 280px;
+}
+.search{
+	float: left;
+	height: 87px;
+	width: 402px;
+	display: inline-block;
+	margin-right: 90px;
+}
+.search a{
+	padding-top:10px ;
+	color: #666666;
+	font-size: 12px;
+	padding: 0 2px;
+}
+.search input{
+	height: 38px;
+	width: 313px;
+	border: 1px solid #6b4185;
+	outline: none;
+}
+.search button{
+	height: 38px;
+	width:81px;
+	background: #6b4185;
+	color: white;
+	outline: none;
+	border: none;
+	padding: none;
+}
+.shopcar{
+	padding: 0;
+	float: right;
+	background:#f2f2f2;
+	margin-right:20px ;
+	height: 48px;
+	width: 168px;
+	text-align:center;
+	position: relative;
+	line-height: 48px;
+}
+.shopcarcar{
+	position: absolute;
+	top: 11px;
+	left: 3px;
+}
+.shopcarhao{
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+.shopcar span{
+	position: absolute;
+	top: -10px;
+	left:128px;
+	background-image: url(../img/imgda-header-cart-bg1.png);
+	height: 20px;
+	width: 20px;
+	color: white;
+	line-height: 20px;
+}
+.shopcar a{
+	color: #666666;
+}
+
+
+
+
+
+
+
+
+
+.da-assure{
+	height: 79px;
+	background: #fff;
+	line-height: 79px;
+	border-bottom: 1px solid #e0e0e0;
+	 box-shadow: 0 2px 2px #e0e0e0;
+	 border-top: 1px solid #d8d8d8;
+}
+.da-assure ul{
+	width: 960px;
+	margin: 0 auto;
+}
+.da-assure ul li{
+	float: left;
+	margin-left: 130px;
+	font-size: 14px;
+	height: 79px;
+	line-height: 79px;
+}
+.da-assure ul li:nth-child(1){
+	margin-left: 0px;
+	position: relative;
+}
+.da-assure ul li:nth-child(1) img{
+	position: absolute;
+	left:110px;
+	top: 0;
+}
+.da-assure ul li img{
+		margin-top: 25px;
+		float: left;
+}
+.da-investor{
+	width: 1110px;
+	margin: 0 auto;
+	height: 80px;
+	padding: 24px 0 40px 42px;
+	border-bottom: 1px solid #d8d8d8;
+	color: #666;
+}
+.da-investor-first{
+	width: 660px;
+	float: left;
+}
+.da-investor-first dt{
+	font-size: 18px;
+	line-height: 40px;
+}
+.da-investor-first dd{
+	font-size: 14px;
+	line-height: 20px;
+}
+.da-investor-second{
+	width: 450px;
+	height: 80px;
+	float: left;
+}
+.da-investor-second dt{
+	font-size: 18px;
+	line-height: 40px;
+}
+.da-investor-second dd{
+	font-size: 14px;
+	line-height: 20px;
+}
+.da-copyright{
+	text-align: center;
+}
+.da-copyright p{
+	padding: 20px 0 0;
+	font-size: 14px;
+}
+.da-copyright p a{
+	padding: 0 8px;
+	color: #666;
+	border-left:1px solid #666 ;
+}
+.da-copyright p a:nth-child(1){
+	border: none;
+}
+.company{
+	width: 530px;
+	margin: 20px auto 0;
+	height: 45px;
+}
+.company span{
+	font-size: 14px;
+	color: #666;
+	padding-top: 25px;
+	line-height: 45px;
+}
+.company img{
+	width: 114px;
+	height: 41px;
+	float: right;
+}
+
+
+.sidebar{
+	position: fixed;
+	height: 100%;
+	right: 0px;
+	top: 0;
+	color: #fff;
+	text-align: center;
+	background: #333333;
+	min-height: 480px;
+	z-index: 10;
+	
+}
+.sidebar .icon-cart{
+	font-size: 20px;
+	color:#fff;
+	text-align: center;
+	width: 33px;
+	height: 26px;
+	text-align: center;
+	margin-bottom: 10px;
+	
+}
+.sidebar-btn:hover{
+	background: #e14958;
+}
+.sidebar-function{
+	float: left;
+	background: #333333;
+	position: relative;
+	height: 100%;
+	width: 40px;
+}
+.icon-number{
+	width: 20px;
+	height: 20px;
+	background: #e34755;
+	border-radius: 50%;
+	display: inline-block;
+	line-height: 20px;
+	margin-top: 7px;
+	color: #fff;
+}
+.sidebar .name{
+	line-height: 16px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	font-size: 12px;
+	margin-top: 10px;
+}
+.side-promo{
+	height: 40px;
+	width: 37px;
+	padding-top: 5px;
+	position: relative;
+}
+.side-promo .icon-youhuiquanquanmian{
+	width: 33px;
+	height: 22px;
+	display: block;
+	margin-bottom: 10px;
+	font-size: 20px;	
+	text-align: center;
+	line-height: 22px;
+	padding-left: 3px;
+}
+.side-promo strong{
+	position: absolute;
+	top: 0;
+	right: 36px;
+	height: 42px;
+	text-align: center;
+	background: #666;
+	font-weight: 700;
+	font-size: 12px;
+	width: 100px;
+	line-height: 42px;
+	display: none;
+}
+.side-promo:hover{
+	background:#e14958 ;
+}
+.side-promo:hover strong{
+	display: block;
+}
+.side-collect:hover{
+	background:#e14958 ;
+}
+.side-collect:hover strong{
+	display: block;
+}
+.side-collect{
+	height: 37px;
+	width: 40px;
+	position: relative;
+	padding-top: 7px;
+}
+.side-collect .icon-commoncollectn{
+	font-size: 20px;
+}
+.side-collect strong{
+	position: absolute;
+	top: 0;
+	right: 40px;
+	height: 42px;
+	text-align: center;
+	background: #666;
+	font-weight: 700;
+	font-size: 12px;
+	width: 100px;
+	line-height: 42px;
+	display: none;
+	
+}
+.goTop{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+	overflow: hidden;
+	color: #fff;
+	font-size: 14px;
+}
+.sb-cart{
+	height: 126px;
+	width: 40px;
+	padding-top:10px ;
+	margin: 110px 0 22px;
+}
+.sider-data{
+	width: 280px;
+	height: 100%;
+	display: none;
+	background: #666;
+}
+.sider-data .close{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	background-image: url(../img/imglogin-close.png);
+	
+}
+.cart-mini-ct{
+	text-align: center;
+	background: #f4f4f4;
+	color: #666;
+	height: 100%;
+}
+.cart-mini-ct .head{
+	line-height: 50px;
+	text-indent: 20px;
+	text-align: center;
+	font-size: 12px;
+}
+.cart-mini-ct .cart-table-empty{
+	height: 200px;
+	width: 280px;
+	background: url(../img/cart_mini_empty.png) no-repeat ;
+	background-position: 70px 50px;
+}

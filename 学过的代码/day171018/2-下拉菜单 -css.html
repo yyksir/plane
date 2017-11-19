@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ padding:0; margin:0; list-style:none;}
+.all{ width:330px; height:30px; background:url(img/bg.jpg) no-repeat; margin:100px auto; line-height:30px; text-align:center; padding-left:10px; margin-bottom:0;}
+.all ul li{ width:100px; height:30px; background:url(img/libg.jpg); float:left; margin-right:10px; position:relative; cursor:pointer;}
+.all ul ul{ position:absolute; left:0; top:30px; display:none;}
+</style>
+</head>
+
+<body>
+<div class="all" >
+	<ul id="list">
+		<li>一级菜单
+			<ul>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+			</ul>
+		</li>
+		<li>一级菜单
+			<ul>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+			</ul>
+		</li>
+		<li>一级菜单
+			<ul>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
+<script>
+	 /*
+	  思路 ： 
+	  	1、功能写成构造函数（页面加载时需要创建对象）
+	  	2、操作的元素定义成属性
+	  	3、对元素的各种操作写成方法
+	  	4、一般一个构造函数都会一个入口方法  通过这个方法调用其它方法
+	  */
+	 
+	 window.onload=function(){
+	 	var li = new ListMenu();
+		 li.init();
+	 }
+	 function ListMenu(){
+	 	this.list=document.getElementById("list").children;
+	 }
+	 ListMenu.prototype.show=function(obj){
+	 	obj.style.display="block";
+	 }
+	 ListMenu.prototype.hide=function(obj){
+	 	obj.style.display="none";
+	 }
+	 ListMenu.prototype.init=function(){
+	 	var that=this;
+	 	for(var i=0;i<this.list.length;i++){
+	 		this.list[i].onmousemove=function(){
+	 			that.show(this.lastElementChild);
+	 		}
+	 		this.list[i].onmouseout=function(){
+	 			that.hide(this.lastElementChild);
+	 		}
+	 	}
+	 	
+	 }
+
+	 
+/*	window.onload = function(){
+	 	var lst = new ListMenu();
+		lst.init();
+	}
+	
+	function ListMenu(){
+		this.list = document.getElementById("list").children;//操作的元素   一级的li
+	}
+	 
+	//显示功能
+	ListMenu.prototype.show = function(obj){
+		obj.style.display = "block";
+	}
+	//隐藏功能
+	ListMenu.prototype.hide = function(obj){
+		obj.style.display = "none";
+	}
+	
+	//初始化方法     调用鼠标事件
+	ListMenu.prototype.init = function(){
+		var that = this;
+		for( var i = 0 ; i < this.list.length ; i++ ){
+			this.list[i].onmouseover = function(){
+				//调用显示show方法     事件中的this指向的是事件的触发者  
+				that.show( this.lastElementChild );
+			}
+			this.list[i].onmouseout = function(){
+				//调用显示show方法     事件中的this指向的是事件的触发者  
+				that.hide( this.lastElementChild );
+			}
+		}
+	}*/
+	
+/*	
+	window.onload=function(){
+		var li=new ListMenu();
+		li.init();
+	}
+	
+	
+	function ListMenu(){
+	this.list=document.getElementById("list").children;
+	}
+	
+	
+	ListMenu.prototype.show=function(obj){
+		obj.style.display="block";
+	}
+	ListMenu.prototype.hide=function(obj){
+		obj.style.display="none";
+	}
+	
+	ListMenu.prototype.init=function(){
+		var that=this;
+		for(var i=0;i<this.list.length;i++){
+			this.list[i].onmouseover=function(){
+			that.show(this.lastElementChild);	
+			}
+			this.list[i].onmouseout=function(){
+				that.hide(this.lastElementChild);
+			}
+		}
+	}
+	*/
+	
+	
+</script>

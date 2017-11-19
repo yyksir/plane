@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>打字游戏</title>
+        <!--引入animate.css动画库-->
+        <link rel="stylesheet" href="animate.css">
+        <style>
+            body{
+                margin: 0;
+                /*开启弹性布局，并让弹性布局中的子元素
+                水平居中对齐，垂直居中对齐*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /*文字居中*/
+                text-align: center;
+                /*设置背景颜色的经像渐变*/
+                background: radial-gradient(circle,#444,#111,#000);
+            }
+            #char{
+                font-size: 400px;
+                color: lightgreen;
+                /*设置文字阴影*/
+                /*text-shadow: 水平位置 垂直位置 模糊距离 阴影颜色*/
+                /*位置可以为负值*/
+                text-shadow: 0 0 50px #666;
+            }
+            #result{
+                font-size: 20px;
+                color: #888;
+            }
+            /*找到id为char及类名为error的div元素*/
+            #char.error{
+                color: red;
+
+            }
+        </style>
+    </head>
+    <body>
+        <mian>
+            <div id="char">A</div>
+            <div id="result">请在按键上按下屏幕上显示的字母</div>
+        </mian>
+    </body>
+</html>
+<script>
+	// 按键正确： "animated zoomIn";
+	// 按键错误： "animated shake error";
+    /*
+     1、页面加载时，随机出一个大写字母  
+     2、触发键盘按键，当按键字母和页面显示的字母相同时，操作"animated zoomIn" 样式，
+     			    同时 累加正确的字母个数，如果按键正确，紧接着在随机显示一个大写字母
+        
+     3、如果按键字母和页面显示的字母不相同，操作"animated shake error"样式  ，同时累加错误个数
+     4、不管按键正确还是错误 都要统计正确率    100* 正确个数/(正确+错误)
+     */
+    function $(id){
+    	return document.getElementById(id);
+    }
+    //定义一个函数  功能随机显示一个大写字母
+    function showLetter(){
+    	//获取 65--90 之间的一个code值
+    	code = Math.floor( Math.random()*(90-65+1) + 65 ); 
+    	//根据code值获取对应的字符
+    	var _char = String.fromCharCode(code);
+    	//将得到的字母显示到页面上
+    	$("char").innerHTML = _char;
+    }
+    showLetter();
+    var okCount = 0;//正确个数
+    var errorCount = 0;//错误个数
+    //为document添加一个onkeydown事件 
+    document.onkeydown = function(evt){
+    	var e = evt || event;
+    	//获取键盘的keyCode值
+    	var kCode = e.keyCode;
+    	//当按键字母和页面显示的字母相同时，操作"animated zoomIn" 样式，
+     			    //同时 累加正确的字母个数，如果按键正确，紧接着在随机显示一个大写字母
+     	if( code == kCode ){ //按键正确
+     		$("char").className = "animated zoomIn";//动画样式操作
+     		okCount++; //正确个数累加
+     		showLetter();// 重新显示一个字母
+     	}else{  //按键错误
+     		errorCount++;
+     		$("char").className = "animated shake error";
+     	}
+     	
+     	//当动画运动完成后，将动画样式清空，避免下一次按键时   ， 动画被覆盖
+     	// 需要再次按键时，重新启动动画效果
+     	setTimeout(function(){
+	     	$("char").className = "";
+     	},600)
+     	
+     	//统计正确率
+     	showResult();
+    }
+    //定义一个函数 功能统计正确率
+    function showResult(){
+    	var rate = 100 * okCount / ( okCount + errorCount );
+    	$("result").innerHTML = "正确"+okCount+"个，错误"+errorCount+"个，正确率是"+rate.toFixed(2)+"%";
+    }
+</script>

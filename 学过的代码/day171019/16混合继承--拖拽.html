@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#d1{
+			width: 100px;
+			height: 100px;
+			background: saddlebrown;
+			position: absolute;
+			left: 100px;
+			top:100px;
+		}
+		#d2{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			position: absolute;
+			left: 200px;
+			top:300px;
+		}
+	</style>
+	<body>
+		<div id="d1">父类只有拖拽</div>
+		<div id="d2">子类继承拖拽，并且边界处理</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//id为d1 的 盒子  只能实现拖拽
+	//id为d2 的 盒子  继承d1的拖拽功能   同时 还可以实现边界处理功能
+	window.onload = function(){
+		var f = new FatherDrag("d1");
+		f.init();
+		
+		var cd = new ChildDrag("d2");
+		cd.init();
+	}
+	function FatherDrag(id){
+		this.div = document.getElementById(id);
+	}
+	
+	FatherDrag.prototype.init = function(){
+		var that = this;
+		this.div.onmousedown = function(e){
+			var e = e || event;
+			that.fnDown(e);
+			document.onmousemove = function(e){
+				var e = e || event;
+				that.fnMove(e);
+			}
+			document.onmouseup = function(){
+				that.fnUp();
+			}
+			return false;
+		}
+	}
+	
+	FatherDrag.prototype.fnDown = function(e){
+		this.disx = e.pageX - this.div.offsetLeft;
+		this.disy = e.pageY - this.div.offsetTop;
+	}
+	
+	FatherDrag.prototype.fnMove = function(e){
+		this.div.style.left = e.pageX - this.disx + "px";
+		this.div.style.top = e.pageY - this.disy + "px";
+	}
+	
+	FatherDrag.prototype.fnUp = function(){
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+	
+	function ChildDrag(id){ //子类  
+		//继承父类的实例属性
+		FatherDrag.call(this,id);
+	}
+	//原型继承
+	ChildDrag.prototype = new FatherDrag();
+	
+	//子类实现特有的移动时的边界处理功能
+	ChildDrag.prototype.fnMove = function(e){
+		this.x = e.pageX - this.disx;
+		this.y = e.pageY - this.disy;
+	    this.maxL = window.innerWidth - this.div.offsetWidth;
+	    this.maxT = window.innerHeight - this.div.offsetHeight;
+	    
+	    this.x = this.x<0?0:(this.x > this.maxL ? this.maxL : this.x)
+	    this.y = this.y<0?0:(this.y > this.maxT? this.maxT : this.y)
+	    
+		this.div.style.left = this.x + "px";
+		this.div.style.top = this.y + "px";
+	}
+</script>

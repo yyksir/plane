@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<input type="button" name="qx" value="全选"/>-->
+		<!--<input type="button" name="qbx" value="全不选"/><br/>-->
+		<input type="checkbox" name="qx" />全选/全不选
+		<input type="checkbox" name="fx"/>反选
+		<input type="checkbox"  name="hobby"/>
+		<input type="checkbox"  name="hobby"/>
+		<input type="checkbox"  name="hobby"/>
+		<input type="checkbox"  name="hobby"/>
+		<input type="checkbox"  name="hobby"/>
+	</body>
+</html>
+<script>
+	var qxBtn=document.getElementsByName("qx")[0];
+	var fxBtn=document.getElementsByName("fx")[0]
+	var cks=document.getElementsByName("hobby");
+	
+/*		fxBtn.onclick=function(){
+			for(i=0;i<cks.length;i++){
+				if(cks[i].checked==true){
+					cks[i].checked=false;
+				}else if(cks[i].checked==false){
+					cks[i].checked=true;
+				}		
+			}
+		}	
+		
+	qxBtn.onclick = function(){
+		for(var i = 0 ; i < cks.length ; i++){
+			cks[i].checked = this.checked;
+		}
+	}
+	*/
+		qxBtn.onclick=function(){
+			for(var i=0;i<cks.length;i++){
+				cks[i].checked=this.checked;
+			}
+		}
+		
+		qxbtn.onclick=function(){
+			for(var i=0;i<cks.length;i++){
+				cks[i].checked=false;
+			}
+		}
+</script>

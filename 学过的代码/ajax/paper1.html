@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="显示数据" />
+		<ul id="ul1"></ul>
+	</body>
+</html>
+<script>
+	var oInput=document.querySelector("input");
+	var oUl=document.getElementById("ul1");
+	
+	oInput.onclick=function(){
+		showMessage()
+	}
+	
+	function showMessage(){
+	
+		var ajax=null;
+		if(window.XMLHttpRequest){
+			ajax=new XMLHttpRequest();
+		}else{
+			ajax=new ActiveXObject("Microsoft.XMLHTTP")
+		}
+		
+		ajax.open("get","http://127.0.0.1/ajax/paper1.json");
+		ajax.send();
+		
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4&&ajax.status==200){
+				
+				var _json=JSON.parse(ajax.responseText);
+				var str="";
+				for(var i in _json){
+					str+=`<li>
+					${_json[i].pid}
+					${_json[i].pname}
+					${_json[i].price}
+					
+					</li>`;
+				}
+				oUl.innerHTML = str;
+
+			
+			}
+		}
+	}
+	
+	setInterval(function(){
+		showMessage()
+	},1000)
+	
+	
+	
+</script>

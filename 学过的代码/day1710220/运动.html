@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			div{
+				height:100px;
+				width:100px;
+				position:absolute;
+				left:0;
+				top:60px;
+				background:red;
+				opacity:.3;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<input type="button" value="向左" />
+		<input type="button" value="向右" />
+		
+		<div></div>
+	</body>
+</html>
+<script>
+	var btnl=document.getElementsByTagName("input")[0];
+	var btnr=document.getElementsByTagName("input")[1];
+	
+	var box=document.getElementsByTagName("div")[0];
+	
+	
+	
+	btnl.onclick=function(){
+		startMove(0,this,"left");
+	}
+	btnr.onclick=function(){
+		startMove(300,this,"left");
+	}
+	var timer=null;
+	function startMove(target,obj,attr){
+		clearInterval(timer);
+		timer=setInterval(function(){
+//			var speed=target-box.offsetLeft>0?5:-5;
+
+			var current=parseInt(getStyle(obj,attr))
+			var speed=(target-current)/10;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			
+			if(current==target){
+//				box.style.left=target+ "px";
+				clearInterval(timers);
+				
+			}else{
+				
+			box.style[attr]=current+ speed + "px";
+			}
+			
+		},30)
+	}
+	
+	
+	
+	function getStyle(obj,attr){
+		return window.getComputedStyle?window.getComputedStyle(obj,false)[attr]:obj.currentStyle[attr];
+	}
+	
+//	alert(getStyle(box,"width"));
+	
+/*	box.onmouseover=function(){
+		startMove(100);
+	}
+	box.onmouseout=function(){
+		startMove(30);
+	}
+	var timer=null;
+	var alpha=30;
+	function startMove(target){
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=target-alpha>0?1:-1;
+			
+			if(alpha==target){
+				clearInterval(timer);
+				
+			}else{
+			box.style.opacity=(alpha+ speed)/100 ;
+				alpha+=speed;
+			}
+			
+		},30)
+	}*/
+</script>

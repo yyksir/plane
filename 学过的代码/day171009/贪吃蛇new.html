@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	*{ margin: 0; padding:0; }
+	li{ list-style: none; }
+	#main{ margin:20px auto; position: relative; }
+	#gird{ border:1px black solid; border-bottom: none; border-right: none; overflow: hidden; }
+	#gird li{ border:1px black solid; border-left: none; border-top: none; float: left; }
+	#gameScore{ float:right; }
+	#snake .snakeHead{ background:red; position: absolute; }
+	#snake .snakeBody{ background:red; opacity: 0.5; position: absolute; }
+	#food{ background:blue; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="gird">
+			
+		</ul>
+		<input type="button" value="开始" id="gameButton">
+		<div id="gameScore">积分：0</div>
+		<div id="snake">
+			<!-- <div class="snakeHead"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div> -->
+		</div>
+		<!-- <div id="food"></div> -->
+	</div>
+	
+</body>
+</html>
+<script>
+	function $id(id){
+		return document.getElementById(id);
+	}
+	function $class(parent,names){
+		return parent.getElementsByClassName(names);
+	}
+	function $tag(parent,names){
+		return parent.getElementsByTagName(names);
+	}
+	function create(ele){
+		return document.createElement(ele);
+	}
+	
+	var mian=$id("mian");
+	var gird=$id("gird");
+	var girdLi=$tag(gird,"li");
+	var snake=$id("snake");
+	var snakeDiv=$tag(snake,"div");
+	var gameBtn=$id("gameButton");
+	var girdData={size:20,cols:25,rows:25};
+	var snakeData={pos:28,dir:39}
+	
+	init();
+	function init(){
+		createGird();
+		gamePlay()
+	}
+	function createGird(){
+		for(var i=0;i<girdData.cols*girdData.rows;i++){
+			main.style.width=(girdData.size+1)*girdData.cols+1+"px"
+			var li=create("li");
+			li.style.width=li.style.height=girdData.size+"px";
+			gird.appendChild(li);
+		}
+	}
+	function gamePlay(){
+		gameBtn.onclick=function(){
+			snakeHead();
+			snakeMove();
+			createFood();
+			snakeBind();
+		}
+	}
+	
+	function snakeHead(){
+		var snakeHead=create("div");
+		snakeHead.className="snakeHead"
+		snakeHead.style.width=snakeHead.style.height=girdData.size+"px";
+		snakeHead.style.left=girdLi[snakeData.pos].offsetLeft+"px";
+		snakeHead.style.top=girdLi[snakeData.pos].offsetTop+"px";
+		snake.appendChild(snakeHead);
+	}
+	function snakeMove(){
+		setInterval(function(){
+			if(	pz(food,snakeDiv[0])){
+				food.id="";
+				snake.appendChild(food);
+				food.className="snakeBody";
+				createFood();
+			}
+			
+			for(var i=snakeDiv.length-1;i>0;i--){
+				snakeDiv[i].style.left=snakeDiv[i-1].style.left;
+				snakeDiv[i].style.top=snakeDiv[i-1].style.top;
+			}
+			
+			if(!isOut()){
+				alert("跟别人跑了？？？");
+				location.reload();
+				
+			}
+			
+			
+			
+			switch(snakeData.dir){
+				case 40 :
+				snakeDiv[0].style.top=snakeDiv[0].offsetTop+(girdData.size+1)+"px";
+					break;
+				case 38 :
+				snakeDiv[0].style.top=snakeDiv[0].offsetTop-(girdData.size+1)+"px";
+					break;
+				case 37 :
+				snakeDiv[0].style.left=snakeDiv[0].offsetLeft-(girdData.size+1)+"px";
+					break;
+				case 39 :
+				snakeDiv[0].style.left=snakeDiv[0].offsetLeft +(girdData.size+1)+"px";
+					break;
+			}
+			
+		},300)
+	}
+	
+	function isOut(){
+		for(var i=0;i<girdLi.length;i++){
+			if(pz(snakeDiv[0],girdLi[i])){
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
+	function createFood(){
+		var randIndex=Math.floor(Math.random()*(girdData.cols*girdData.rows))
+		 food=create("div");
+		food.id="food";
+		food.style.width = food.style.height = girdData.size + "px";
+		food.style.left=girdLi[randIndex].offsetLeft+"px";
+		food.style.top=girdLi[randIndex].offsetTop+"px";
+		gird.appendChild(food);
+	}
+	function snakeBind(){
+		document.onkeydown=function(e){
+			var e=e||event;
+			switch(e.keyCode){
+				case 40 :
+				snakeData.dir=40;
+				break;
+				case 39 :
+				snakeData.dir=39;
+				break;
+				case 38:
+				snakeData.dir=38;
+				break;
+				case 37 :
+				snakeData.dir=37;
+				break;
+			}
+			
+		}
+	}
+	function pz(obj1,obj2){
+		var l1=obj1.offsetLeft;
+		var r1=obj1.offsetLeft+obj1.offsetWidth;
+		var t1=obj1.offsetTop;
+		var b1=obj1.offsetTop+obj1.offsetHeight;
+		
+		var l2=obj2.offsetLeft;
+		var r2=obj2.offsetLeft+obj2.offsetWidth;
+		var t2=obj2.offsetTop;
+		var b2=obj2.offsetTop+obj2.offsetHeight;
+		
+			if(r1<l2||r2<l1||b1<t2||b2<t1){
+				return false;
+			}else{
+				return true;
+			}
+		
+		
+		
+	}
+	
+	
+	
+	
+ 	//组件功能
+ /*	function $id(id){
+ 		return document.getElementById(id);
+ 	}
+ 	function $class(parent,names){
+ 		return parent.getElementsByClassName(names);
+ 	}
+ 	function $tag(parent,names){
+ 		return parent.getElementsByTagName(names);
+ 	}
+ 	//创建元素的函数
+ 	function create(ele){
+ 		return  document.createElement(ele);
+ 	}
+ 	var main = $id("main");//容器
+ 	var gird = $id("gird");//ul
+ 	var girdLi = $tag(gird,"li");// 网格li
+ 	var snake = $id("snake");//蛇容器
+ 	var snakeDiv = $tag(snake,"div");  //蛇头 + 蛇身
+ 	var gameBtn = $id("gameButton");  //开始按钮
+ 	var girdData = {size:20,cols:25,rows:25};//网格数据
+ 	var snakeData = { pos:28 , dir : 39 }// 蛇数据   37  38  39  40  
+ 	
+ 	init();
+ 	//页面加载创建网格 
+ 	function init(){
+ 		//创建网格
+ 		createGird();
+ 		gamePlay()
+ 	}
+ 	
+ 	function createGird(){ //创建网格
+ 		//设置容器宽度
+ 		main.style.width = (girdData.size+1) * girdData.cols  + 1 + "px";
+ 		for( var i = 0 ; i < girdData.cols * girdData.rows ; i ++ ){
+ 			var li = create("li");
+ 			li.style.width = li.style.height = girdData.size + "px";
+ 			gird.appendChild(li);
+ 		}
+ 	}
+ 	
+ 	//开始游戏   点击按钮开始游戏
+ 	function gamePlay(){
+ 		gameBtn.onclick = function(){
+ 			//创建蛇头
+ 			snakeHead();
+ 			//蛇的运动
+ 			snakeMove();
+ 			//创建食物
+ 			createFood();
+ 			//操作蛇的运动 
+ 			snakeBind();
+ 		}
+ 	}
+ 	//创建蛇头
+ 	function snakeHead(){
+ 		var snakeHead = create("div");
+ 		snakeHead.className = "snakeHead";
+ 		snakeHead.style.width = snakeHead.style.height = girdData.size +"px";
+ 		//蛇头的初始位置为 某个li的位置  就是该li的offsetLeft 和  offsetTop
+ 		snakeHead.style.left = girdLi[snakeData.pos].offsetLeft + "px";
+ 		snakeHead.style.top = girdLi[snakeData.pos].offsetTop + "px";
+ 		snake.appendChild(snakeHead);
+ 	}
+ 	//蛇运动
+ 	function snakeMove(){
+ 		setInterval(function(){
+ 			switch( snakeData.dir ){ //蛇的初始方向判断    snakeDiv[0]运动
+ 				case 40 : 
+ 					snakeDiv[0].style.top = snakeDiv[0].offsetTop + ( girdData.size + 1 ) + "px";
+ 					break;
+ 				case 38 : 
+ 					snakeDiv[0].style.top = snakeDiv[0].offsetTop - ( girdData.size + 1 ) + "px";
+ 					break;
+ 				case 37 :
+ 					snakeDiv[0].style.left = snakeDiv[0].offsetLeft - ( girdData.size + 1 ) + "px";
+ 					break;
+ 				case 39 :
+ 					snakeDiv[0].style.left = snakeDiv[0].offsetLeft + ( girdData.size + 1 ) + "px";
+ 					break;
+ 			}
+ 		},300)
+ 	}
+ 	
+ 	//创建食物
+ 	function createFood(){
+ 		var  randIndex = Math.floor(Math.random()* ( girdData.cols*girdData.rows ) );//获取食物随机下标  实际上就是获取 某个li格子的下标
+ 		var food = create("div");
+ 		food.id = "food";
+ 		food.style.width = food.style.height = girdData.size + "px";
+ 		food.style.left = girdLi[randIndex].offsetLeft + "px";
+ 		food.style.top = girdLi[randIndex].offsetTop + "px";
+ 		gird.appendChild( food );
+ 	}
+ 	//操作的蛇头运动的方向 
+ 	function snakeBind(){
+ 		document.onkeydown = function(e){
+ 			//判断按下箭头的方向   获取 keyCode  值
+ 			var e = e || event;
+ 			switch( e.keyCode ){
+ 				case 40 : 
+ 					snakeData.dir = 40;
+ 					break;
+ 				case 38 : 
+ 					snakeData.dir = 38;
+ 					break;
+ 				case 37 :
+ 					snakeData.dir = 37;
+ 					break;
+ 				case 39 :
+ 					snakeData.dir = 39;
+ 					break;
+ 			}
+ 		}
+ 	}*/
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取date" />
+	</body>
+</html>
+<script>
+	var oInput = document.querySelector("input");
+	
+		oInput.onclick=function(){
+			alert()
+	
+		var ajax=null;
+		if(window.XMLHttpRequest){
+			ajax=new XMLHttpRequest();
+		}else{
+			ajax=new ActiveXObject("Microsoft,XMLHTTP")
+		}
+		
+		ajax.open("get","http://127.0.0.1/ajax/date.json",true);
+		
+		ajax.send();
+		
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4&&ajax.status==200){
+				var arr=JSON.parse(ajax.responseText);
+				var ch=""
+				for(var i=0;i<arr.length;i++){
+					ch+="<li>"+"name:"+arr[i].name+"="+"age"+arr[i].age+"</li>"
+				}
+				document.write(ch)
+			}	
+		}
+	
+		
+	}
+	
+	
+	
+</script>

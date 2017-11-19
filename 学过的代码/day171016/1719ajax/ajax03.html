@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取文件一" />
+		<input type="button" value="获取文件二" />
+		<input type="button" value="获取文件三" />
+		<div style="width: 600px; height: 300px; border:1px solid red;"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btns = document.getElementsByTagName("input");
+	var odiv = document.querySelector("div");
+
+	for( var i= 0 ; i < btns.length ; i++ ){
+		alert()
+		btns[i].index = i;
+		btns[i].onclick = function(){
+			var ajax = null;
+			if( window.XMLHttpRequest ){
+				ajax = new XMLHttpRequest();
+			}else{
+				ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//  url  =   域名  + ?  + 参数
+			ajax.open("GET","http://127.0.0.1/1719ajax/"+(this.index+1)+".txt?id="+new Date().getTime() );
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if( ajax.readyState == 4 && ajax.status == 200 ){
+					odiv.innerHTML = ajax.responseText;
+				}
+			}
+		}
+	}
+</script>

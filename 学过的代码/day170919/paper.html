@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--	用户名： <input type="text" id="t1" /><br>
+		密码： <input type="text" id="t2" /><br>
+		<input type="button" value="登录" id="btn" /><span id="sp"></span>-->
+	</body>
+</html>
+
+<script>
+/*	function getCount(str){
+			var str1="";
+			str1=str.toLowerCase();
+			var counta=0;
+			var countd=0;
+			var counte=0;
+			var countf=0;
+			var counts=0;
+			var countw=0;
+		for(i=0;i<str1.length;i++){	
+			if(str1.charAt(i)=="a"){
+				counta++;
+			}else if(str1.charAt(i)=="d"){
+				countd++;
+			}else if(str1.charAt(i)=="e"){
+				counte++;
+			}else if(str1.charAt(i)=="f"){
+				countf++;
+			}else if(str1.charAt(i)=="s"){
+				counts++;
+			}else{
+				countw++;
+			}	
+		}
+		document.write("字符a出现了："+counta+"次"+"<br>");
+		document.write("字符d出现了："+countd+"次"+"<br>");
+		document.write("字符e出现了："+counte+"次"+"<br>");
+		document.write("字符f出现了："+countf+"次"+"<br>");
+		document.write("字符s出现了："+counts+"次"+"<br>");
+		document.write("字符w出现了："+countw+"次");
+		
+	}
+	getCount( str = "asfesWsdA");*/
+/*		function getCount(str){
+			for(i=0;i<=127;i++){
+			var ch=String.fromCharCode(i);
+			var count=0;
+			for(var j=0;j<str.length;j++){
+				if(ch==str.charAt(j)){
+					count++;
+					}
+				}
+			if(count>0){
+			console.log(ch+"字符出现了"+count+"次");
+				
+			}
+				
+			}
+			
+		}*/
+//	getCount("asfesWsdA")
+	
+	
+	
+	//22、	字符串去重var str = "aabccd";输出   abcd 
+	
+/*	function norepeat(str){
+		var newArr="";
+		for(i=0;i<str.length;i++){
+			if(newArr.indexOf(str.charAt(i))==-1){
+				newArr+=str.charAt(i);
+			}
+		}
+		return newArr;
+	}
+	alert(norepeat("aabccd"));
+	*/
+	
+		function norepeat1(str){
+			var arr=str.split("");
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]==arr[i+1]){
+					arr[i]="";
+				}
+			}
+			alert( arr.join(""))
+		}
+	norepeat1("aabccd");
+	
+/*	function norepeat(){
+		var arr=[];
+		var str = "aabccda";
+		var arr = str.split("");
+		arr.sort(fun);
+		function fun(a,b){
+			return a-b;
+		}
+		alert(arr);
+	}
+	norepeat("aabccd")*/
+/*		str.sort fun(a,b);
+		function fun(a,b){
+			return a - b;
+		}*/
+/*		var str = "aabccd";
+		var str1="";
+		for(i=0;i<str.length;i++){
+			if(str.charAt(i)!=str.charAt(i+1)){
+				str1+=str.charAt(i);
+			}
+			
+		}
+		alert(str1)*/
+		
+		
+		
+		
+		
+		
+		//33、	已知页面中有个用户名和密码的文本框，一个登录按钮
+//		当点击登录按钮时，需要对用户名格式进行验证：
+//		要求：   长度在6—20 之间，否则alert提示
+//		不能用数字开头    否则有alert提示
+//		只能包含数字、字母、下划线，都正确，提示 正确，否则输出 只能包含字母数字下划线
+/*		function $(id){
+			return document.getElementById(id);
+		}
+		$("btn").onclick=function(){
+			var nameStr=$("t1").value;
+			var passStr=$("t2").value;
+			var sP=$("sp").innerHTML;
+			if(nameStr.length<6||nameStr.length>20){
+				alert("数字数目应该为6-12之间");
+			}else if(nameStr.charAt(0)>=0&&nameStr.charAt(0)<=9){
+				alert("不能用数字开头");
+			}else {
+				var count=0;
+				for(i=0;i<nameStr.length;i++){
+						
+					if(nameStr.charAt(0)>=0&&nameStr.charAt(0)<=9||
+						nameStr.charAt(0)>="a"&&nameStr.charAt(0)<="z"||
+						nameStr.charAt(0)>="A"&&nameStr.charAt(0)<="Z"||
+						nameStr.charAt(0)=="_"
+					){
+						count++;
+						}
+					}
+					if(count=nameStr.length){
+						alert("正确");
+						}else{
+						alert("只能包含字母数字下划线");
+					}
+					
+				}
+			}*/
+				
+		
+	
+	
+	
+	//44、已知有一串字符串，"中国23人5民156共和国568"，将字符串中的数字字符串都提取出来，存入到数组中
+//             例如：  提取数字后的数组是：  [23,5,156,568]
+	
+//		var str="中国23人5民156共和国568";
+		
+	/*	function getdate(str){
+			var arr=[];
+			var newstr="";
+		for(var i=0;i<str.length;i++){
+			if(str.charAt(i)>="0"&&str.charAt(i)<="9"){
+				newstr+=str.charAt(i);
+			}else{
+				if(newstr.length>0){
+					arr.push(newstr);
+					newstr = "";
+				}
+			}
+		}
+		if(newstr.length>0){
+		arr.push(newstr);
+		}
+		alert(arr);
+	}
+		
+	getdate("中国23人5民156共和国568");*/
+		
+	
+	
+</script>

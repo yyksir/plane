@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var num = 90;
+    num.index = 1;
+    alert(num.index);
+
+	var arr = [1,2,3,4,5];
+	arr.index = 2;
+	arr.sum = function(){
+		var s = 0;
+		for( var i = 0; i < arr.length ; i++ ){
+			s += arr[i]; 
+		}
+		alert(s);
+	}
+	//alert( arr.index );
+	//arr.sum();
+	
+	function sum(){
+		var s = 0;
+		for( var i = 0; i < arr.length ; i++ ){
+			s += arr[i]; 
+		}
+		alert(s);
+	}
+	sum();
+</script>

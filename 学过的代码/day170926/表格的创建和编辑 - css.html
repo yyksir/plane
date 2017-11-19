@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>		
+		#detail{
+			width:200px;
+			height:200px;
+			border:1px solid black;		
+			display :none;
+			position:absolute;
+			left:500px;
+			top:300px;
+			background:#fff;
+		}
+	</style>
+	<body>
+		标题：<input type="text" id="topic_name" size=60/><br>
+		内容：<input type="text" id="topic_content" size=60/><br>
+		作者：<input type="text" id="author" size=60/><br>
+		<button id="saveBtn">保存</button>
+		<table id="tab" border=1>
+			<tr>
+				<th>ID</th><th>帖子名称</th><th>内容预览</th><th>发布时间</th><th>作者</th><th>操作</th>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td name="option"><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+		<table>
+		<div id="detail"></div>
+	</body>	
+</html>
+<script> 
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("saveBtn").onclick=function(){
+		var oTr=$("tab").children[0].children[1].cloneNode(true);
+		oTr.children[0].innerHTML=Math.floor(Math.random()*100);
+		oTr.children[1].innerHTML=$("topic_name" ).value;
+		oTr.children[2].innerHTML=$("topic_content").value;
+		oTr.children[3].innerHTML=new Date().toLocaleDateString();
+		oTr.children[4].innerHTML=$("author" ).value;
+		$("tab").appendChild(oTr);
+		$("topic_name" ).value=$("topic_content").value=$("author" ).value="";
+	}
+	
+	$("tab").onclick=function(e){
+		var e=e||event;
+		var target=e.target||e.srcElement;
+		if(target.nodeName=="TD"){
+			var opt=document.createElement("input");
+			opt.type="text";
+			opt.value=target.innerHTML;
+			
+			target.innerHTML="";
+			target.appendChild(opt);
+			opt.focus();
+			
+			opt.onblus=function(){
+				target.innerHTMl=opt.value;	
+			}	
+		}	
+	}
+	$("tab").addEventListener("click",function(e){
+		var e=e||event;
+		e.stopPropagation();
+		var target=e.target||e.srcElement;
+		
+		if(target.name=="detail"){
+			$("detail").style.display="block";
+			$("detail").style.top=e.pageY+"px";
+			$("detail").style.left=e.pageX+"px";
+			oTr=target.parentNode.parentNode;
+			$("detail").innerHTML="标题"+oTr.children[1].innerHTML+"<br>"
+			+"内容"  +oTr.children[2].innerHTML;
+			
+		}
+		
+	})
+	document.onclick=function(){
+		$("detail").style.display="none";
+		
+	}
+	$("tab").addEventListener("click",function(e){
+		var e=e||event;
+		e.stopPropagation();
+		var target=e.target||e.srcElement;
+			if(confirm("delete or not")){
+				
+		if(target.className=="delbtn" ){
+			
+			target.parentNode.parentNode.remove();
+			
+			}
+		}
+	})
+	
+	
+	 
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

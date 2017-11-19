@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{list-style: none}
+        *{margin:0; padding:0;}
+        div{
+            width: 1150px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+        div ul {
+            width: 1300px;
+        }
+    </style>
+</head>
+<body>
+	<div>
+	    <ul>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+	</div>
+</body>
+</html>
+<script src="sport4.js"></script>
+<script type="text/javascript">
+	
+	
+	var list=document.getElementsByTagName("li");
+	
+
+	for(var i=0;i<list.length;i++){	
+		list[i].style.backgroundImage="url(images/"+(i+1)+".jpg)";
+		list[i].onmouseover=function(){
+			for(var j=0;j<list.length;j++){
+				startMove(list[j],{"width":100})
+			}
+			startMove(this,{"width":800})
+		}
+		list[i].onmouseout=function(){
+			for(var j=0;j<list.length;j++){
+				startMove(list[j],{"width":240})
+			}
+		}
+		
+	}
+	
+	
+	
+   /* var list = document.getElementsByTagName("li");
+    for( var i = 0 ; i < list.length ; i++ ){
+    	//页面加载时为li设置背景图片
+    	list[i].style.backgroundImage = "url(images/"+(i+1)+".jpg)";
+    	
+    	list[i].onmouseover = function(){
+    		//排他思想
+    		for( var j = 0 ; j < list.length ; j++ ){
+    			startMove(list[j],{"width":50})
+    		}
+    		startMove(this,{"width":1000})
+    	}
+    	list[i].onmouseout = function(){
+    		//排他思想
+    		for( var j = 0 ; j < list.length ; j++ ){
+    			startMove(list[j],{"width":240})
+    		}
+    	}
+    }*/
+</script>
+

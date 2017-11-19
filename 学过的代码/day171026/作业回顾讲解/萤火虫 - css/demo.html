@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+				#bg{
+					background: url(img/bg.jpg)  no-repeat;
+					background-size: cover;
+					width: 100%;
+					height: 100%;
+					position: fixed;
+				}
+				img {
+					width: 18px;
+					height: 18px;
+					position: absolute;
+					
+				}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="bg">
+			
+		</div>
+
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		 
+	</body>
+
+</html>
+<script>
+	//面向对象 ：  萤火虫
+	//属性  ：  img图片
+	//功能 ： init   初始位置    运动
+	//页面加载  创建多个萤火虫
+	window.onload = function(){
+		for( var i = 1 ; i <= 60 ; i++ ){
+			new Pirticle().init().randPos().fly();
+		}
+	}
+	function Pirticle(){
+		this.body = $("<img src='img/1.jpg'>");
+		//this.body   指向的是  dom对象  
+	}
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	Pirticle.prototype = {
+		init : function(){ //显示
+			$("#bg").append(this.body);
+			return this;
+		},
+		randPos : function(){//确定位置
+			$(this.body).css({
+				"left" : rand( 0, $("#bg").width() ),
+				"top" : rand( 0 , $("#bg").height() )
+			})
+			return this;
+		},
+		fly : function(){ //飞起来
+			$(this.body).animate({
+				"left" : rand( 0, $("#bg").width() ),
+				"top" : rand( 0 , $("#bg").height() )
+			},rand(2000,5000),function(){
+				//运动完成后  继续 fly
+				this.fly();
+			}.bind(this))
+		}
+	}
+</script>

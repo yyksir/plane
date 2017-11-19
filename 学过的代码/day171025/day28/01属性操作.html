@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.min.js"></script>
+	<body>
+		<img src="001.jpg" alt="" />
+	</body>
+</html>
+<script>
+	var index = 1;
+	setInterval(function(){
+		$("img").attr("src","00"+index+".jpg");
+		index++;
+		if( index == 4 ){
+			index = 1;
+		}
+	},1000)
+</script>

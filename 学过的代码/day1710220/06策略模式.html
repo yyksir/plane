@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width:100px;
+			height: 100px;
+			position: absolute;
+			left: 100px;
+			top:100px;
+			background: skyblue;
+		}
+	</style>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function MoveDiv(){
+		this.div = document.querySelector("#box");
+		this.addListener = function(obj){ //监听方法  
+			switch( obj.type ){
+				case "mouse":
+					document.onmousemove = function(e){
+						var e = e || event;
+						this.div.style.left = e.pageX + "px";
+						this.div.style.top = e.pageY + "px";
+					}.bind(this)
+					break;
+				case "key":
+					document.onkeydown = function(e){
+						var e = e || event;
+						switch(e.keyCode){
+							case 37 : 
+								this.div.style.left = this.div.offsetLeft - 5 + "px";
+						}
+					}.bind(this)
+			}
+		}
+		this.addListener({ "type" : "key" });
+	}
+	var md = new MoveDiv();// 配置文件
+</script>

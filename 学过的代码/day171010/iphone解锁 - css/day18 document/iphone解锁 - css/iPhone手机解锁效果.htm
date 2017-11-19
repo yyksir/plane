@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+	<meta charset="utf-8"/>
+	<title>iPhone手机解锁效果</title>
+	<style type="text/css">
+	#iphone{position:relative;width:426px;height:640px;margin:10px auto;background:url(iphone.jpg) no-repeat;}
+	#lock{position:absolute;left:50%;bottom:33px;width:358px;height:62px;margin-left:-179px;}
+	#lock span{position:absolute;width:93px;height:62px;cursor:pointer;background:url(unlock_btn.jpg) no-repeat;}
+	</style>
+	</head>
+	<body>
+		<div id="iphone">
+			<div id="lock"><span></span></div>
+		</div>
+	</body>
+</html>
+<script src="sport4.js"></script>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	var ospan = $("lock").children[0];
+	ospan.onmousedown = function( e ){
+		var e = e || event;
+		var disx = e.offsetX;
+		document.onmousemove = function(e){
+			var e = e || event;
+			var x = e.pageX - disx - $("iphone").offsetLeft - $("lock").offsetLeft;
+			maxL = $("lock").offsetWidth - ospan.offsetWidth;
+			x = x < 0 ? 0 : ( x > maxL ? maxL : x );
+			ospan.style.left = x + "px";
+		}
+	}
+	document.onmouseup = function(){
+		document.onmousemove = null;
+
+		if( ospan.offsetLeft < maxL/2 ){
+			startMove( ospan ,  { "left" : 0 }   )
+		}else{
+			startMove( ospan ,  { "left" : $("lock").offsetWidth - ospan.offsetWidth }   )
+		}
+	}
+</script>

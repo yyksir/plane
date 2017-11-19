@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//定义一个计算构造函数  功能 计算圆的周长和面积
+	//计算器   构造函数 
+	//属性 ： 半径r
+	//功能 ： 计算周长和面积
+	/*function Calculator(r){
+		this.r = r;
+		this.area = function(){
+			return Math.PI*Math.pow( this.r,2 );
+		}
+		this.girth = function(){
+			return 2*Math.PI*this.r;
+		}
+	}
+	Calculator.prototype.mj = function(){
+		return Math.PI*Math.pow( this.r,2 );
+	}
+	Calculator.prototype.zc = function(){
+		return 2*Math.PI*this.r;
+	}
+	var cal = new Calculator(3);
+	console.log( cal.area() );*/
+	
+	//计算任意两个数的和差 积商
+	function Cal(){
+		this.add = function(x,y){
+			alert( x + y ) ;
+		}
+		this.diff = function(x,y){
+			alert( x - y ) ;
+		}
+	}
+	var c = new Cal();
+	c.add(3,4);
+</script>

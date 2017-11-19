@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height:200px;
+				width:200px;
+				border:1px solid black;
+				margin:20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="获取第一个数据" />
+		<input type="button" value="获取第二个数据" />
+		<input type="button" value="获取第三个数据" />
+		<div></div>
+	</body>
+</html>
+<script>
+	var oInput =document.querySelectorAll("input");
+	var oDiv = document.querySelector("div");
+	
+	
+	for(var i=0;i<oInput.length;i++){
+		oInput[i].index=i;	
+		oInput[i].onclick=function(){
+		
+		var ajax=null;
+		ajax=new XMLHttpRequest();
+		ajax.open("get","http://127.0.0.1/ajax/"+(this.index+1)+".txt");
+		ajax.send();
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4&&ajax.status==200){
+				oDiv.innerHTML=ajax.responseText
+				}
+			}
+
+		}
+	}
+	
+	
+	
+	
+</script>

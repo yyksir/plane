@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	document.onmouseup=function(e){
+//		var e=evt||event;
+//		if(e.button==0||e.button==1)
+//			var e=evt||event
+			alert(getButton(e));
+	}
+	function getButton(evt){
+		var e=evt||event
+		if(evt){
+			return e.button;
+		}else if(window.event){
+			switch(e.button){
+				case 1:return 0;
+				case 4:return 1;
+				case 2:return 2;
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	
+</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style:none;}
+        #box {
+			position:relative;
+			margin:100px auto;
+			/*border:1px solid #ccc;*/
+			width: 350px;
+			height:350px;
+        }
+        #box ul{
+            overflow: hidden;
+          /*  border-top:1px solid #ccc;*/
+			position:absolute;
+			top:350px;
+			left:0;
+			width:350px;
+        }
+        #box li {
+            float: left;	 
+			border-top:none;
+        }
+		.small{
+			width:350px;
+			height:350px;	
+			background: red; 
+		}
+		.small img{
+			position:absolute;
+			top:0;
+			left:0;
+		}
+	    #bottom li{
+	    	width:85px;
+	    	margin-top:5px;
+	    }
+	    #big{
+				width:400px;
+				height:400px;
+				border:1px solid #ccc;
+				overflow:hidden;
+				position:absolute;
+				top:0;
+				left:360px;
+				display:none;
+			}
+		#mask{
+				width:175px;
+				height:175px;
+				background:red;
+				opacity:0.4;
+				/*background: url(images/4m.jpg);*/
+				position:absolute;
+				top:0;
+				left:0;
+				display:none;
+			}
+		.bigImage{
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		#small{
+				position:relative;
+				cursor:move;  //鼠标移动状态
+			}
+		/*#layer{
+			position:absolute;
+			top:0;
+			left:0;
+			width: 350px;
+			height: 350px;
+			background: gray;
+			opacity:0.4 ;
+			display:none;
+			
+		}	 */
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div id="box">
+	<div id="small" class="small">
+         <img src="images/1m.jpg" alt="" id="mm"/> 
+         <img src="images/2m.jpg" alt=""/> 
+         <img src="images/3m.jpg" alt=""/> 
+         <img src="images/4m.jpg" alt=""/>
+    	 <div id="mask" style="display: block;"></div>   
+    </div>
+    <div id="big">
+		<img src="images/1b.jpg" class="bigImage"/>
+		<img src="images/2b.jpg" class="bigImage"/>
+		<img src="images/3b.jpg" class="bigImage"/>
+		<img src="images/4b.jpg" class="bigImage"/>
+	</div>
+	<ul id="bottom">
+        <li><img src="images/1s.jpg" alt=""/></li>
+        <li><img src="images/2s.jpg" alt=""/></li>
+        <li><img src="images/3s.jpg" alt=""/></li>
+        <li><img src="images/4s.jpg" alt=""/></li>
+    </ul>
+</div>
+	
+</body>
+</html>
+<script type="text/javascript">
+ 
+</script>

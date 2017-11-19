@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: relative;
+				margin: 100px auto;
+				width: 300px;
+			}
+			li{
+				list-style: none;
+			}
+			ul li{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			ol li{
+				
+				width: 20px;
+				height: 20px;
+				background: yellow;
+				border-radius: 50%;
+				float: left;
+				text-align: center;
+				line-height: 20px;
+				margin-right: 3px;
+			}
+			ol{
+				position: absolute;
+				right: 32px;
+				bottom: -180px;
+				z-index: 99999;
+			}
+			.red{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="up">
+				<li style="z-index: 1;"><img src="a.jpg" alt="" /></li>
+				<li><img src="b.jpg" alt="" /></li>
+				<li><img src="c.jpg" alt="" /></li>
+				<li><img src="d.jpg" alt="" /></li>
+			</ul>
+			<ol id="down">
+				<li class="red">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ol>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oUp=document.getElementById("up").getElementsByTagName("li");
+	var oDown=document.getElementById("down").getElementsByTagName("li");
+
+	var timer;
+	timer=setInterval(fun,800);
+			var index=0;
+		function fun(){
+//			alert(index);
+				for(j=0;j<oUp.length;j++){
+					oUp[j].style.display="none";
+					oDown[j].className="";
+				}
+				index++;		
+				
+				if(index==4){
+					index=0;
+				}
+				oDown[index].className="red";
+				oUp[index].style.display="block";
+		}
+		
+		for(i=0;i<oDown.length;i++){
+				oDown[i].index=i;
+			oDown[i].onmouseover=function(){
+				alert(i);
+				clearInterval(timer);	
+				
+				index=this.index-1;
+				fun()
+		
+			oDown.onmouseout=function(){
+		 	  //var timer=setInterval(fun,800)
+			
+			}
+		}
+		}
+		
+		
+		
+	
+	 
+</script>

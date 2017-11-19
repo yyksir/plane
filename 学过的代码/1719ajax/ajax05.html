@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="显示数据" />
+		<ul id="ul1"></ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var oInput = document.querySelector("input");
+	var oUl = document.getElementById("ul1");
+	oInput.onclick = function(){
+		showData();
+	}
+	
+	function showData(){
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET","http://127.0.0.1/1719ajax/data2.php");
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				//alert(typeof ajax.responseText );
+				var _json = JSON.parse( ajax.responseText );//[{}{},{}]
+				var str = "";
+				for( var i in _json ){
+					str += `<li><a href = '#'>${_json[i].title}</a><span>${_json[i].time}</span></li>`;
+				}
+				oUl.innerHTML = str;
+			}
+		}
+	}
+	//页面内容没隔1000就更新一次   保证页面无刷新
+	setInterval(function(){
+		showData();
+	},1000)
+</script>

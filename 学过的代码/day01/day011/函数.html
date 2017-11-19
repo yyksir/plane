@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+	/*		
+			function calculater(m,n,sign){
+				switch(sign){
+					case "+" :alert (m+n);break;
+					case "-" :alert (m-n);break;
+					case "*" :alert (m*n);break;
+					case "/" :alert (m/n);break;
+				}
+			}
+			calculater(3,3,"*");*/
+			
+
+		/*		for(i=1;i<=100;i++){
+					if(i%7!==0&&i%10!==7&&parseInt(i/10)!==7){
+						document.write(i);
+					}
+				}*/
+				
+				
+/*				function Max(i,j,k){
+					if(i>j){
+						if(i>k){
+							if(j>k){
+								alert(+k+ " " +j+ " "+ i+" ");
+							}else{
+								alert(+j+ " " +k+ " "+ i+" ");
+							}
+						}else if(i<k){
+								alert(+j+ " " +i+ " "+ k+" ");
+						}
+					}else if(i<j){
+						if(i>k){
+							alert(+k+ " " +i+ " "+ j+" ");
+						}else if(i<k){
+							if(j>k){
+								alert(+i+ " " +k+ " "+ j+" ");
+							}else{
+								alert(+i+ " " +j+ " "+ k+" ");
+							}
+						}
+					}					
+				}
+			Max(10,2,3);*/
+			
+	/*		function Judge(m){
+				var flag=true;
+				for ( var i = 2 ; i < m ; i++ ){
+					if( m % i == 0 ){
+						flag = false;
+						break;
+					}
+				}
+				return flag;
+			}
+			Judge()*/
+			
+	/*		sum=0;
+			for( var i=100;i<200;i++){
+				if( Judge(i) ){
+					sum+=i;
+				}
+			}
+			alert(sum)
+			*/
+			
+		/*	for(var j=1;j<=50;j++){
+				if(Judge(j)&&Judge(100-j)){
+					console.log(j+" " +(100-j) +" " +"可以拆分");
+				}
+			}
+			*/
+			
+			
+			//编写任意数的阶乘
+		function fun(m){
+				var sum1=1;
+				for(var i=1;i<=m;i++){			
+					sum1=sum1*i;
+				}
+				return sum1;
+		}
+			
+			function cheng(n){
+				var sum2;
+				sum2=n*n;
+				return sum2;
+			}
+			
+			function he(m,n){
+				sum=fun(cheng(m))+fun(cheng(n));
+				
+			}
+			he(2,3);
+			alert(sum);
+		</script>
+	</body>
+</html>

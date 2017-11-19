@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// promise  用来解决异步问题    
+	// 承诺  ：  承诺的事情  不一定就会成功 
+	var promise = new Promise(function(success,failed){
+		// success  成功
+		// failed  失败     通过  success failed 两个参数 ，  通知  promise对象  ，承诺是否完成
+		failed();
+		//success();
+	});
+	console.log( promise );
+	/*promise.then(function(){
+		alert("成功了");
+	})*/
+	
+	promise.catch(function(){
+		alert("失败了");
+	})
+</script>

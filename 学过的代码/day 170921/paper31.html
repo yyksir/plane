@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				
+				height:200px;
+				width:500px;
+				color:black;
+				/*background:gray;*/
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script>
+//	var now=new Date();
+	var timer=setInterval(fun,1000);
+	var oBox=document.getElementById("box");
+	var index=0;
+		var arr=[5,4,3,2,1]		
+		function fun(){
+			if(index==5){
+				index=0;
+			}
+		oBox.innerHTML="您的页面还有"+arr[index]+"秒钟 返回主界面 ";		
+			index++;
+		}
+			
+	
+	
+	
+</script>

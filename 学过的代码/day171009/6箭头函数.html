@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//无参数 无返回值
+	/*var fun = () => { 
+		alert("箭头函数");
+		alert("第二次输出");
+	};
+	fun();*/
+	
+	//有参数 无返回值
+	/*var fun = (a,b) => { alert( a>b ? a:b ); }
+	fun(23,56);*/
+	
+	//有参数 有返回值
+	/*var fun = (a,b) => { return a>b ? a : b; };
+	alert( fun(23,12) );*/
+	
+	setTimeout(()=>{
+		document.write("好好听课，别睡觉");
+	},1000);
+	
+	
+	var arr = [34,12,67,444];
+	var brr = arr.filter(  (item) => { return  item % 2; }  )
+	alert( brr ); 
+	
+</script>

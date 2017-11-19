@@ -1,0 +1,76 @@
+			<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			#box{
+				position:relative;
+				margin:100px 0;
+				height:300px;
+				width:130px;
+				left:-100px;
+				
+			}
+			#big{
+				height:300px;
+				width:100px;
+				background:pink;
+				position:absolute;
+				left:0px;
+			}
+			#small{
+				height:100px;
+				width:30px;
+				background:gray;
+				position:absolute;
+				top:30px;
+				left:100px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<div id="big"></div>
+			<div id="small">分享一下</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("box").onmouseover=function(){
+		startMove(0);
+	}
+	$("box").onmouseout=function(){
+		startMove(-100);
+	}
+	var timer=null;
+	function startMove(target){
+			clearInterval(timer)
+		timer=setInterval(function(){
+			var speed=target-$("box").offsetLeft>0?7:-7;
+			if(Math.abs($("box").offsetLeft - target) < 7 ){
+				$("box").style.left=target+"px";
+				clearInterval(timer);
+			}else{
+				$("box").style.left=$("box").offsetLeft+speed+"px";
+			}
+			
+			
+		},10)
+		
+		
+	}
+	
+	
+	
+</script>

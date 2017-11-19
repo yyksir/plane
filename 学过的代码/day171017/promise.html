@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名 ：<input type="text" id="uname"/>
+		密码 ： <input type="text" id="upwd"/>
+		<input type="button" value="登录" id="btn"/>
+		
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("btn").onclick=function(){
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST","login1.php");
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+		ajax.send("uname="+$("uname").value+"&upwd="+$("upwd").value)
+		ajax.onreadystatechange=function(){
+			if(ajax.status==200&&ajax.readyState==4){
+				var str=ajax.responseText;
+				switch(str){
+					case "0" : 
+						alert("登录成功，您的页面将会在2秒后跳转");
+						setTimeout(function(){
+							location.href = "http://www.baidu.com";
+						},2000)
+						break;
+					case "1" :
+						alert("登录失败");
+				}
+			}
+		}
+	}
+	
+	
+/*	var pro=new Promise(function(success,failed){
+		
+		failed("失败了")
+		
+	})
+	
+	pro.then(function(str){
+		alert(str);
+	},function(str){
+		alert(str);
+		
+	})*/
+	
+	/*var pro=new Promise(function(success,failed){
+		failed("失败");
+	})
+	pro.catch(function(str){
+		alert(str)
+	})*/
+	
+	/*var pro=new Promise(function(success,failed){
+		var ajax=new XMLHttpRequest;
+			ajax.open("get","data.json");
+			ajax.send();
+			ajax.onreadystatechange=function(){
+				if(ajax.readyState==4&&ajax.status==200){
+					success(ajax.reponseText);
+				}
+			}
+		
+		
+	})
+	
+	pro.then(function(str){
+		alert(str)
+	})*/
+	
+	//封装函数
+/*	function ajaxPromise(url,data){
+		if(data){
+			url=url+"?"+data;
+		}
+			var pro=new Promise(function(success,failed){
+		var ajax=new XMLHttpRequest;
+			ajax.open("get",url);
+			ajax.send();
+			ajax.onreadystatechange=function(){
+				if(ajax.readyState==4&&ajax.status==200){
+					success(ajax.responseText);
+				}
+			}
+			setTimeout(function(){
+				failed();
+			},3000)
+		})
+			return pro;
+	}
+	
+	var p=ajaxPromise("data.json");
+	p.then(function(msg){
+		alert(msg)
+	},function(){
+		alert("server not found")
+	})*/
+	
+	
+	
+	
+/*	function ajaxPromise(url,data){
+		if(data){
+			url=url+"?"+data;
+		}
+		var pro=new Promise(function(success,failed){
+			var ajax=new XMLHttpRequest;
+			ajax.open("get",url)
+			ajax.send();
+			ajax.onreadystatechange=function(){
+				if(ajax.status==200&&ajax.readyState==4){
+					success(ajax.responseText)
+				}
+			}
+			setTimeout(function(){
+				failed;
+			},3000)
+			
+		})
+		return pro;
+		
+	}
+	
+	var p=ajaxPromise("data.json");
+	
+	p.then(function(str){
+		alert(str);
+	},function(){
+		alert("nojt found")
+	})*/
+	
+	
+	
+	
+	
+</script>

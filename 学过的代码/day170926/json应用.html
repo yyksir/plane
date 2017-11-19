@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box div {
+				float:left;
+				
+			}
+			
+			div{
+				text-align:center;
+			}
+			
+		</style>
+	</head>
+	<body>
+			<ul id="box" ></ul>
+			<!--<img src="" alt="" />-->
+	</body>
+</html>
+<script>
+	var _json={
+		
+		"info":[
+				{"img":"images/a.jpg","name":"小米"},
+				{"img":"images/b.jpg","name":"小米hui"},
+				{"img":"images/c.jpg","name":"小米vdsz"}
+		
+			]
+	}
+	
+	var oBox=document.getElementById("box");
+	var ch="";
+	for(var i=0;i<_json.info.length;i++){
+		ch+="<div id='box1'>"+"<img src=" + _json.info[i].img + "/>" + "<p>" + _json.info[i].name+"</p>"+"</div>"
+//		ch+="<span>"+_json.info[i].img+_json.info[i].name+"</span>"
+	}
+	oBox.innerHTML=ch;
+		
+	var oDiv=document.getElementsByTagName("div");
+	var oP=document.getElementsByTagName("P");
+	var oImg=document.getElementsByTagName("img");
+	for(i=0;i<oDiv.length;i++){
+//		alert(oImg.length)
+		oDiv[i].onmouseover=function(){
+			this.firstElementChild.style.border="1px solid red";
+			this.lastElementChild.style.backgroundColor="green";
+			
+			}
+		oDiv[i].onmouseout=function(){
+			this.firstElementChild.style.border="none";
+			this.lastElementChild.style.backgroundColor="white";
+			
+			}
+		
+		
+		
+	}
+	
+	
+	
+</script>

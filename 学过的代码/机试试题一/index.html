@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		 
+		#nav{
+			width: 100%;
+			height: 80px;
+			background: turquoise;
+			margin-top:100px ;
+		}
+		#nav a{
+			font-size: 20px;
+			line-height: 80px;
+			color: black;
+			text-decoration: none;
+			margin-left: 100px;
+		}
+		#layer{
+			width: 100%;
+			height: 100%;
+			background: gray;
+			opacity: 0.3;
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+			z-index: 1;
+		}
+		#tab{
+			width: 450px;
+			height: 300px;
+			border: 1px solid black;
+			position: absolute;
+			top:50%;
+			left:50%;
+			margin-left: -200px;
+			display: none;
+			z-index: 2;
+		}
+		#tab ul{
+			width: 450px;
+			height: 45px;
+			
+			background: white;
+			
+		}
+		li{
+			list-style: none;
+		}
+		#tab ul li{
+			float: left;
+			line-height: 45px;
+			/*background: paleturquoise;*/
+			 
+			width: 100px;
+			text-align: center;
+			/*margin-right: 5px;*/
+			
+		}
+		#tab ol li{
+			 width: 100%;
+			 height: 255px;
+			 background:paleturquoise ;
+			 display: none;
+		}
+		#tab1,#tab2{
+			padding-top:100px ;
+			padding-left:30px ;
+		}
+		#tab ul li.active{
+			background: paleturquoise;
+		}
+		#tab ol li.show{
+			display: block;
+		}
+		 
+	</style>
+	<script>
+		window.onload = function(){
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+			//弹出层
+			$("reg").onclick  = function(){
+				$("layer").style.display = "block";
+				$("tab").style.display = "block";
+				 
+			}
+			//弹出层关闭
+			$("close").onclick = function(){
+				$("layer").style.display = "none";
+				$("tab").style.display = "none";
+			}
+		 
+			//滚动条事件  实现吸顶效果
+			window.onscroll = function(){
+				var sTop = document.body.scrollTop || document.documentElement.scrollTop;
+				$("layer").style.top = sTop + "px";
+				if( sTop > 100 ){
+					$("nav").style.position = "fixed";
+					$("nav").style.marginTop = 0;
+				}else{
+					$("nav").style.marginTop = "100px";
+					$("nav").style.position = "";
+				}
+			}
+			
+			
+			//选项卡 (委托实现)
+			var list = $("xxk").children;
+			var cons = $("content").children;
+			for(let i = 0 ; i < 2 ; i++){
+				list[i].onmouseover = function(){
+					for(var j = 0 ; j < 2 ; j++){
+						list[j].className = "";
+						cons[j].style.display = "none";
+					}
+					this.className = "active";
+					cons[i].style.display = "block";
+				}
+			} 
+			
+			//拖拽
+			$("tz").onmousedown = function(e){
+				var e = e || event;
+				 
+				var disx = e.offsetX;
+				var disy = e.offsetY;
+			
+				document.onmousemove = function(e){
+					var e = e || event;
+					window.getSelection().removeAllRanges();
+					var x = e.pageX - disx;
+					var y = e.pageY - disy;
+					var maxX = window.innerWidth - 450;
+					var maxY = window.innerHeight - 300;
+					x = x<0?0:(x>maxX?maxX:x);
+					y = y<0?0:(y>maxY?maxY:y);
+					$("tab").style.left = (x+200) + "px";
+					$("tab").style.top = (y+45) + "px";
+				}
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+			
+			//注册： 操作存储cookie
+			var flagEmail = null;
+			$("uemail").onblur = function(){
+				reg = /^\w+@\w+(\.\w+)+$/;
+				if( reg.test( $("uemail").value ) ){
+					$("s1").innerHTML = "正确";
+					flagEmail = true;
+				}else{
+					$("s1").innerHTML = "错误";
+					flagEmail = false;
+				}
+			}
+			var flagPwd = null;
+			$("upwd").onblur = function(){
+				reg = /^.{6,}$/;
+				if( reg.test( $("upwd").value ) ){
+					$("s2").innerHTML = "正确";
+					flagPwd = true;
+				}else{
+					$("s2").innerHTML = "错误";
+					flagPwd = false;
+				}
+			}
+			
+			$("btn").onclick = function(){
+				 
+				if( flagEmail && flagPwd ){
+					document.cookie = "uname="+$("uemail").value;
+					document.cookie = "upwd="+$("upwd").value;
+					alert("注册成功");
+				}
+			}
+			$("login").onclick= function(){
+				var uname = $("tname").value;
+				var tpwd = $("tpwd").value;
+				var str = document.cookie;
+				var arr = str.split("; ");
+				for(var i = 0 ; i < arr.length ; i++){
+					item = arr[i].split("=");
+					if( item[0] == "uname" ){
+						iname = item[1];
+					}
+					if( item[0] == "upwd" ){
+						ipwd = item[1];
+					}
+				}
+				if( iname == uname && ipwd == tpwd ){
+					alert("登录成功");
+					location.href = "page.html";
+				}else{
+					alert("登录失败");
+				}
+			}
+		}
+	</script>
+	<body>
+		<div id="nav">Nav<a href="javascript:;" id="reg">请先注册</a></div>
+		<div id="layer"></div>
+		<div id="tab">
+			<div id="tz" style="line-height:45px; text-align:center;width: 100px;height: 45px;position: absolute;left: 0;top:-45px;cursor: move;border: 1px solid black;">拖拽区</div>
+			<ul id="xxk">
+				<li class="active">注册</li>
+				<li>登录</li>
+				<li style="background: none; float: right;" ><a id="close" href="javascript:;">关闭</a></li>
+			</ul>
+			<ol id="content">
+				<li class="show">
+					<table id="tab1">
+						<tr>
+							<td>邮箱名：</td><td><input type="text" id="uemail"/><span id="s1">邮箱格式正确</span></td>
+						</tr>
+						<tr>
+							<td>密码：</td><td><input type="text" id="upwd"/><span id="s2">密码不能少于6位字符</span></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="注册" id="btn"/></td><td><input type="reset" value="重置" /></td>
+						</tr>
+					</table>
+				</li>
+				<li>
+					<table id="tab2">
+						<tr>
+							<td>邮箱名：</td><td><input type="text" id="tname" /></td>
+						</tr>
+						<tr>
+							<td>密码：</td><td><input type="text" id="tpwd" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="登录" id="login"/></td> 
+						</tr>
+					</table>
+				</li>
+			</ol>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	</body>
+</html>

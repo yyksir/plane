@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<input type="text"  id="txt1"/>
+		<select id="sign">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text"  id="txt2"/>
+		<input type="button" value="=" id="btn"/>
+		<input type="text"  id="res"/>
+		<script>
+			
+			var oTxt1=document.getElementById("txt1");
+			var oTxt2=document.getElementById("txt2");
+			var oSign=document.getElementById("sign");
+			var oBtn=document.getElementById("btn");
+			var oRes=document.getElementById("res");
+			
+			oBtn.onclick=function(){
+				var NumOne=oTxt1.value;
+				var NumTwo=oTxt2.value;
+				var signn=oSign.value;
+				
+				oRes.value=eval(NumOne+signn+NumTwo);
+				
+			}
+		
+		
+		
+		</script>
+		
+		
+	</body>
+</html>

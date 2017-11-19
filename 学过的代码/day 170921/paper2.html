@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}
+			#container{
+				width: 360px; 
+				margin: 100px auto;
+				}
+			#small img{
+				display:block ;
+				width: 70px; 
+				height: 70px; 
+				float: left;
+			}
+			.content{
+				width: 360px;
+				height: 360px;
+				border-top: solid 1px #FF4400;
+				border-right: solid 1px #FF4400;
+				border-bottom: solid 1px #FF4400;
+				border-left: solid 1px #FF4400;
+				display: none;
+			}
+			.clear{clear: left;}
+			
+			
+		</style>
+		
+	</head>
+	<body>
+		<div id="container">
+			
+			<div class="content" style="display:block;">
+				<img src="images/01big.jpg" />
+			</div>
+
+			<div class="content">
+				<img src="images/02big.jpg" />
+			</div>
+
+
+			<div class="content">
+				<img src="images/03big.jpg" />
+			</div>
+
+			<div class="content">
+				<img src="images/04big.jpg" />
+			</div>
+			
+			<div class="content">
+				<img src="images/05big.jpg" />
+			</div>
+		<div class="clear"></div>
+		
+			<div id="small">
+				<img src="images/01.jpg" class="on"/>
+				<img src="images/02.jpg" />
+				<img src="images/03.jpg" />
+				<img src="images/04.jpg" />
+				<img src="images/05.jpg" />
+				
+			</div>
+			
+		</div>
+	</body>
+</html>
+<script>
+	var oBig=document.getElementsByClassName("content");
+	var oSmall=document.getElementById("small").getElementsByTagName("img");
+		
+		for(var i=0;i<oSmall.length;i++){
+			oSmall[i].index=i;
+			oSmall[i].onmouseover=function(){
+				for(var j=0;j<oSmall.length;j++){
+					
+					oSmall[j].className="";
+					oBig[j].style.display="none";
+						
+				}
+
+				this.className="on"	;
+				oBig[this.index].style.display="block";	
+			}	
+		}
+		
+</script>

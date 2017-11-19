@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"/> <span id="s"></span>
+	</body>
+</html>
+<script type="text/javascript">
+	// 当失去焦点时   判断用户名是否存在
+	var oInput = document.getElementsByTagName("input")[0];
+	var oSpan = document.getElementsByTagName("span")[0];
+	oInput.onblur = function(){
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//encodeURI  解决编码问题  
+		ajax.open("get","http://127.0.0.1/1719ajax/data3.php?uname=" + encodeURI( oInput.value ));
+		ajax.send();
+		ajax.onreadystatechange = function(){
+
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				if( ajax.responseText == 0 ){
+					oSpan.innerHTML = "不存在 可以注册"
+				}else{
+					oSpan.innerHTML = "存在 换一个"
+				}
+			}
+		}
+	}
+</script>

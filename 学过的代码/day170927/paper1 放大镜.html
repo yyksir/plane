@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			#box{
+				width:350px;
+				height:350px;
+				border:1px solid black;
+				margin:200px;
+				position:relative;
+			}
+			#small{
+				position:relative;
+	
+			}
+			#mask{
+				height:175px;
+				width:175px;
+				background:url(001.jpg);
+				/*opacity:.1;*/
+				position:absolute;
+				left:0;
+				top:0;
+				display:none;
+				
+			}
+			#big{
+				height:400px;
+				width:400px;
+				border:1px solid black;
+				position:absolute;
+				top:0;
+				left:360px;
+				overflow:hidden;
+				display:none;
+				
+			}
+			#big img{
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#center{
+				position:absolute;
+				width:350px;
+				height:350px;
+				top:0;
+				left:0;
+				background:gray;
+				opacity:0.3;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">	
+			
+			<div id="small">
+				<img src="001.jpg" alt="" id="smallImg" />
+				<div id="center"></div>
+				<div id="mask"></div>
+			</div>
+			<div id="big">
+				<img src="0001.jpg" alt="" id="bigImg"  />
+			</div>
+			
+		
+		</div>
+	</body>
+</html>
+<script>
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("small").onmouseover=function(){
+		$("mask").style.display="block";
+		$("big").style.display="block";
+		
+	}
+	$("small").onmouseout=function(){
+		$("mask").style.display="none";
+		$("big").style.display="none";
+		
+	}
+	
+	$("small").onmousemove=function(e){
+		var e=e||event;
+		
+		var x=e.pageX-$("mask").offsetWidth/2-$("box").offsetLeft;
+		var y=e.pageY-$("mask").offsetHeight/2-$("box").offsetTop;
+		var yMax=$("box").offsetHeight-$("mask").offsetHeight;
+		var xMax=$("box").offsetWidth-$("mask").offsetWidth;
+		
+		x= x<0 ? 0 : ( x > xMax ? xMax : x );
+		y= y<0 ? 0 : ( y > yMax ? yMax : y );
+		
+		
+		$("mask").style.left=x+"px";
+		$("mask").style.top=y+"px";
+		
+		$("mask").style.backgroundPositionX=-x+"px";
+		$("mask").style.backgroundPositionY=-y+"px";
+		
+		
+		var bigX=x*$("bigImg").offsetWidth/$("smallImg").offsetWidth;
+		var bigY=y*$("bigImg").offsetHeight/$("smallImg").offsetHeight;
+		
+		$("bigImg" ).style.left=-bigX+"px";
+		$("bigImg" ).style.top=-bigY+"px";
+		
+		
+	}
+	
+	
+	
+	
+</script>

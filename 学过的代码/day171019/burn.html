@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background:black;
+			}
+			
+			.fire{
+				width: 3px;
+				height: 3px;
+				background: white;
+				position: absolute;
+			}
+			.spark{
+				position: absolute;
+				width: 6px;
+				height: 6px;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="sport5.js"></script>
+<script>
+	window.onload=function(){
+		document.onclick=function(e){
+			var e=e||event;
+			var fire=new Fire({
+				"x":e.pageX,
+				"y":e.pageY
+			});
+			fire.init();
+		}
+	}
+	function create(ele){
+		return document.createElement(ele);
+	}
+	function rand(min,max){
+		return Math.floor(Math.random()*(mac-min+1)+min);
+	}
+	function Fire(pos){
+		this.pos=pos;
+		this.fire=create("div");
+		this.init=function(){
+			this.fire=create("div");
+			this.init=function(){
+				this.fire.className="fire";
+				document.body.appendChild(this.fire);
+				this.fire.style.left=this.pos.x+"px";
+				this.fire.style.top=window.innerHeight-50+"px";
+				this.move();
+				
+			}
+			this.move=function(){
+				var that=this;
+				startMove(this.fire,{"top":this.pos.y},function(){
+					that.fire.remove();
+					that.explode(that.pos);
+				})
+			}
+			this.explode=function(pos){
+				var count=rand(50,200);
+				for(var i=0;i<count;i++){
+					var spark=new Spark(pos);
+					spark.init();
+				}
+			}
+		}
+		function Spark(pos){
+			this.pos=pos;
+			this.spark=create("div");
+			this.init=function(){
+				this.spark.className="spark";
+				document.body.appendChild(this.spark);
+				this.spark.style.backgroundColor=`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`;
+				this.spark.style.left=this.pos.x+"px";
+				this.spark.style.top=this.pos.y+"px";
+				this.move();
+				
+			}
+			this.move=function(){
+				this.speedX=rand(-10,10);
+				this.speedY=rand(-10,10);
+				this.timer=setInterval(function(){
+					this.spark.style.left=this.spark.offsetLeft+this.speedX+"px";
+					this.spark.style.top=this.spark.offsetTop+this.speedY++ +"px";
+					if(this.spark.offsetTop>window.innerHeight){
+						this.spark.remove();
+						clearInterval(this.timer);
+					}
+				}.bind(this),30)
+			}
+		}
+		
+	}
+	
+	
+	
+	
+/*	window.onload=function(){
+		document.onclick=function(e){
+			var e=e||event;
+			var circle=new Circle({
+				"x":e.pageX,
+				"y":e.pageY
+			});
+			circle.init();
+		}
+	}
+	
+	function creat(ele){
+		return document.createElement(ele);
+	}
+	
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	function Circle(pos){
+		this.pos=pos;
+		this.cir=creat("div")
+		this.init=function(){
+			this.cir.className="fire";
+			document.body.appendChild(this.cir);
+			
+			this.cir.style.left=this.pos.x+"px";
+			this.cir.style.top=window.innerHeight-50+"px";
+			this.line();
+			
+			
+		}
+		 this.line=function(){
+			var that=this;
+			startMove(this.cir,{"top":this.pos.y},function(){
+				that.cir.remove();
+				that.burn(that.pos);
+			})
+		}
+		 this.burn=function(){
+		 	var count=rand(100,200);
+		 	for(var i=0;i<count;i++){
+		 		var spark=new Spark(pos);
+		 		spark.init();
+		 	}
+		 }
+		
+	}
+	function Spark(pos){
+		this.pos=pos;
+		this.spark=creat("div")
+		this.init=function(){
+			this.spark.className="spark";
+			document.body.appendChild(this.spark);
+			this.spark.style.backgroundColor=`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`;
+			this.spark.style.left=this.pos.x+"px";
+			this.spark.style.top=this.pos.y+"px";
+			this.move();
+			
+		}
+		this.move=function(){
+			this.speedX=rand(1,10)*(Math.random()>0.5?1:-1);
+			this.speedY=rand(1,10)*(Math.random()>0.5?1:-1);
+			this.timer=setInterval(function(){
+				this.spark.style.left=this.spark.offsetLeft+this.speedX+"px";
+				this.spark.style.top=this.spark.offsetTop+this.speedY++ +"px";
+				if(this.spark.offsetTop>window.innerHeight){
+					this.spark.remove();
+					clearInterval(this.timer);
+					
+				}
+				
+			}.bind(this),10)
+			
+		}
+		
+		
+	}
+	
+	
+*/
+	
+	
+</script>

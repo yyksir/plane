@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table id="tab">
+			<tr>
+				<td>名称</td>
+				<td>单价</td>
+				<td><a id="bt" href="javascript:;">操作</a></td>
+			</tr>
+			<tr>
+				<td>小米</td>
+				<td>2313</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+
+			<tr>
+				<td>红米</td>
+				<td>1234</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			<tr>
+				<td>纸尿裤</td>
+				<td>453</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			<tr>
+				<td>水杯</td>
+				<td>34</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			<tr>
+				<td>三只小熊</td>
+				<td>455</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			<tr>
+				<td>大礼包</td>
+				<td>666</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			<tr>
+				<td>太阳镜</td>
+				<td>457</td>
+				<td><a id="bt" href="javascript:;">加入购物车</a></td>
+			</tr>
+			
+		</table>
+			<a id="btn" href="#">查看购物车</a>
+	</body>
+</html>
+<script>
+//	var oTable=document.getElementsByClassName("table");
+	var oTable=document.getElementById("tab");
+	
+
+	var oBt=document.getElementById("bt");
+	var oBtn=document.getElementById("btn");
+
+	var infoArr=[];
+	var id=1;
+	
+	
+		oTable.onclick=function(e){
+			var e=e||event;
+			var target=e.target||e.srcElement;
+			if(target.nodeName="A"){
+				var _json={
+					"pid":id++,
+					"shopName":target.parentNode.parentNode.children[0].innerHTML,
+					"price":target.parentNode.parentNode.children[1].innerHTML
+				}
+				
+				infoArr.push(_json);
+				
+				setCookie("prolist",JSON.stringify(infoArr))
+				console.log(document.cookie)
+			}
+			
+		}
+		
+		
+		function setCookie(key,value,day){
+    if(day){
+        var d = new Date();
+        d.setDate( d.getDate() + day )
+        document.cookie = key+"="+value+";expires="+d;
+    }else{
+        document.cookie = key+"="+value
+    }   
+}
+		
+		
+ 	oBtn.onclick=function(){
+ 		location.href="market 02.html";
+ 	}
+	
+	
+	
+	
+</script>

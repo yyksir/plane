@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width: 500px;
+			height: 300px;
+			border: 1px slateblue solid;
+		}
+		p{
+			border: 1px solid red;
+		}
+	</style>
+	<script src="jquery-1.11.1.min.js"></script>
+	<body>
+		<input type="button" value="append/appendTo" />
+		<input type="button" value="prepend/prependTo" />
+		<input type="button" value="after/insertAfter" />
+		<input type="button" value="remove/empty/clone" />
+		<div>
+			<p>一个段落</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//var $p = $("<p>");//创建一个p元素   $tab = $("<table>")
+	$(":button").eq(0).click(function(){
+		// $("div").append("<p>新段落</p>");  向div的内部  追加一个新标签
+		$("<p>新段落</p>").appendTo( $("div") );	
+	})
+	$(":button").eq(1).click(function(){
+		// $("div").prepend("<p>新段落</p>");  向div的内部 前置 一个新标签
+		$("<p>新段落</p>").prependTo( $("div") );	
+	})
+	$(":button").eq(2).click(function(){
+		// $("div").after("<p>新段落</p>");  在div的下面添加一个新元素
+		$("<p>新段落</p>").insertAfter( $("div") );	
+	})
+	$(":button").eq(3).click(function(){
+		//$("div").remove();//删除div 
+		//  $("div").empty();//清空div 
+		$("div").clone().insertAfter( "div" );//克隆div  放到div的下面
+	})
+</script>

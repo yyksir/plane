@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//1、创建10只猫、10只狗，将20只动物放在一个数组中（任意顺序存放）。
+    // 遍历数组，如果是猫，则输出"喵喵"，如果是狗，输出"汪汪"
+	//2、面向对象方式完成 高亮显示  选项卡效果  拖拽效果
+	
+	function Dog(name,voice){
+		this.name=name;
+		this.voice=voice;
+	}
+	function Cat(name,voice){
+		this.name=name;
+		this.voice=voice;
+	}
+	var newArr=[];
+	for(var i=0;i<20;i++){
+		newArr[i]=new Dog("狗","旺旺");
+		newArr[++i]=new Cat("猫","喵喵");
+		
+	}
+	
+	for(var i=0;i<20;i++){
+		console.log(newArr[i].name+"：的声音是："+newArr[i].voice)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*	function creat(animals){
+		this.arr=animals;
+	}
+	creat.prototype.push=function(obj){
+		arr.push(obj);
+	}
+	creat.prototype.console=function(obj){
+		alert(obj);
+	}
+	creat.prototype.init=function(){
+		
+		for(var i=0;i<this.length;i++){
+			this.push()
+			
+			
+			
+			if(this.arr[i]=="cat"){
+				alert("喵喵");
+			}else{
+				alert("汪汪");
+			}
+		}
+		
+	}
+
+	var arr=new creat(dog,cat);
+	var dog=[];
+	for(var i=0;i<10;i++){
+		dog.push("dog")
+	}
+	var cat=[];
+	for(var i=0;i<10;i++){
+		dog.push("cat")
+	}
+	
+	arr.init();*/
+	
+	
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			width:100px;
+			height: 100px;
+			background: skyblue;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script src="sport4.js"></script>
+<script>
+	//鼠标移入div  同时改变div的宽度和高度
+	var odiv = document.getElementById("box");
+	odiv.onmouseover = function(){
+		startMove(this , {"width":300,"height":300} , function (){
+			startMove( odiv, {"width":100,"height":100});
+		});
+	}
+</script>

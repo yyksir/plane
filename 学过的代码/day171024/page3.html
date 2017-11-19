@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        #left li{
+        	height:30px;
+        	width:10px;
+        	margin:30px 10px;
+        }
+        .wrapper {
+            width: 350px;
+            height: 270px;
+            margin: 100px auto 0;
+            border: 1px solid pink;
+            /*overflow: hidden;*/
+        }
+        
+         .center li{
+        	height:30px;
+        }
+        .center{
+        	display:none;
+        	height:270px;
+        	width:320px;
+        }
+        .center.selected{
+        	display:block;
+        }
+        
+        #left,#center{
+            float: left;
+        }
+        #left li.active{border-color: red; border-bottom: 0;}
+       
+		</style>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div class="wrapper" >
+			
+			<ul id="left">
+		        <li class="tab-item active"><a href="#">女靴</a></li>
+		        <li class="tab-item"><a href="#">雪地靴</a></li>
+		        <li class="tab-item"><a href="#">冬裙</a></li>
+		        <li class="tab-item"><a href="#">呢大衣</a></li>
+	    	</ul>
+	    	
+	    	<ul class="center selected" >
+	    		<li><a href="">鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    	</ul>
+	    	
+	    	<ul class="center" >
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    	</ul>
+	    	<ul class="center" >
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    	</ul>
+	    	<ul class="center" >
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    		<li><a href="">鼠标移入到左侧标题上，鼠标移入到左侧标题上，</a></li>
+	    	</ul>
+	    	
+		</div>
+	</body>
+</html>
+<script>
+	$("#left li").click(function(){
+
+		$("#left li").removeClass("active");
+		$("this").addClass("active");
+		
+		$(".center").removeClass("selected");
+		$(".center").eq($("this").index()).addClass("selected");
+		
+	})
+	
+	
+</script>

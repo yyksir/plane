@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	var pro = new Promise(function(success,failed){
+//		var ajax = new XMLHttpRequest();
+//		ajax.open("get","data.json");
+//		ajax.send();
+//		ajax.onreadystatechange = function(){
+//			if( ajax.status == 200 && ajax.readyState == 4 ){
+//				//通知成功了
+//				success( ajax.responseText );
+//			}
+//		}
+//	})
+//	//接收到服务器数据后 做处理
+//	pro.then(function(msg){
+//		alert( msg );
+//	})
+	
+	//封装一个函数 
+	function ajaxPromise(url,data){
+		if( data ){
+			url = url + "?" + data;
+		}
+		var pro = new Promise(function(success,failed){
+			var ajax = new XMLHttpRequest();
+			ajax.open("get",url);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if( ajax.status == 200 && ajax.readyState == 4 ){
+					//通知成功了
+					success( ajax.responseText );
+				}
+			}
+			
+			//承诺多久后没有执行成功 就宣告失败
+			setTimeout(function(){
+				failed();
+			},3000)
+		})		
+		return pro;
+	}
+	var p = ajaxPromise("data.json");
+	p.then(function(msg){
+		alert( msg );
+	},function(){
+		alert("请求服务器数据错误");
+	})
+</script>

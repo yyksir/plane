@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select name="" id="sel">
+			<option value="50px">大号字体</option>;
+			<option value="30px">中号字体</option>;
+			<option value="10px">小号字体</option>;
+			
+		</select>
+		<p id="pa" >all is fine</p>
+		<script>
+			var oSel=document.getElementById("sel");
+			var oPa=document.getElementById("pa");
+			oSel.onchange=function(){
+				oPa.style.fontSize=oSel.value;
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

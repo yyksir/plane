@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="main.css" />
+		<style>
+			.header{
+				height: 40px;
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+			#box{
+				width: 300px;
+				height: 30px;
+				border: 1px solid black;
+				float: left;
+				margin-left:500px;
+			}
+			#box li{
+				float: left;
+				list-style: none;
+				display: inline-block;
+				padding: 0 5px;
+			}
+			#box li.active{
+				color: red;
+			}
+			#box ul{
+				/*float: left;*/
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>		 		 
+		<ul class="shoplist clearfix" id="main">
+			<!--<li>
+				<img src="img/1.jpg" alt="" />
+				<p>小米1</p>
+				<p>999</p>
+				<button>购买</button>
+			</li>-->
+		</ul>	
+		<div id="box">
+			<span id="left">上一页</span>
+			<ul id="u">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<span id="right">下一页</span>
+		</div>
+	</body>
+</html>
+<script src="ajax.js"></script>
+<script type="text/javascript">
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+		var pageNum=4
+		var index=1;
+		getData();
+		function getData(){
+		var pro=ajaxPromise("data.json")
+		
+		pro.then(function(msg){
+			var arr=JSON.parse(msg);
+			var str=""
+			for(var i=(index-1)*4;i<4*index;i++){
+				if(i<arr.length){
+					
+				str+=`<li>
+				<img src='img/${arr[i].src}  '/>
+				<p>${arr[i].name} </p>
+				<p>${arr[i].price}</p>
+				<button>购买</button>
+			</li>`
+				}
+	
+			}
+			$("main").innerHTML=str;
+			//总页数
+			
+			pageTotal=Math.ceil(arr.length/pageNum);
+			
+			var page="";
+			for(var j=1;j<=pageTotal;j++){
+				
+				page+=`<li>${j}</li>`
+				
+			}
+			$("u").innerHTML=page;
+			$("u").children[index-1].className="active";
+			
+			
+			
+			
+			
+			
+			
+			
+		/*	pageTotal=Math.ceil(arr.length/pageNum);
+			var page="";
+			for(var j=1;j<=pageTotal;j++){
+				page+=`<li>${j}</li>`;
+			}
+			$("u").innerHTML=page;
+			$("u").children[index-1].className="active";*/
+			
+		})
+			
+		}
+		
+		
+			
+	/*		$("u").onclick=function(e){
+				var e=e||event;
+				var target=e.target||e.srcElement;
+				if(target.nodeName=="LI"){
+					index=target.innerHTML
+					getData();	
+				}
+			}*/
+			
+			$("u").onclick=function(e){
+				var e=e||event;
+				var target=e.target||e.srcElement;
+				if(target.nodeName=="LI"){
+					index=target.innerHTML;
+					getData();
+				}
+			}
+			
+			$("left").onclick=function(){
+				if(index==1){
+					index=1;
+					alert("第一页")
+				}else{
+				index--;
+					
+				}
+					getData();	
+
+			}
+				$("right").onclick=function(){
+				if(index==pageTotal){
+					index=pageTotal;
+					alert("最后一页")
+				}else{
+				index++;
+					
+				}
+					getData();	
+
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	
+	
+	 
+</script>

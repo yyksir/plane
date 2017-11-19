@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script>
+	//获取里的内容
+	var list = document.getElementsByTagName("li");//伪数组
+	/*for(var i = 0 ; i < list.length ; i ++){
+		console.log( list[i].innerHTML );
+	}*/
+	var arr = Array.from( list );
+	arr.forEach( (item) => { console.log( item.innerHTML ); } )
+</script>

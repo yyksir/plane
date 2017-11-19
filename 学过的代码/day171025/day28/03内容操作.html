@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<input type="button" value="隐藏" />
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	alert( $("li").html() );
+//	$("li").html("<b>标签内容</b>")
+	//$("li").text("<b>标签内容</b>")
+	var flag = true;
+	$("input").click(function(){
+		if( flag ){ //隐藏
+			$(this).val("显示");
+			$("ul").css("display","none");
+		}else{
+			$(this).val(" 隐藏");
+			$("ul").css("display","block");
+		}
+		flag = !flag;
+	})
+</script>

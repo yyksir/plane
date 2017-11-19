@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" onsubmit="return checkForm();">
+			用户名：<input type="text" id='uname' /><span id="s1"></span><br>
+			密码：<input type="text" id='upwd' /><span id="s2"></span><br>
+			性别： <input type="radio" name="sex" />男
+				<input type="radio" name="sex" />女<br>
+			爱好 ： <input type="checkbox" name="h"/>篮球
+				 <input type="checkbox" name="h"/>桌球
+				 <input type="checkbox" name="h"/>小球<br>
+			<input type="submit" value="注册" />
+		</form>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	var flagName = "";
+	$("uname").onblur = function(){
+		var reg = /^\w{6,8}$/;
+		var str = $("uname").value;
+		if( reg.test(str) ){
+			$("s1").innerHTML = "合法";
+			flagName = true;
+		}else{
+			$("s1").innerHTML = "错误";
+			flagName = false;
+		}
+		return flagName;
+	}
+	var flagPwd = "";
+	$("upwd").onblur = function(){
+		var reg = /^.{6,}$/;
+		var str = $("upwd").value;
+		if( reg.test(str) ){
+			$("s2").innerHTML = "合法";
+			flagPwd = true;
+		}else{
+			$("s2").innerHTML = "错误";
+			flagPwd = false;
+		}
+		return flagPwd;
+	}
+	function checkSex(){
+		var sex = document.getElementsByName("sex");
+		var flag = true;//说明没有选中性别
+		for( var i = 0 ; i < sex.length ; i++ ){
+			if( sex[i].checked ){
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
+	function checkForm(){
+	 	if( !checkSex() ){
+	 		return true;
+	 	}else{
+	 		return false;
+	 	}
+	}
+	/*
+	 表单需要提供一个onblur事件， 事件处理程序需要返回true或false  ，根据true或false就可以判断
+	 flag = "";  用户名
+	 obj.onblur = function(){
+	 	if(正确){
+	 		文字描述
+	 		flag = true
+	 	}else{
+	 		
+	 		flag = false
+	 	}
+	 	return  flag
+	 }
+	 
+	 function checkForm(){
+	 	if( flagname && flagpwd ){
+	 		return true
+	 	}else{
+	 		return false
+	 	}
+	 }
+	 */
+</script>

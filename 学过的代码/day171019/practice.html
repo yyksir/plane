@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+/*	function Father(){
+		this.money=1511;
+		this.eat=function(){
+			return "爱吃肉"
+		}
+	}
+	function Son(){
+		this.parent=Father;
+		this.parent();
+		delete this.parent;
+	}
+	var son=new Son();
+	console.log(son);*/
+	
+	
+	//call方式的继承
+	/*function Father(familyName,money){
+		this.money=money;
+		this.familyName=familyName;
+		this.music=function(){
+			return "sing";
+		}
+	}
+	function Son(familyName,money,score){
+		this.score=score;
+		Father.call(this,familyName,money)
+	}
+	var son=new Son("小王妃",9966,90);
+	console.log(son)*/
+	
+	//apply方式的继承；
+/*		function Father(familyName,money){
+		this.money=money;
+		this.familyName=familyName;
+		this.music=function(){
+			return "sing";
+		}
+	}
+	function Son(familyName,money,score){
+		this.score=score;
+		Father.apply(this,arguments);
+	}
+	var son=new Son("小王妃",9966,90);
+	console.log(son)
+	*/
+	//混合继承
+	/*	function Father(familyName,money){
+		this.money=money;
+		this.familyName=familyName;
+	}
+		
+		Father.prototype.music=function(){
+			return "sing";
+		}
+	function Son(familyName,money){
+	
+		Father.call(this,familyName,money)
+	}
+	Son.prototype=new Father();
+	var son=new Son("小王妃",9966);
+	console.log(son)*/
+	
+	class 子类 extends 父类{
+		construtor(父类属性)
+	}
+	
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<h1>本节主题：jquery插件</h1>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	//插件 -- 工具  （函数）
+	/*$.extend({
+		say : function(){
+			alert("hello");
+		}
+	})
+	$.say();*/
+	
+	/*$.fn.extend({
+		say : function(){
+			return "hello jquery";
+		}
+	})
+	alert( $("body").say() );*/
+	
+	
+	//使用jquery插件的方式   为每一个li定义背景色
+	$.fn.extend({
+		setColor : function(){ //设置元素的背景色  
+			//this指向的是 方法的调用者
+			this.css("background","pink");
+		},
+		setBgColor : function(){ //设置多个元素的不同背景色
+			var arr = ["orange","blue","skyblue","teal","yellow"];
+			//this : 指向 方法的调用者  
+			this.each(function(index){
+				//this : 当前遍历的li对象
+				$(this).css("background",arr[index]);
+			})
+		},
+		over : function(options){ //鼠标移入  操作字体变大  背景颜色 变红色
+			this.mouseover(function(){
+				//获取当前操作的li样式  便于离开后恢复
+				color = $(this).css("background-color");
+				size = $(this).css("font-size");
+				//默认值
+				var defaults = {
+					"color" : "red",
+					"size" : "30px"
+				}
+				//$.extend(默认值，方法参数)  将默认值和传递的参数值进行合并
+				//  如果传递的参数有值  按照传递的参数设置 否则就按照默认值设置
+				var setting = $.extend(defaults,options);
+				
+				$(this).css({"background":setting.color,"fontSize":setting.size});
+			})
+		},
+		out : function(){ //鼠标离开 恢复字体大小
+			this.mouseout(function(){
+				$(this).css({"background":color,"fontSize":size});
+			})
+		}
+	})
+	
+	$("li").setBgColor();
+	$("li").over({"size":"40px"});
+	$("li").out();
+	
+</script>

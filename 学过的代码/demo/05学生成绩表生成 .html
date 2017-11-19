@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>千峰H5成绩计算表</h3>
+ 
+		<table>
+			<tr>
+				<td>班级名称：</td>
+				<td><input type="text" id="bname" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>请输入班级人数：</td>
+				<td><input type="text" id="num" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>班级总成绩：</td>
+				<td><input type="text" id="sum" /></td>
+				<td><input type="button" value="提交" id="btn" /></td>
+			</tr>
+			<tr>
+				<td>最高成绩：</td>
+				<td><input type="text" id="max" /></td>
+				<td><input type="button" value="重置" id="btn1" /></td>
+			</tr>
+			<tr>
+				<td>最低成绩：</td>
+				<td><input type="text" id="min" /></td>
+				<td></td>
+			</tr><tr>
+				<td>平均成绩：</td>
+				<td><input type="text" id="avg" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>成绩高低排序：</td>
+				<td><textarea name="" id="sortScore" cols="30" rows="10"></textarea></td>
+				<td></td>
+			</tr>			
+		</table>
+		 
+	</body>
+</html>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("bname").onblur=function(){
+		var reg=/^\d{4}$/;
+		var str=$("bname").value;
+		if(!reg.test(str)){
+			alert("只能输入4个数字");
+		}
+	}
+	
+	$("num" ).onblur=function(){
+		var reg=/^\d+$/
+		var str=$("num" ).value;
+		if(!reg.test(str)){
+			alert("只能输入数字");
+		}
+		
+	}
+	
+	$("btn").onclick=function(){
+		var count=parseInt($("num").value);
+		var arr=[];
+		var sum=0;
+		for(var i=0;i<count;i++){
+			arr[i]=parseInt(prompt("请输入第"+(i+1)+"个数"));
+			sum+=arr[i];
+		}
+		var average=sum/count;
+		
+/*		function fun(a,b){
+			return a-b;
+		}
+		arr.sort(fun)*/
+		
+		
+		function fun(a,b){
+			return a-b;
+		}
+		arr.sort(fun)
+
+		$("sum" ).value=sum;
+		$("max").value=arr[arr.length-1];
+		$("min" ).value=arr[0];
+		$("avg" ).value=average;
+		$("sortScore" ).value=arr;
+
+	}
+	
+	$("btn1").onclick=function(){
+		$("bname" ).value="";
+		$("num" ).value="";
+		$("sum" ).value="";
+		$("max").value="";
+		$("min" ).value="";
+		$("avg" ).value="";
+		$("sortScore" ).value="";
+	}
+
+/*	$("btn").onclick = function(){
+		var count =parseInt( $("num").value ) ;
+		var arr=[];
+//		var arr = new Array(count);
+		//通过循环的方式为数组赋值  数组中数据的个数 count
+		var sum = 0;
+		
+		for(var i = 0 ; i < count; i++){
+			arr[i] = parseInt( prompt("请输入第"+(i+1)+"个人的成绩") );
+			sum += arr[i];
+		}
+		var avg = sum / count;
+		//排序
+		function fun(a,b){
+			return a-b;
+		}
+		arr.sort(fun);
+	
+		$("sum").value = sum;
+		$("avg").value = avg;
+		$("max").value = arr[arr.length-1];
+		$("min").value = arr[0];
+		$("sortScore").value = arr;
+	}*/
+</script>
+

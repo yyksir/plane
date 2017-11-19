@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="创建" id="btn" />
+		<ul id="uu">
+			<li>孩子多1</li>
+			<li>孩子多2</li>
+			<li>孩子多3</li>
+			<li>孩子多4</li>
+			<li>孩子多5</li>
+			<li>孩子多6</li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oUl=document.getElementById("uu")
+	oUl.onclick=function(e){
+		var e=e||event;
+		var target=e.target||e.srcElement;
+		
+		target.style.fontSize="30px"
+		
+		
+	}
+	
+	
+</script>

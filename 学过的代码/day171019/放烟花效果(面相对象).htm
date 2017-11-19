@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>放烟花效果</title>
+		<style type="text/css">
+			html,
+			body {
+				overflow: hidden;
+			}
+			
+			body {
+				background: #000;
+			}
+			
+			.fire {
+				width: 3px;
+				height: 3px;
+				background: white;
+				position: absolute;
+			}
+			
+			.spark {
+				position: absolute;
+				width: 6px;
+				height: 6px;
+			}
+		</style>
+		<script src="sport5.js"></script>
+
+	</head>
+
+	<body>
+	</body>
+
+</html>
+<script type="text/javascript">
+	 /*
+	  1、点击屏幕  出现火花   以缓冲运动方式运动到 点击位置
+	  init
+	  move
+	  explode
+	  2、火花消失  烟花      爆炸   抛物线形式完成运动
+	  init    move 
+	  */
+	window.onload = function(){
+		document.onclick  = function(e){
+			var e = e || event;
+			var fire = new Fire({
+				"x":e.pageX,
+				"y":e.pageY
+			});
+			fire.init();
+		}
+	}
+	function create(ele){
+		return document.createElement(ele);
+	}
+	function rand(min,max){
+		return Math.floor( Math.random()*(max-min+1)+min );
+	}
+	function Fire(pos){
+		this.pos = pos;
+		this.fire = create("div");
+		this.init = function(){
+			this.fire.className = "fire";
+			document.body.appendChild(this.fire);
+			this.fire.style.left = this.pos.x + "px";
+			this.fire.style.top = window.innerHeight - 50 + "px";
+			
+			this.move();
+		}
+		this.move = function(){
+			var that = this;
+			startMove( this.fire , {"top":this.pos.y} ,function(){
+					that.fire.remove();
+					that.explode(that.pos);//爆炸方法
+			})
+		}
+		this.explode = function(pos){
+			var count = rand(50,90);
+			for( var i = 0 ; i < count ; i++ ){
+				var spark = new Spark(pos);
+				spark.init();
+			}
+		}
+	}
+	
+	
+	function Spark(pos){
+		this.pos = pos;//烟花的初始位置
+		this.spark  = create("div");
+		this.init = function(){
+			this.spark.className = "spark";
+			document.body.appendChild(this.spark);
+			this.spark.style.backgroundColor = `rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`;
+			this.spark.style.left = this.pos.x + "px";
+			this.spark.style.top = this.pos.y + "px";
+			
+			//烟花运动
+			this.move();
+		}
+		this.move = function(){
+			//this.speedX = rand(1,10)*( Math.random()>0.5?1:-1 );
+			//this.speedY = rand(1,10)*( Math.random()>0.5?1:-1 );
+			this.speedX = rand(-10,10);
+			this.speedY = rand(-10,10);
+			this.timer = setInterval(function(){
+				this.spark.style.left = this.spark.offsetLeft + this.speedX + "px";
+				this.spark.style.top = this.spark.offsetTop + this.speedY++ + "px";
+				if( this.spark.offsetTop > window.innerHeight ){
+					this.spark.remove();
+					clearInterval(this.timer);
+				}
+			}.bind(this),30)
+		}
+	}
+</script>

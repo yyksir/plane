@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="wrap" id="wrap">
+   <div class="slide" id="slide">
+       <ul id="uu">
+           <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+       </ul>
+       <div class="arrow" id="arrow">
+           <a href="javascript:;" class="prev" id="prev"></a>
+           <a href="javascript:void(0);" class="next" id="next"></a>
+       </div>
+   </div>
+</div>
+</body>
+</html>
+<script src="sport5.js"></script>
+<script>
+   var _json = [
+        {   //  1
+            "width":400,
+            "top":20,
+            "left":50,
+            "opacity":20,
+            "zIndex":2
+        },
+        {  // 2
+            "width":600,
+            "top":70,
+            "left":0,
+            "opacity":80,
+            "zIndex":3
+        },
+        {   // 3
+            "width":800,
+            "top":100,
+            "left":200,
+            "opacity":100,
+            "zIndex":4
+        },
+        {  // 4
+            "width":600,
+            "top":70,
+            "left":600,
+            "opacity":80,
+            "zIndex":3
+        },
+        {   //5
+            "width":400,
+            "top":20,
+            "left":750,
+            "opacity":20,
+            "zIndex":2
+        }
+	];
+	var list = document.getElementById("uu").children;
+	var btnR = document.getElementById("next");
+	var btnL = document.getElementById("prev");
+	var waper = document.getElementById("wrap");
+	var arrow = document.getElementById("arrow");
+	//显示数据
+	function showData(){
+		for( var i = 0; i < list.length ; i++ ){
+			startMove( list[i], _json[i] ,function (){
+				//运动完成后 打开开关
+				f = true;
+			});
+		}
+	}
+	showData();
+	//箭头的显示和隐藏
+	waper.onmouseover = function(){
+		startMove( arrow , {"opacity":100} )
+	}
+	waper.onmouseout = function(){
+		startMove( arrow , {"opacity":0} )
+	}
+	var f = true;//为真时  可以点击
+	//右侧单击
+	btnR.onclick = function(){
+		if( f ){
+			//删除数组尾部元素  移动到最前面
+			_json.push( _json.shift() );
+			showData();
+			f = false; //运动完成后要将开关变成 true
+		}
+	}
+	//左侧单击
+	btnL.onclick = function(){
+		_json.unshift( _json.pop() );
+		showData();
+	}
+</script>

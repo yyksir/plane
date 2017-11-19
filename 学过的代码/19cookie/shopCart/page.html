@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js"></script>
+		
+		<style>
+			#shopbtn{
+				font-size: 30px;
+				padding: 5px 10px;
+				border: 1px solid red;
+				margin-bottom: 20px;
+				cursor: pointer;
+			}
+			p,button{
+				margin-left:80px;
+			}
+			img{
+				margin-left:40px ;
+			} 
+		</style>
+		<script src="cookie.js"></script>
+	</head>
+	<body>
+		
+		<div class="shopinfo">
+			<!--<img src="img/1.jpg" alt="" />
+			<p>小米1</p>
+			<p>333</p>
+			<button>购买</button>-->
+		</div>
+		
+			
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=function(){
+		
+		var str=location.href;
+		var arr=str.split("?")[1];
+		var arr=arr.split("&");
+		var pid=arr[0].split("=")[1];
+		var cname=arr[1].split("=")[1];
+		console.log(pid)
+		console.log(cname)
+		
+		
+		$.ajax({
+			type:"get",
+			url:"data.json",
+			success:function(json){
+				var html="";
+				for(var i=0;i<json[cname].list.length;i++){
+					var item=json[cname].list[i];
+					if(pid==item.id){
+						html=`
+						<img src="img/${item.src}" alt="" />
+							<p>${item.name}</p>
+							<p>${item.price}</p>
+						<button>购买</button>
+						
+						`
+						$(".shopinfo").html(html)
+					}
+				}
+			}
+		})
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+/*	$(function(){
+		
+		var arr=getCookie("prolist");
+		console.log(arr);
+		var str="";
+		for(i=0;i<arr.length;i++){
+			str+=`
+				<img src="${arr[i].shopImg}" alt="" />
+				<p>${arr[i].shopName}</p>
+				<p>${arr[i].shopPrice}</p>
+				<button>购买</button>
+			`;
+		}
+		
+		$(".shopinfo").html(str)
+		
+		
+		
+	})*/
+ 
+</script>

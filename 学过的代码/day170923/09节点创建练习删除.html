@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//页面加载后，在页面上动态创建10个li标签，并且设置他们的隔行变色效果，鼠标移入高亮显示，离开恢复颜色
+	window.onload = function(){
+		//创建一个ul 
+		var oUl = document.createElement("ul");
+		//将ul添加到body中
+		document.body.appendChild(oUl);
+		
+		//循环创建10个li
+		for(var i = 0 ; i < 10 ; i ++){
+			var oLi = document.createElement("li");
+			oUl.appendChild(oLi);
+			oLi.innerHTML = "孩子多个" + (i+1) +"<input class='del' type='button' value='删除'>";
+		}
+		
+		//找到删除的按钮元素
+		var delbtns = document.getElementsByClassName("del");
+		for( var i = 0 ; i < delbtns.length ; i++ ){
+			delbtns[i].onclick = function(){
+				if( confirm("确认要删除么？") ){
+					//this指向的是当前操作的按钮  
+					//oUl.removeChild( this.parentNode );
+					this.parentNode.remove();
+				}
+			}
+		}
+		
+		//找到页面中的li
+		var list = document.getElementsByTagName("li");
+		//实现li的隔行变色效果
+		for( var i = 0 ; i < list.length ; i++ ){
+			if( i%2 ){
+				list[i].style.backgroundColor = "pink";
+			}else{
+				list[i].style.backgroundColor = "orange";
+			}
+			//每一个li都有onmouseover事件
+			list[i].onmouseover = function(){
+				//鼠标移入是记录当前行颜色
+				color = this.style.backgroundColor;
+				this.style.backgroundColor = "red";
+			}
+			list[i].onmouseout = function(){
+				//鼠标离开时 颜色恢复
+				this.style.backgroundColor = color;
+			}
+		}
+	}
+</script>

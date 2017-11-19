@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+	
+	/*
+	 * 1 事件对象的兼容
+	 vare= e||event;
+	 
+	 2 阻止事件冒泡兼容
+		e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+		
+	 3 阻止右键菜单的兼容(超链接的默认跳转行为也可以通过此方式阻止)
+	
+		e.preventDefault?e.preventDefault():e.returnValue=false;
+		
+	 3.1 阻止右键菜单的万能兼容写法
+		return false;
+		
+	4.获取事件源对象
+		var e.target||e.srcElement
+	 * 
+	 * 
+	5.取消操作元素时的文字选中效果
+	window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+	 * 
+	 * 
+	 *6. 缓冲运动原理
+	 var speed = (target- box.offsetLeft)/10;
+speed = speed>0?Math.ceil(speed) : Math.floor(speed);
+	 
+	 7. 获取非行内元素样式函数封装function getStyle(obj,attr){
+       return window.getComputedStyle ? window.getComputedStyle(obj,false)[attr] : obj.currentStyle[attr];
+ }
+	 * 
+	 * 获取滚动的距离；
+	 * 8.document.body.scrollTop||document.documentElement.scrollTop
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * */
+	
+	
+	
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script>
+	$("li").each(function(index){
+		//console.log( index )
+		//console.log( $("li").eq(index).html() );
+		console.log( $(this).html() );
+	})
+</script>

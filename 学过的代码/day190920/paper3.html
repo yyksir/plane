@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img id="img" src="0.png" alt="" height="50px" width="50px"/>
+	</body>
+</html>
+<script>
+	var arr=["0.png","1.png","2.png","3.png","4.png"]
+	
+	
+	var timer=setInterval(fun,1000);
+	var oImg=document.getElementById("img");
+	var index=0;
+	function fun(){
+		if(index==arr.length-1){
+			index=-1;
+		}
+		index++;
+		oImg.src=arr[index];	
+	}
+	
+</script>

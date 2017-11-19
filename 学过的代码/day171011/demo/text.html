@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*	function fun(m){
+				var flag = true;
+				for(var i=2 ; i < m ; i++ ){
+					if(m%i==0){
+						flag=false;
+						break;
+					}				
+				}
+				return flag;
+		}
+		
+		
+/*			var sum=0;
+			for(var i = 100;i <= 200; i++ ){
+				if( fun(i) ){
+					sum += i;
+				}
+			}
+			alert(sum);*/
+	/*		for(i=1;i<=50;i++){
+				if(fun(i)&&fun(100-i)){
+					console.log("100可以被"+i+"和"+(100-i)+"拆分")
+				}
+			}*/
+			
+			function sum(){
+				var s=0;
+				for (var i=0;i<arguments.length;i++){
+					s+=arguments[i];
+				}
+				alert(s);
+			}
+			sum(1,2,3);
+			sum(1,2,3,5,6,7)
+			sum(2,1)
+			
+			
+			
+	</script>		

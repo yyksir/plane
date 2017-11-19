@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			#box{
+				
+				height:300px;
+				width:300px;
+				margin:200px auto;
+				border:1px solid red;
+				overflow:hidden;
+				position:relative;
+			}
+			#uu{
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="uu">
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+				<li>葫芦娃葫芦娃葫芦娃</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("uu").onmouseover=function(){
+		
+		timer=setInterval(fun,10)
+		var index=0
+		function fun(){
+			index--;
+			$("uu").style.top=index+"px";
+	
+		if(index<=-300){
+			index=0;
+		}
+	}
+		
+	}
+	$("uu").onmouseout=function(){
+		
+		clearInterval(timer)
+	}
+	
+	
+</script>

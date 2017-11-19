@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选项卡</title>
+		<style type="text/css">
+			*{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}
+			#container{
+				width: 398px; 
+				margin: 100px auto;}
+			#container a{
+				display:block ;
+				width: 98px; 
+				height: 42px; 
+				line-height: 42px; 
+				text-align: center; 
+				float: left;
+				border-top: solid 1px #FF4400;
+				border-bottom: solid 1px #FF4400;
+				border-left: solid 1px #FF4400;
+				color: #333333;
+				text-decoration: none;
+			}
+			#container a:hover{
+				color: #FF4400;
+			}
+			.content{
+				width: 355px;
+				height: 140px;
+				text-align: center;
+				border-right: solid 1px #FF4400;
+				border-bottom: solid 1px #FF4400;
+				border-left: solid 1px #FF4400;
+				padding: 30px 0 0 40px;
+				display: none;
+			}
+			.clear{clear: left;}
+			#container a.on{ background: #FF4400; color: #fff;}
+		</style>
+	
+	</head>
+	<body>
+		<div id="container">
+			<a href="#" class="on">充话费</a>
+			<a href="#" >充流量</a>
+			<a href="#" >充固话</a>
+			<a href="#"  style="border-right: solid 1px #FF4400;">充宽带</a>
+
+			<div class="clear"></div>
+			
+			<div class="content" style="display:block;">
+				<img src="images/1.png" />
+			</div>
+
+			<div class="content">
+				<img src="images/2.png" />
+			</div>
+
+
+			<div class="content">
+				<img src="images/3.png" />
+			</div>
+
+			<div class="content">
+				<img src="images/4.png" />
+			</div>
+
+
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//找到页面要操作的元素
+	//四个标题
+	var as = document.getElementById("container").getElementsByTagName("a");
+	//四个标题相应的内容
+	var divs = document.getElementsByClassName("content");
+	//由于每一个标题都有onclick事件，所以通过循环为每一个标题添加事件
+	for(var i = 0 ; i < as.length ; i++){
+		//为每一个超链接添加一个属性  目的记录每一个标题在页面中的下标
+		as[i].index = i;
+		as[i].onclick = function(){
+			//排他思想      通过循环为所有的标题清除样式 on
+			for( var j = 0 ; j < as.length ; j++ ){
+				as[j].className = "";
+				//隐藏所有标题内容
+				divs[j].style.display = "none";
+			}
+			//留下当前操作的标题
+			this.className = "on";
+			//alert( this.index );
+			//显示当前标题对应的内容 根据this.index
+			divs[this.index].style.display = "block";
+		}
+	}
+</script>

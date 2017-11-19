@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:200px;
+				width:600px;
+				border:1px solid red;
+				overflow:hidden;
+				margin:100px ;
+				position:relative;
+			}
+			#pic{
+				width:600%;
+				left:0;
+				position:absolute;
+			}
+			#pic img{
+				float:left;
+				height:200px;
+				width:300px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="pic">
+				<img src="a.jpg" alt="" id="a"/>
+				<img src="b.jpg" alt="" id="a"/>
+				<img src="c.jpg" alt="" id="a"/>
+				<img src="d.jpg" alt="" id="a" />
+				<img src="a.jpg" alt="" id="a"/>
+				<img src="b.jpg" alt="" id="a"/>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("pic").onmouseover=function(){
+	
+		var index=0;
+		 timer=setInterval(fun,10);
+		function fun(){
+
+			index--;
+		if(index<-1200){
+			index=0;
+		}
+		$("pic").style.left=index+"px";
+		
+		}
+		
+	}
+	$("pic").onmouseout=function(){
+		clearInterval(timer)
+	}
+	
+	
+</script>

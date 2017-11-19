@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<select name="white" id="white"  multiple="multiple">
+			
+			<option value=""> 你你你你你你你你你</option>
+			<option value=""> 啊啊啊啊啊啊啊啊啊</option>
+			<option value=""> 还还还还还还还还还</option>
+			<option value=""> 年年年年年年年年年年</option>
+			<option value=""> 青青青青青青青青青青</option>
+			
+			
+		</select>
+		<input type="button" value="加入黑名单" />
+		<input type="button" value="移除黑名单" />
+		<input type="button" value="清空" />
+		
+		<select name="black" id="black"  multiple="multiple">
+			<option value="">青青青青青青青青青青青</option>
+			
+			
+			
+		</select>
+		
+	</body>
+</html>
+<script>
+		
+		$(":button").eq(0).click(function(){
+			
+			var cks = $("#white option");
+//			alert(cks)
+			for(var i=0;i<cks.length;i++){
+				if(cks.eq(i).prop("selected")){		
+					$("#white option").eq(i).appendTo($("#black"));
+						$(this).text("");
+				}
+			}
+		})
+		$(":button").eq(1).click(function(){
+			
+			$("#black :selected").appendTo($("#white"));
+		})
+		
+		$(":button").eq(2).click(function(){
+		
+			$("#black").empty();
+		})
+	
+	
+	
+	
+</script>

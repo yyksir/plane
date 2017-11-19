@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	//单粒模式
+//		function p(){
+//			if(p.instance){
+//				return p.instance;
+//			}
+//			p.instance=this;
+//			return p.instance;
+//		}
+//	var p1=new p();
+//	var p2=new p();
+//	
+//	alert(p1==p2)
+	
+	//观察者模式
+	
+	function Child(dad,mom){
+		this.dad=dad;
+		this.mom=mom;
+		this.cry=function(){
+			this.dad.notify();
+		};
+		setTimeout(function(){
+			this.cry();
+		}.bind(this),3000)
+	}
+	function Dad(){
+		this.notify  =function(){
+			this.act(); 
+		}
+		this.act=function(){
+			alert("hurry up get this test") 
+		}
+	}
+	var mom=new Dad()
+	var child=new Child(mom,null)
+	
+	
+	//1
+	//alert(10 + "2" - "1r") 
+	//alert(10 + "2" - "1")
+	//2
+	//var=i
+	//console.log(" i%3==0 " +(i%3==0))
+	//console.log( i%2 == 0&&i%5 == 0)
+	//console.log(i %4==0&&i %100!=0|| i%400==0)
+	//i%2==0? "偶数" : "奇数"
+	
+	//3
+//	 k = 2   
+//     document.write(k++ + ++k + k++ + k) //2+4+4+5=15
+     
+     //4 战士的时间
+//   var i=89;
+//   var b=parseInt(i/24);
+//   var c= i % 24;
+//    alert( b+"天" +c +"小时")
+		//console.log("总"+ parseInt(89/24) +"天零"+( 89%24 )+"小时");
+		//console.log( "摄氏度 = 5/9.0*(80-32)" +( 5 / 9.0 * ( 80-32 ) ).toFixed(3) )
+		
+//	var iOne = 23 ,iTwo =34;
+//	 iOne=iTwo;
+//	 alert("iOne=" + iOne);
+//	 var iOne = 23 ,iTwo =34;
+//	 iTwo=iOne;
+//	
+//	alert("iTwo=" + iTwo);
+	
+</script>

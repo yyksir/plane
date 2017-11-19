@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*,ul{ margin: 0; padding:0 ;}
+		#books{width: 1000px;  margin: 50px auto 0;
+		border: 4px #fff solid;overflow: hidden; background: #f1f1f1;
+		box-shadow:0 0 5px rgba(0,0,0,0.7) ;}
+		ul li{ list-style: none; width: 150px; height:180px ;
+		float: left; margin: 25px; background: blue; text-align: center;}
+		ul li img { width: 105px; height: 140px;}
+		ul li p{color:#fff; font-weight: bold;}
+	</style>
+	<script type="text/javascript">
+		//接口:https://api.douban.com/v2/book/search?q=css&callback=fn&start=0&count=10
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			var oTxt = document.getElementById("oText");
+			
+			oBtn.onclick = function(){
+				var sc = document.createElement("script");
+				sc.src = "https://api.douban.com/v2/book/search?q="+oTxt.value+"&callback=fn&start=0&count=10";
+				document.body.appendChild(sc);
+			}
+		}
+		function fn(info){
+			var oUl = document.getElementById("books");
+			//console.log( info.books );
+			var arr = info.books;
+			console.log(arr );
+			var str = "";
+			for( var i in arr ){
+				str += `<li><a href='${ arr[i].alt }'>
+							<div><img src='${ arr[i].image }'/>
+								<p>${ arr[i].price }</p>
+							</div></a>
+						</li>`;
+			}
+			oUl.innerHTML = str;
+		}
+	</script>
+	
+</head>
+<body>
+	<div id="top">
+		<input type="text" id="oText" />
+		<input type="button" value="搜一搜" id="btn" />
+	</div>
+	<ul id="books">
+		<!--<li>
+			<div><img src='aa.gif'/>
+				<p>38.5元</p>
+			</div>
+		</li>-->
+	</ul>
+</body>
+</html>

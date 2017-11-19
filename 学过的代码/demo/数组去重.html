@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+/*	var arr=[23,12,515,23,48];
+	
+	function noRepeatArr(){
+		var newArr=[];
+		for(var i=0;i<arr.length;i++){
+			if(newArr.indexOf(arr[i])==-1){
+//				newArr.push(arr[i]);
+				newArr[newArr.length]=arr[i]
+			}
+		}
+		return newArr;
+	}
+	alert(noRepeatArr(arr))*/
+	
+	
+	
+	
+	var arr = [10,20,8,9,3,2,1,2,2,2,8]
+	
+		function fun(a,b){
+			return b-a;
+		}
+		arr.sort(fun)
+	function superSort(arr){
+	
+		var newArr=[];
+		
+		for(var i=0;i<arr.length;i++){
+			if(newArr.indexOf(arr[i])==-1){
+				newArr.push(arr[i]);	
+			}
+		}
+		return newArr;
+
+	}
+	alert(superSort(arr))
+
+	
+	
+	
+	
+	/*
+	 document.createElement("");
+	 document.createTextNode("")
+	 
+	 * 
+	 * 
+	 * 
+	 * */
+	
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		倒计时：<span id="time"></span>
+	</body>
+</html>
+<script>
+	function timeDiff(start,end){
+		return Math.abs(start.getTime()-end.getTime());
+	}
+	
+	var oTime=document.getElementById("time");
+	
+	function showTime(){
+		
+		var newDate= new Date("2017-09-29 24:00:00");
+		var nowDate= new Date();
+	
+		var t=timeDiff(newDate,nowDate)/1000;
+	
+		var h=parseInt(t/3600);
+		var m=parseInt((t-h*3600)/60);
+		var s=parseInt(t-h*3600-m*60);
+	
+		oTime.innerHTML= h + "小时" + m + "分钟" + s + "秒" ;
+	
+	}
+	showTime();
+	
+		var timer=setInterval(fun,1000);
+			
+			function fun(){
+				showTime();
+			}
+		
+</script>

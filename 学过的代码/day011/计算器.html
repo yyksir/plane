@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入第一个数:<input type="text" id="first" /><br/>
+		请输入一个运算符:<input type="text" id="f"  /><br/>
+		请输入第二个数:<input type="text" id="second"  /><br/>
+		结果:<input type="text" id="result" /><br/>
+		<input type="button" value="计算"  id="make"/>
+		<input type="button" value="清空" id="clear" />
+		<script>
+			
+			var oNum1=document.getElementById("first");
+			var oNum2=document.getElementById("f");
+			var oNum3=document.getElementById("second");
+			var oNum4=document.getElementById("result");
+			var oNum5=document.getElementById("make");
+			var oNum6=document.getElementById("clear");
+			
+			oNum5.onclick=function(){
+				iOne= Number(oNum1.value);
+				iTwo= Number(oNum3.value);
+				iThree= oNum2.value;
+				switch(iThree){
+					case "+": result.value= iOne+"+" +iTwo + '=' +(iOne+iTwo);break;
+					case "-": result.value  = iOne+"-"+iTwo+"=" +(iOne-iTwo);break;
+					case "*": result.value  = iOne+"*"+iTwo+"=" +(iOne*iTwo);break;
+					case "/":{
+						if(iTwo==0){
+							result.value =("除数不能为0");
+						}else{
+							result.value = iOne+"/"+iTwo+"=" +(iOne/iTwo);break;
+						}
+					} 
+					case "%":{
+						if(iTwo==0){
+							result.value ="除数不能为0";
+						}else{
+							result.value  = iOne+"%"+iTwo +"=" +(iOne%iTwo);break;
+						}
+					}
+				}
+				
+				oNum6.onclick=function(){
+					oNum1.value="";
+					oNum2.value="";
+					oNum3.value="";
+					oNum4.value="";
+				}
+				
+				
+				
+			}
+				
+			
+			
+			
+			
+		/*	var oNum1=document.getElementById("first");
+			var oNum2=document.getElementById("f");
+			var oNum3=document.getElementById("second");
+			var oNum4=document.getElementById("result");
+			var oNum5=document.getElementById("make");
+			var oNum6=document.getElementById("clear");
+			
+			oNum5.onclick = function(){
+				var iOne = Number(oNum1.value) ;
+				var iTwo = Number(oNum3.value);
+				var iSign = oNum2.value;
+				if (isNaN(iOne)||isNaN(iTwo)){
+					alert("请输入正确的数值")
+				}else {
+					if(iSign=="+"){
+						result.value= iOne+"+" +iTwo + '=' +(iOne+iTwo);
+					}else if(iSign=="-"){
+						result.value= iOne+"-" +iTwo + '=' +(iOne-iTwo);
+					}else if(iSign=="/"){
+						if(iTwo==0){
+							result.value=("除数不能为0");
+						}else{
+							result.value= iOne+"/" +iTwo + '=' +(iOne/iTwo);
+						}
+					}else if(iSign=="*"){
+						result.value= iOne+"*" +iTwo + '=' +(iOne*iTwo);
+					}else if(iSign=="%"){
+						if(iTwo==0){
+							result.value=("除数不能为0");
+						}else {
+							result.value = iOne + "%" +iTwo +"=" +(iOne%iTwo)
+						}
+					}
+					else{
+						iSign.value=("输入的运算符不符合要求")
+					}
+										
+				}
+			oNum6.onclick =function(){
+				iNum1.value="";
+				iNum2.value="";
+				iNum3.value="";
+				iNum4.value="";
+			}
+				
+			}*/
+			
+		</script>
+	</body>
+</html>

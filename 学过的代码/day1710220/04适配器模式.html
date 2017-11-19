@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 //手机 ：打电话　　播放音乐
+	//pad :只能播放音乐     
+	//模拟适配器   ：  既可以操作手机  又可以操作  pad ，判断这些产品有哪些功能
+	 */
+	function Phone(){
+		this.phonecall = function(){
+			alert("手机可以打电话");
+		}
+		this.playmusic = function(){
+			alert("手机可以播放音乐");
+		}
+	}
+	function Pad(){
+		this.playmusic = function(){
+			alert("pad可以播放音乐");
+		}
+	}
+	//适配器 ： 判断产品都有哪些功能
+	function Adapter(product){
+		this.product = product;
+		this.phonecall = function(){
+			if( this.product.phonecall ){
+				this.product.phonecall();
+			}else{
+				alert("该产品不能打电话");
+			}
+		}
+		this.playmusic = function(){
+			if( this.product.playmusic ){
+				this.product.playmusic();
+			}else{
+				alert("该产品不能播放音乐");
+			}
+		}
+	}
+	var phone = new Phone();
+	var pad = new Pad();
+	var adapter = new Adapter(pad);
+	adapter.phonecall();
+	adapter.playmusic();
+</script>

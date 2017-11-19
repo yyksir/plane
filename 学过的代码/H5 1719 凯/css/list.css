@@ -1,0 +1,325 @@
+
+.nav{
+	width: 100%;
+	background: #333333;
+	height: 30px;
+}
+.nav-inner{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+.nav-inner h4{
+	float: left;
+	color: #ffffff;
+	background: #654579;
+	width: 220px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-weight: 100;
+}
+.nav-inner h4 img{
+	margin-left: 12px;
+}
+.nav-right{
+	float: left;
+	height: 30px;
+	line-height: 30px;
+}
+.nav-right li{
+	float: left;
+	list-style: none;
+	padding: 0 35px;
+}
+.nav-right li a{
+	color: #ffffff;
+	font-size: 16px;
+	
+}
+.nav-right li a:hover{
+	color: #c4c4c4;
+}
+.mian{
+	width: 1200px;
+	padding-bottom: 50px;
+	margin: 0 auto;
+}
+.search-link{
+	width: 1200px;
+	margin: 10px auto;
+	line-height: 40px;
+	height: 40px;
+	color: #666;
+	font-size: 12px;
+}
+.search-link li{
+	float: left;
+	padding-right: 14px;
+}
+.search-link li a{
+	color: #666;
+}
+.icon-home{
+	font-size: 24px;
+}
+.icon-to{
+	font-size: 20px;
+	padding: 0 5px;
+	color: #ccc;
+}
+.search-link li .sort{
+	border: 1px solid #ccc;
+	padding: 0 24px 0 2px;
+	height: 23px;
+	margin-top: 8px;
+	line-height: 23px;
+	position: relative;
+	display: inline-block;
+	background: #fff;
+}
+.search-link li .sort .icon-sort-ar{
+	position: absolute;
+	top: 0;
+	right: 6px;
+}
+.search-link li .sort .icon-sort-ar .icon-up{
+	position: absolute;
+	top: -5px;
+	left: -10px;
+	font-size: 8px;
+	color: #ccc;
+}
+.search-link li .sort .icon-sort-ar .icon-down{
+	position: absolute;
+	top: 5px;
+	left: -10px;
+	color: #ccc;
+	font-size: 8px;
+}
+.search-link .search-input{
+	padding: 0 3px;
+	width: 140px;
+	height: 23px;
+	line-height: 23px;
+	border: 0;
+	outline: 0;
+}
+.search-link .ico-search{
+	color: #fff;
+	border: 0;
+	outline: 0;
+	height: 12px;
+	width: 13px;
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	background: url(../img/search.jpg) 1px top no-repeat;
+	background-color: #fff;
+	cursor: pointer;
+}
+.search-link li .sort .drop{
+	position: absolute;
+	top: 23px;
+	left: -1px;
+	border: 1px solid #ccc;
+	background: #fff;
+	display: none;
+}
+.mian .condition{
+	width: 1200px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	padding: 18px 20px 20px;
+	color: #666;
+	font-size: 12px;
+	overflow: hidden;
+}
+.mian .condition dt{
+	float: left;
+	width: 70px;
+	font-weight: 700;
+	padding: 8px 0 10px;
+}
+.mian .condition dd{
+	float: left;
+	width: 840px;
+	line-height: 14px;
+	padding-bottom: 10px;
+}
+.mian .condition dd a{
+	float: left;
+	margin: 10px 20px 0 0;
+	display: block;
+	width: 100px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #666;
+	
+}
+.single-select{
+	height: 24px;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+.mian .condition li{
+	position: relative;
+	overflow: hidden;
+}
+.mian .condition li .option{
+	position: absolute;
+	right: 30px;
+	color: #666;
+	font-size: 12px;
+	top: 2px;
+}
+.mian .condition li .option a{
+	width: 58px;
+	height: 24px;
+	line-height: 24px;
+	border: 1px solid #CCCCCC;
+	display: inline-block;
+	color: #666;
+}
+.mian .condition li .option a .icon-to{
+	font-size: 12px;
+}
+.sortbar{
+	width: 1200px;
+	height: 36px;
+	line-height: 36px;
+	margin:20px auto 0;
+	border: 1px solid #ccc;
+	padding: 0 20px;
+	color: #666;
+	font-size: 12px;
+	overflow: hidden;
+	position: relative;
+}
+.sortbar .sortinner{
+	height: 36px;
+	float: left;
+}
+.sortbar a{
+	display: inline-block;
+	color: #666;
+	position: relative;
+	padding-right: 10px;
+	margin-right: 20px;
+}
+.sortbar .icon-down1{
+	font-size: 10px;
+}
+.sortbar  .icon-sort-ar {
+	position: absolute;
+	right: -25px;
+	top: 0;
+}
+.sortbar  .icon-sort-ar .icon-up{
+	position: absolute;
+	right: 16px;
+	top: -4px;
+	font-size: 10px;
+}
+.sortbar  .icon-sort-ar .icon-down{
+	position: absolute;
+	right: 16px;
+	top: 5px;
+	font-size: 10px;
+}
+.sortpage{
+	position: absolute;
+	top: 0px;
+	right: 30px;
+}
+.search-list{
+	margin-left: -20px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+.search-list li{
+	width: 283px;
+	height: 398px;
+	border: 1px solid #E5E5E5;
+	margin-left: 20px;
+	float: left;
+	margin-bottom: 20px;
+}
+.search-list li .search-img{
+	width: 283px;
+	height: 268px;
+	display: block;
+	position: relative;
+}
+.search-list li .search-img img{
+	width: 283px;
+	height: 268px;
+}
+.search-list li .data{
+	padding: 8px 26px 0;
+	color: #666;
+	font-size: 12px;
+}
+.search-list li .data .price{
+	padding-bottom: 8px;
+}
+.redel{
+	color: #e14958;
+}
+.search-list li .data .price .now-price{
+	color: #e34755;
+	font-size: 20px;
+	padding-right: 4px;
+	margin-left: 3px;
+}
+.search-list li .data .price .old-price{
+	text-decoration: line-through;
+}
+.search-list li .data .title{
+	overflow: hidden;
+	height: 38px;
+	line-height: 18px;
+}
+.search-list li .data .title a{
+	color: #666;
+}
+.search-list li .data .function{
+	padding-top: 8px;
+}
+.pagination {
+	overflow: hidden;
+}
+.pagination .page{
+	float: right;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	height: 50px;
+}
+.pagination .page a{
+	color: #666;
+	font-size: 12px;
+	border: 1px solid #E5E5E5;
+	display: inline-block;
+	height:28px ;
+	line-height: 28px;
+	margin-right: 20px;
+	margin-left: 10px;
+	padding: 0 5px;
+	float: left;
+}
+.pagination .page ul{
+	float: left;
+}
+.pagination .page ul li{
+	float: left;
+	width: 28px;
+	cursor: pointer;
+	text-align: center;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #E5E5E5;
+	margin-left: 10px;
+	color: #666;
+	font-size: 12px;
+}

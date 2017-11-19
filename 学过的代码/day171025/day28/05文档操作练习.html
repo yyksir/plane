@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.min.js"></script>
+	<body>
+		<input type="button" value="创建表格" />
+		行：<input type="text" id="row"/>
+		列：<input type="text" id="col"/>
+		<div>
+			<li>
+	        	<i class="demo-icon icon-up-open">&#xf005;</i>	 <em class="s">顶部</em>  	
+	    		</li>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//  type :   :
+	$(":button").click(function(){
+		$("div").html("");
+		var row = $(":text").eq(0).val();
+		var col = $(":text").eq(1).val();
+		var $tab = $("<table>");  //动态创建标签
+		$tab.attr("border","1");
+		for( var i = 0 ; i < row ; i ++ ){
+			var $tr = $("<tr>");
+			for( var j = 0 ; j < col ; j++ ){
+				var $td = $("<td>");
+				$td.html( Math.floor(Math.random()*100) );
+				$tr.append($td);
+			}
+			
+			$endTd = $("<td>");
+			$endTd.html("<a href='javascript:;'>删除</a>");
+			$tr.append( $endTd );
+			
+			$tab.append($tr);
+		}
+		$tab.appendTo( $("div") );
+		
+		//删除
+		$("a").click(function(){
+			//remove();
+			$(this).parent().parent().remove();
+		})
+	})
+	// [辽宁  吉林  黑龙江]
+	// [[铁岭  沈阳],[四平  长春],[]]
+	// [[[],[]],[[],[]],[[],[]]]
+</script>

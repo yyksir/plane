@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap飞机跑道进度条动画特效 - 站长素材</title>
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+ 
+<div class="container">
+	<div class="progress">
+		<div class="progress-bar" style="width: 55%; background:#005394;">
+			<span>55%</span>
+		</div>
+	</div>
+
+	<div class="progress">
+		<div class="progress-bar" style="width: 100%; background:#d9534f;">
+			<span>100%</span>
+		</div>
+	</div>
+
+	<div class="progress">
+		<div class="progress-bar" style="width: 40%; background:#f0ad4e;">
+			<span>40%</span>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+<script>
+	
+	var oprogressbar=document.getElementsByClassName("progress-bar");
+//	for(let i=0;i<oprogressbar.length;i++){
+//		let timer=setInterval(()=>{
+//			if(parseInt(oprogressbar[i].style.width)==100){
+//				clearInterval(timer);
+//				return;
+//			}	
+////			alert(oprogressbar[i].style.width)
+//		oprogressbar[i].style.width=parseInt(oprogressbar[i].style.width)+1+"%";
+//		oprogressbar[i].children[0].innerHTML=oprogressbar[i].style.width;		
+//
+//	},100)
+//}
+	
+	for(let i=0;i<oprogressbar.length;i++){
+		let timer=setInterval(function(){
+			if(parseInt(oprogressbar[i].style.width)==100){
+				clearInterval(timer);
+				return;
+			}
+//			alert(oprogressbar[i].style.width)
+			oprogressbar[i].style.width=parseInt(oprogressbar[i].style.width)+1+"%";
+			oprogressbar[i].children[0].innerHTML=oprogressbar[i].style.width;
+		},100)
+	}
+	
+	
+</script>
+
+

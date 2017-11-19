@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="隐藏" id="btn" />
+		<img src="1.jpg" alt=""  id="pic"/>
+		<script>
+			var oBtn=document.getElementById("btn");
+			var oPic=document.getElementById("pic");			
+				
+			
+				oBtn.onclick=function(){
+					if (oBtn.value=="隐藏"){
+						oPic.src="";
+						oBtn.value="显示";
+					}else{			
+					oPic.src="1.jpg";
+					oBtn.value="隐藏";
+					}
+				}
+			
+
+		</script>
+	</body>
+</html>

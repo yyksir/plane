@@ -1,0 +1,54 @@
+*{
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			li{
+				float:left;
+				width:50px;
+				height:50px;
+				background:#000;
+				color:#fff;
+				margin-right:10px;
+				text-align:center;
+				line-height:50px;
+				font-size:20px;
+				border:1px solid black;
+				position:relative;
+			}
+			li span{
+				 display: block;
+				 opacity:0.5;
+				 filter:alpha(opacity=50);/*透明度兼容写法*/
+				
+			}
+			li p{
+				width:50px;
+				height:0;
+				background:#03f;
+				position:absolute;
+				bottom:49px;
+				left:0;
+			}
+			#box{
+				width:400px;
+				margin:300px auto 0;
+				}
+			.keyA{
+				background:#e51c55;
+				}
+			.keyS{
+				background:#c926a5;
+			}
+			.keyD{
+				background:#9c4bd5;
+			}
+			.keyJ{
+				background:#4f65c3;
+			}
+			.keyK{
+				background:#6ccab7;
+			}
+			.keyL{
+				background:#92d55d;
+			}

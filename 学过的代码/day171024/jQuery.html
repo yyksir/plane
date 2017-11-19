@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+		<style>
+			.active{
+				border:2px solid red;
+			}
+			.eight{
+				border:2px solid  #009900;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="mp">
+			bcjfdhcdocfjdd
+			<div>子div</div>
+			<p>p标签</p>
+		</div>
+		<br>
+		<div class="c1" id="mp">jnmi</div>
+		<p>p</p>
+		
+	</body>
+</html>
+<script>
+	
+//	  1  让id为mp的元素文字大小变成30px   
+		$("#mp").css("font-size","30px")
+    	 
+//       2. 让class名为.c1的元素背景为#CCFF99
+			$(".c1").css("background","#CCFF99")
+    
+//       3. 找到所有的div和p
+//			$("div,p")  组合选择器
+     
+//       4. 将所有的div增加 2像素 实线 红色
+				$("div").addClass("active")
+        
+//       5. 将div下的所有子div中文字变蓝色blue
+
+       			$("div>div").css("color","blue")
+//       6. 将div中包含的div颜色变成#FF99FF
+    			$("div div").css("background","#FF99FF")
+         
+//       7. 将div的下面所有兄弟标签p的字体颜色变成蓝色
+				$("div p").css("color","blue")
+      
+//       8. 将紧跟着div的p标签的边框设为2像素 实线 #009900
+				$("div+p").addClass("eight")
+      
+//       9  找到页面中的所有dom元素
+				$("*")
+     
+//       10 找到页面中所有偶数行的p元素
+				$("p:even")
+     
+//       11  找到页面中的最后一个li元素
+				$("li:last")
+				$("li").last("li")
+				
+      
+//       12 找到第一个类名称为demo的元素
+			$(".demo:first")
+			$(".demo").first()
+       
+//       13 找到div下面所有的子元素p
+				$("div p")
+      
+//       14 找到表格奇数行中的最后一个tr
+				$("tr:odd").last("tr")
+     
+//       15 找到id为 demo下面的所有兄弟元素 p
+				$("#demo").nextAll("p")
+    
+//       16 找到除了第三个li之外的所有的li元素
+				$(li:not(li:eq(2)))
+      
+//       17 找到页面中不包含 p 元素的所有元素
+			$("*:not(p)")
+    
+//	 	 18、找到下标为3的li标记
+				$("li:eq(2)")
+				$("li").eq(2)
+     
+//       19、找到页面中的所有超链接和span标记
+// 				$("*aspan")
+   				$("*").filter("a span")
+//       20、找到类名为p1的li元素
+				$("li.p1")
+				$("li").filter("p1")
+
+	
+	
+	
+	
+	/*$(".box").css("background","black")
+	$(function(){
+		
+	})
+	$(document).ready(function(){
+		
+	})*/
+	
+	
+	
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<img src="1.jpg" alt="" id="img"/>
+	</body>
+</html>
+<script>
+		var oImg=document.getElementById("img");
+		document.onmousemove=function(evt){
+			
+			var evt=evt||event;
+			oImg.style.left=(evt.pageX-55)+"px";
+			oImg.style.top=(evt.pageY-55)+"px";
+			
+		}
+	
+	
+</script>

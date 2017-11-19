@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/test.css"/>
+		<style type="text/css">
+			.box{
+			width: 1256px;
+			margin: 0 auto;
+			background: #cdcdcd;
+			}
+			.head{
+				height: 92px;
+				padding: 0 10px;
+				line-height: 92px;
+				background: black;
+			}
+			.head span{
+				font-size: 35px;
+				color: #dddddd;
+			}
+			.head input{
+				float: right;
+				height: 54px;
+				width: 726px;
+				border-radius: 5px;
+				line-height: 54px;
+				outline: none;
+				border: 0;
+				margin-top: 20px;
+			}
+			.one dt{
+				color: #000000;
+				font-weight: 700;
+				font-size: 44px;
+			}
+			.count{
+				float: right;
+				height: 40px;
+				width: 40px;
+				background: #e6e6fa;
+				border-radius: 50%;
+				font-size: 20px;
+				text-align: center;
+				line-height: 40px;
+				color: #666;
+			}
+			.count2{
+				float: right;
+				height: 40px;
+				width: 40px;
+				background: #e6e6fa;
+				border-radius: 50%;
+				font-size: 20px;
+				text-align: center;
+				line-height: 40px;
+				color: #666;
+			}
+			.two dt{
+				color: #000000;
+				font-weight: 700;
+				font-size: 44px;
+			}
+			.text{
+				background: #fff;
+				font-size: 28px;
+				height: 64px;
+				line-height: 64px;
+				border-radius: 5px;
+				margin-left: 8px;
+				margin-right: 5px;
+				margin-top: 5px ;
+				margin-bottom: 5px;
+			}
+			.text span{
+				float: right;
+				background: url(img/de.jpg) no-repeat center;
+				height:60px ;
+				width: 60px ;
+				cursor: pointer;
+			}
+			
+			.two dd{
+				background: #e6e6e6;
+				font-size: 28px;
+				height: 64px;
+				line-height: 64px;
+				border-radius: 5px;
+				margin-left: 8px;
+				margin-right: 5px;
+				margin-top: 5px ;
+				margin-bottom: 5px;
+			}
+			.two dd span{
+				float: right;
+				background: url(img/de.jpg) no-repeat center;
+				height:60px ;
+				width: 60px ;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="box">
+			<div class="head">
+				<span>ToDoList</span>
+				<input  type="text" placeholder="添加ToDo"/>	
+			</div>
+			<dl class="one">
+				<dt>正在进行<span class="count">0</span></dt>
+				<!--<dd class="text"><input type="checkbox"/>jcdnfd<span></span></dd>-->
+			</dl>
+			
+			<dl class="two">
+				<dt>已经完成<span class="count2">0</span></dt>
+		
+			</dl>
+			
+		</div>
+		
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/myCookie.js"></script>
+<script type="text/javascript">
+	
+	var count=0;
+	var count1=0
+	$(".head input").keydown(function(e){
+		var e=e||event;
+		if(e.keyCode==13){
+			creatDd();
+			$(".head input").val("")
+			//删除当前的dd
+				$(".text span").click(function(){
+					$(this).parent().remove()
+					count--;
+				})
+				//添加到已读列表
+					$(".text input").click(function(){
+						$(this).parent().remove();
+						count1++;
+						var str="";
+						str+=`
+						<dd class="text">
+							${$(this).parent().html()}
+						</dd>
+						`
+						$(".two").append(str)
+							$(".two dd span").click(function(){
+							$(this).parent().remove()
+							count--;
+						})
+						$(".count2").html(count1)
+						
+					})
+			
+			$(".count").html(count)
+		}
+	})
+	function creatDd(){
+		count++;
+		var str="";
+		str+=`
+		<dd class="text">
+		<input type="checkbox"/>
+		${$(".head input").val()}
+		<span class="btn"></span>
+		</dd>
+		`
+		$(".one").append(str)
+			setCookie("list",str,10)
+			console.log()
+	}
+	
+	
+</script>

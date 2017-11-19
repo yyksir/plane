@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+		<style>
+			div{
+				height:50px;
+				width:50px;
+				margin:30px;
+				background:pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div>buhjcdisnfdiofjos</div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<script>
+	$.fn.extend({
+		setBig:function(){
+			this.click(function(){
+				$(this).animate({
+					"height":300,
+					"width":300
+				},1000)
+				
+			})
+		},
+		setSmall:function(){
+			this.click(function(){
+				$(this).hide(1000)
+			})
+		},
+		setColor:function(options){
+			this.mouseover(function(){
+				
+				
+				size=$(this).css("fontSize")
+				background=$(this).css("background")
+				var defaults={
+					"color":"red",
+					"opacity":0.3,
+					"background":"blue",
+					"size":"20px"
+					
+				}
+				
+				var setting=$.extend(defaults,options);
+				
+				$(this).css({
+					"background":setting.background,
+					"color":setting.color,
+					"fontSize":setting.size
+				
+				});
+				
+			})
+		},
+		seColorOut:function(){
+			this.mouseout(function(){
+				$(this).css({
+					"background":background,
+					"fontSize":size
+				
+				})
+			})
+		}
+		
+	})
+	
+	$("div").setBig();
+	$("div").setSmall();
+	$("div").setColor({"size":"50px","background":"black"})
+	$("div").seColorOut();
+	
+	
+	
+	
+</script>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+	<!--<script src="Fnisodd.js"></script>-->
+<script>	
+		
+//	alert(isodd(9))
+	/*	var count=0;
+		for(var i=1;i<=100; i++){
+			if(isodd(i)){
+				count++;
+			}
+		}
+		alert(count)*/
+			
+			function fun(m){
+				var flag=true;
+				for(i=2;i<m;i++){
+					if(m%i==0){
+						flag=false;
+						break;
+					}				
+				}
+				return flag;
+			}
+//			alert(fun(9))
+			var sum=0;
+			for(var i = 100;i <= 200; i++ ){
+				if( fun(i) ){
+					sum += i;
+				}
+			}
+			alert(sum);
+			
+//		alert(fun(8))
+		/*	for(var i=1;i<=100;i++){
+				if(fun(i)&&fun(100-i)){
+					console.log("100可以分为"+i+"和"+(100-i)+"的和");
+				}
+			}*/
+		
+		
+//	第六题
+	/*function fun(m){
+		sum=0;
+		while(m!=0){
+			sum+=m%10;
+			m=parseInt(m/10);
+		}
+		return sum;
+	}
+	alert(fun(11));*/
+	
+/*		function fun(m){
+			sum=0;
+			while(m!=0){
+				sum=sum+m%10;
+				m=parseInt(m/10);
+			}
+			return sum;
+		}
+		alert(fun())*/
+		
+		
+	/* 计算下面分数列 前10项的和
+2/1 + 3/2 + 5/3+8/5+…..*/
+		//第七题
+	/*	function fun(i){
+		sum=0;
+		var m=2;
+		var n=1;
+		for(i=1;i<=10;i++){
+			var temp=m
+			sum=sum+m/n
+			m=m+n
+			n=temp;
+			}
+		return sum;
+	}
+		alert(fun(10));*/
+	
+/*	function fun(i){
+		
+		sum=0;
+		var m=2;
+		var n=1;
+		for(i=1;i<=10;i++){
+			var temp=m;
+			sum=sum+m/n;
+			m=m+n;
+			n=temp
+		}
+		return sum;
+	}
+	alert(fun(10))*/
+/*	
+	function fun(){
+		sum=0;
+		var m=2;n=1;
+		for(i=1;i<=10;i++){
+			var temp=m;
+			sum+=m/n;
+			m=m+n;
+			n=temp;
+		}	
+		return sum;	
+	}
+	alert(fun(10))*/
+	
+//	第一题
+/*		function fun(){
+			var count=0;
+		for(i=1;i<=3;i++){
+			for(j=1;j<=3;j++){
+				if(i!=j){
+				var n=10*i+j;
+				if(n%2){
+					count++;
+					document.write(n+" ");
+					}		
+				}			
+			}	
+		}
+		return count;		
+	}
+	alert(fun())*/
+	
+	/*function fun(){
+		var count=0;
+		for(i=1;i<=3;i++){
+			for(j=1;j<=3;j++){
+				if(i!=j){
+					var n=10*i+j;
+					if(n%2){
+						count++;
+						document.write(n+" ");
+					}
+				}
+				
+			}
+		}
+		return count;
+		
+	}
+	alert(fun())*/
+/*		var n=parseInt(prompt("输入数值"));
+		if(n%2){
+			fun(n);
+		}else{
+			king(n);
+		}
+		function king(n){
+			var sun=0;
+			for(var i=1;i<=n;i++){
+				sun+=1/(2*i);
+			}
+			return sun;
+		}
+		alert(king(n));
+		
+		function fun(){
+			var sum=0;
+			for(var i=1;i<=n;i++){
+				sum+=1/((2*i)-1);
+			}
+			return sum;
+		}
+		alert(fun());*/
+		
+/*		function sum(n){
+			if(typeof n!="number"){
+				return  "n请输入数值";	
+			}
+			var i;
+			if(n%2){
+				i=1;
+			}else{
+				i=2;
+			}		
+			var sum=0;
+			while(i<=n){
+				sum+=1/i;
+				i+=2;
+			}
+			return sum;
+		}
+		
+		alert(sum(8));*/
+		
+//		第三题
+		
+/*		function fun(){
+			var count=0;
+			for(i=15;i<50;i+=5){
+				count++;
+			}
+			return count;	
+		}
+		alert(fun())*/
+		
+		/*	function fun(){			
+				var sum=1;
+				for(i=0;i<64;i++){
+					sum+=Math.pow(2,i)*0.00001;		
+				}			
+					return sum;
+			}
+			alert(fun())
+		*/
+		
+		
+	/*	5、如果一个数恰好等于它的因数之和，则称该数为“完全数” perfect number。
+例如：
+第一个完全数是6，它有因数1、2、3、6，除去它本身6外，其余3个数相加，1+2+3=6。第二个完全数是28，
+它有因数1、2、4、7、14、28，除去它本身28外，其余5个数相加，1+2+4+7+14=28。
+第三个完全数是496，有约数1、2、4、8、16、31、62、124、248、496，除去其本身496外，其余9个数相加，
+1+2+4+8+16+31+62+124+248=496。
+函数实现：	请列出2~10000的所有完全数*/
+
+/*	function perfect(){
+			for(i=2;i<=10000;i++){
+				var sum=0
+				for(j=1;j<i;j++){
+					if(i%j==0){
+						sum+=j;
+					}
+				}
+				if(sum==i){
+					document.write(i+" ");
+				}
+			}
+	}
+	perfect()	
+	*/
+	
+	
+</script>

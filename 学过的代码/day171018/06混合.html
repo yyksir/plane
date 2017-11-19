@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function Student(name,age,addr){
+		this.name = name;
+		this.age = age;
+		this.addr = addr;
+	}
+	Student.prototype.eat = function(){
+		return "学生也要吃饭呀";
+	}
+	Student.prototype.sleep = function(){
+		return "学生在睡觉";
+	}
+	var stu1 = new Student("小张",16,"上海");
+	var stu2 = new Student("小王",26,"北京");
+	alert( stu1.eat == stu2.eat );
+</script>

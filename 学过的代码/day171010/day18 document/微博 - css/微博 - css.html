@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#txt{
+				width:200px;
+				height:200px;
+				border:1px solid #ccc;
+			}
+			#ul{
+				width:300px;
+				height:300px;
+				border:1px solid #000;
+				margin:0 auto;
+			}
+			#ul li{
+				list-style: none;
+				border-bottom: 1px dashed #ccc;
+				padding:2px;
+				opacity: 0;
+				filter: alpha(opacity=0);
+			}
+		</style>
+	</head>
+	<body>
+		<textarea name="" rows="10" cols="40" id = "txt"></textarea>
+		<input type="button" name="btn" id="btn" value="发布" />
+		<ul id = "ul">
+			<li>fdfk</li>
+		</ul>
+	</body>
+</html>
+<script src = "sport4.js"></script>
+<script type="text/javascript">
+    var oBtn = document.getElementById("btn");
+    var oTxt = document.getElementById("txt");
+    var oUl = document.getElementById("ul");
+    
+   	oBtn.onclick=function(){
+    	var li=	document.createElement("li");
+    	li.innerHTML=oTxt.value;
+    	oUl.insertBefore(li,oUl.children[0])
+//  	var h=li.offsetHeight;
+    	var h = li.offsetHeight 
+    	li.style.Height=0;
+    	
+    	startMove(li,{"height":h},function(){
+    		startMove(li,{"opacity":100})
+    	});	
+    }
+    
+/*     oBtn.onclick = function(){
+    	var li = document.createElement("li");
+    	li.innerHTML = oTxt.value;
+    	oUl.insertBefore(li , oUl.children[0]);
+    	
+    	var h = li.offsetHeight ;//获取高度
+    	li.style.height = 0; //动画过程改变高度值 目标值是h   初始值应该是0 
+    	startMove(li,{"height":h},function (){
+    		startMove(li,{"opacity":100})
+    	});
+    }*/
+    
+    
+    
+    
+    
+    
+
+</script>

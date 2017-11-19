@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			width:1px;
+			height: 100px;
+			background: skyblue;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script src ="sport5.js"></script>
+<script>
+	//鼠标移入时 同时改变宽5px  高 1000px
+	var box = document.getElementById("box");
+	box.onmouseover = function(){
+		startMove(this,{"width":1,"height":1000});
+	}
+</script>

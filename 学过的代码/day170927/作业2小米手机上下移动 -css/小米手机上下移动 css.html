@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	
+    <style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.xiaomi{
+			width:512px;
+			height:400px;
+			overflow:hidden;
+			position:relative;
+			margin:100px auto;
+		}
+		img{
+			position:absolute;
+			top:0;			
+		}
+		.xiaomi span{
+			width:100%;
+			height:200px;
+			display:block;
+			position:absolute;
+			cursor:pointer;
+		}
+		.up{
+			top:0;		 
+		}
+		.down{
+			bottom:0;			 
+		}
+    </style>
+</head>
+<body>
+<div class="xiaomi" id="xiaomi">
+    <img src="images/mi.png" alt="" id="pic"/>
+    <span class="up" id="picUp"></span>
+    <span class="down" id="picDown"></span>
+</div>
+</body>
+</html>
+<script>
+	 function $(id){
+	 	return document.getElementById(id);
+	 }
+	 
+	 $("xiaomi").onmouseover=function(e){
+	 	var e=e||event;
+	 	 timer=setInterval(fun,10);
+	 	var min=$("picUp").offsetHeight;
+	 	var max=$("xiaomi").offsetHeight
+	 	
+	 	var y=e.pageY-$("xiaomi").offsetTop;
+//	 	var y1=e.pageY-$("xiaomi").offsetTop-$("picUp").offsetHeight;
+	 	var index=0;
+	 	function fun(){
+	 			index++;
+	 		
+	 		if(y>0&&y<min){
+	 			if(index==$("pic").offsetHeight){
+	 				clearInterval(timer);
+	 			}
+	 			$("pic").style.top=-index+"px";
+	 			
+	 		}else if(y>min&&y<max){
+	 			if(index==$("pic").offsetHeight){
+	 				clearInterval(timer);
+	 			}
+	 			$("pic").style.top=index+"px";
+	 		}
+	 		}
+	 }
+	 $("xiaomi").onmouseout=function(){
+	 	clearInterval(timer)
+	 }
+	 
+/*	 $("picUp").onmouseover=function(e){
+	  var timer=setInterval(fun,10)
+	 	var e=e||event;
+	 	var picUpMax=$("xiaomi").offsetHeight/2;
+	 	var index=0;
+	 	function fun(){
+	 		
+	 	var y1=e.pageY-$("xiaomi").offsetTop;
+	 		if(y1>0&&y1<picUpMax){
+	 			
+	 		$("pic").style.top=-index+"px";
+	 		}
+	 		
+	 		
+	 		index++;
+	 		
+	 	}
+	 	
+	 }*/
+	 
+/*	 $("picDown").onmouseover=function(evt){
+	 	var timer1=setInterval(funn,10)
+	 	var evt=evt||event;
+	 	var picUpMin=$("xiaomi").offsetHeight/2;
+	 	var picUpMax=$("xiaomi").offsetHeight;
+	 		var index=0;
+	 		
+	 		function funn(){	
+	 		
+	 	var y2=evt.pageY-$("xiaomi").offsetTop-picUpMin;
+	 	
+	 		if(y2>picUpMin&&y2<picUpMax){
+	 			
+	 		$("pic").style.top=index+"px";
+	 		
+	 		}
+	 		if(index==("pic").offsetHeight){
+	 			index=0
+	 		}
+	 		
+	 		index++;
+	 		
+	 	}
+	 	
+	 	
+	 	
+	 }*/
+	 
+	 /*$("xiaomi").onmouseout=function(e){
+	 	var e=e||event;
+//	 	clearInterval(timer1);
+	 	clearInterval(timer);
+	 	
+	 }*/
+	 
+	 
+	 
+	 
+	 
+/*	 $("xiaomi").onmouseover=function(e){
+	 	var timer=setInterval(fun,10)
+	 	
+	 	var e=e||event;
+	 	
+	 	var picUpMin=$("picUp").offsetHeight;
+	 	var picUpMax=$("picDown").offsetHeight;
+	 	
+	 	var y=e.pageY-$("xiaomi").offsetTop
+	 	var index=0;
+	 	function fun(){
+	 		
+	 		if(y>0&&y<picUpMin){
+	 			
+	 		$("pic").style.top=-index+"px";
+	 			index++;
+	 		}else if(y=picUpMax){
+	 			$("pic").style.top=index+"px";
+	 			index++;
+	 			
+	 		}
+	 	
+	 	}
+	 	
+	 }*/
+	 
+	/* $("xiaomi").onmouseover=function(e){
+	 	clearInterval(timer);
+	 	
+	 }*/
+	 	
+	 
+	 
+	 
+</script>
+
+
+
+

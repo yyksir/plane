@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取数据" />
+	</body>
+</html>
+<script type="text/javascript">
+	var oInput = document.querySelector("input");
+	//点击按钮  从服务器获取数据
+	oInput.onclick = function(){
+		//var ajax = new XMLHttpRequest();
+		//var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		//创建一个ajax对象
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//和服务器建立连接  
+		ajax.open("get","http://127.0.0.1/1719ajax/1.txt",true);
+		
+		
+		//客户端发送数据
+		ajax.send();
+		
+		//得到服务器返回的结果 并输出
+		ajax.onreadystatechange = function(){
+			//状态值 和  状态码的判断
+			if( ajax.readyState == 4 ){
+				if( ajax.status == 200 ){
+					alert( ajax.responseText );
+				}else{
+					alert( "错误信息：" + ajax.status );
+				}
+			}
+		}
+		
+		alert("777777777777");
+		/*setTimeout(function(){
+			alert( ajax.responseText );
+		},1000)*/
+	}
+</script>

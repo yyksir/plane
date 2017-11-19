@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <ul>
+        <li>一级菜单ITEM
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单ITEM
+                    <ul>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单
+							<ul>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+							</ul>
+						</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>一级菜单</li>
+        <li>一级菜单ITEM
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单ITEM
+                    <ul>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>一级菜单</li>
+    </ul>
+    <script>
+    	
+    	var oLi=document.getElementsByTagName("li");
+    			
+    		for(var i=0;i<oLi.length;i++){
+    			oLi[i].onclick=function(e){
+    				var e=e||event;
+    				if(e.shiftKey){
+    				e.stopPropagation();
+    				window.getSelection().removeAllRanges();
+    				}
+    				if(this.firstElementChild.style.display=="none"){
+    					this.firstElementChild.style.display="block";
+    				}else{
+    					this.firstElementChild.style.display="none";
+    				}
+    			}
+    			
+    		}
+    	
+    	
+    	
+       /* function $(class){
+        	return document.getElementsByClassName(class);
+        }
+        */
+       
+//     var oLi=document.getElementsByTagName("li");
+   /*    var oUl=document.getElementsByTagName("ul");
+       for(i=1;i<oUl.length;i++){
+	    oUl[i].addEventListener("click",function(evt){
+	      	var evt=evt||event;
+       			if(evt.shiftKey){	
+	        			this.style.display="block";
+       		},true) ;
+	    
+	    	
+	    	oUl[i].addEventListener("click",function(evt){
+        			var evt=evt||event;
+        				evt.stopPropagation()
+        	 		this.style.display="none";
+        	
+       			}
+	     	
+       }*/
+       /* $("li").addEventListener("click",function(evt){
+        	var evt=evt||event;
+        	 $("li").style.display="block";
+        })*/
+        
+        
+        
+        
+        
+    </script>
+    </body>
+</html>

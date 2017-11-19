@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="创建div" id="btn" />
+	</body>
+</html>
+	<script>
+		
+	var btns=document.getElementById("btn");
+	btns.onclick=function(){
+		var box=new DragBox(100,100);
+		box.init();
+	}
+	function DragBox(width,height){
+		this.w=width;
+		this.h=height;
+	}
+	DragBox.prototype.rand=function(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	DragBox.prototype.init=function(){
+		this.div=document.createElement("div");
+		this.div.style.height=this.div.style.width=this.w+"px";
+		document.body.appendChild(this.div);
+		this.div.style.position="absolute";
+		this.div.style.left=this.rand(0,1000)+"px";
+		this.div.style.top=this.rand(0,700)+"px";
+		this.div.innerHTML="脱脱脱脱";
+		this.div.style.background=`rgb(${this.rand(0,255)},${this.rand(0,255)},${this.rand(0,255)})`
+		this.drag();
+	}
+	DragBox.prototype.drag=function(){
+		var that=this;
+		this.div.onmousedown=function(e){
+			var e=e||event;
+			that.fnDown(e);
+			document.onmousemove=function(e){
+				var e=e||event;
+				that.fnMove(e);
+			}
+		}
+		document.onmouseup=function(){
+			that.fnOut();
+		}
+	}
+	DragBox.prototype.fnDown=function(e){
+		this.disx=e.offsetX;
+		this.disy=e.offsetY;
+		
+	}
+	DragBox.prototype.fnMove=function(e){
+		
+		window.getSelection().removeAllRanges();
+		this.div.style.left=e.pageX-this.disx+"px";
+		this.div.style.top=e.pageY-this.disy+"px";
+	}
+	DragBox.prototype.fnOut=function(){
+		document.onmousemove=null;
+		document.onmouseout=null;
+	}
+	
+	
+	</script>

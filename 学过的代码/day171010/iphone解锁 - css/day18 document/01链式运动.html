@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			width:100px;
+			height: 100px;
+			background: skyblue;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script src="sport3.js"></script>
+<script>
+	//鼠标移入到div  先改变div的宽度  在改变div的高度
+	var odiv = document.getElementById("box");
+	//链式运动：前一个动作完成后再进入后一个动作
+	odiv.onmouseover = function(){
+		startMove( 300, "width" , odiv , function (){
+			/*alert("结束了");*/
+			startMove( 300 , "height" , odiv )
+		});
+		
+		/*setTimeout(function(){
+			startMove( 300, "height" , odiv );
+		},1500)*/
+	}
+</script>

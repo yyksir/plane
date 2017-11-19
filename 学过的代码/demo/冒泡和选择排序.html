@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//冒泡
+/*	function sort(arr){	
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=0;j<arr.length-1-i;j++){
+				if(arr[j]>arr[j+1]){
+					temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp
+				}
+				
+			}
+		}
+			return arr
+	}
+	alert(sort([90,26,31]))*/
+	
+	
+	function sort(arr){
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=0;j<arr.length-i-1;j++){
+				if(arr[j]>arr[j+1]){
+					temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp
+				}
+			}
+		}
+		return arr
+	}
+	alert(sort([90,26,31]))
+	
+	
+	
+	//选择
+	
+/*	function sort(arr){
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=i+1;j<arr.length-1;j++){
+				if(arr[i]>arr[j]){
+					temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp
+					
+				}
+			}
+		}
+		return arr;
+		
+	}
+		alert(sort([23,1,45,67,2,3,89]))
+	*/
+	
+</script>

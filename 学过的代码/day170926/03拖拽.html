@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width:300px;
+			height:300px;
+			background:pink;
+			position:absolute;
+			left:0;
+			top:0;
+			cursor:move;
+		}
+	</style>
+	<body>
+		<div>一个div</div>
+	</body>
+</html>
+<script>
+	var odiv = document.getElementsByTagName("div")[0];
+	odiv.onmousedown = function(e){
+		var e = e || event;
+		var disx = e.offsetX; //记录内部偏移量
+		var disy = e.offsetY;
+		//为文档添加移动事件
+		document.onmousemove = function(e){
+			var e = e || event;
+			//取消操作元素时文字的选中状态
+			//window.getSelection().removeAllRanges();
+			window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+			var x =  e.pageX - disx;
+			var y =  e.pageY - disy;
+			var maxL = window.innerWidth - 300;//最大的left值
+			var maxT = window.innerHeight - 300;//最大的top值
+			//边界处理   
+			if( x < 0 ){ //左边界
+				x = 0;
+			}else if( x > maxL ){ //右边界
+				x = maxL;
+			}
+			if( y < 0  ){ //上边界
+				y = 0;
+			}else if( y > maxT ){ //下边界
+				y = maxT;
+			}
+			
+			odiv.style.left = x + "px";
+			odiv.style.top = y + "px";
+		}
+	}
+	odiv.onmouseup = function(){
+		document.onmousemove = "";
+	}
+	
+	 
+</script>

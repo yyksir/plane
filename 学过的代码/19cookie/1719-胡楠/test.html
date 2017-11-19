@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body,div,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,table,tr,td,th,caption,hr,form,fieldset,legend,img,input{
+		    margin: 0;
+		    padding: 0;
+		    }
+		    html,body{
+		        width:100%;
+		        overflow-x:hidden;
+		    }
+		    a{
+		        text-decoration: none;
+		        cursor: pointer;
+		    }
+		    ul{
+		        list-style-type: none;
+		    }
+		    img{
+		        display: block;
+		    }
+		    input{
+		        outline: none;
+		    }
+		#head{
+			height: 50px;
+			background: #000;
+			color:#fff;
+			line-height: 50px;
+			font-size: 20px;
+			padding: 0 40px;
+		}
+		#head p{
+			float:left;
+		}
+		#head input{
+			float:right;
+			width:400px;
+			height:30px;
+			margin-top:10px;
+			border:none;
+			border-radius: 5px;
+			padding-left:10px;
+		}	
+		.do{
+			background: #ccc;
+			padding: 0 40px;	
+			overflow: hidden;
+		}
+		.do div{
+			width:100%;
+			height:80px;
+		}
+		.do div p{
+			float:left;
+			font-weight: 600;
+			font-size: 20px;
+			color: #000;
+			height: 80px;
+			line-height: 80px;
+		}
+		.do div span{
+			width:20px;
+			height:20px;
+			background: #fff;
+			color:#000;
+			font-size: 14px;
+			border-radius: 50%;
+			float:right;
+			text-align: center;
+			vertical-align: middle;
+			margin-top:30px;
+		}
+		.do ul li{
+			height:30px;
+			background: #fff;
+			overflow: hidden;
+			border-radius: 5px;
+			margin-bottom:10px;
+			position: relative;
+		}
+		.do ul li p{
+			background: green;
+			width:6px;
+			height: 100%;
+			border-bottom-left-radius: 5px;
+			border-top-left-radius: 5px;
+			float:left;
+		}
+		.do ul li input{
+			float:left;
+			margin:10px;
+		}
+		.do ul li span{
+			float:left;
+			line-height: 30px;
+		}
+		.do ul li a{
+			float:right;
+			text-align: center;
+			color:red;
+			margin-right: 10px;
+			font-size: 28px;
+			line-height: 28px;
+		}
+		#done li h2{
+			background: #ccc;
+			opacity: 0.6;
+			position: absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height: 100%;
+			z-index:2;
+		}
+		#done li input{
+			background: dodgerblue;
+			color: #fff;
+		}
+		#done li p{
+			background: #999;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="head">
+			<p>ToDoList</p>
+			<input type="text" placeholder="添加ToDo"/>
+		</div>
+		<div id="doing" class="do">
+			<div>
+				<p>正在进行</p>
+				<span></span>	
+			</div>
+			<ul>
+				<!--<li><p></p><input type="checkbox"/><span>111111</span><a>×</a></li>-->
+			</ul>
+		</div>
+		<div id="done" class="do">
+			<div>
+				<p>已经完成</p>
+				<span></span>	
+			</div>
+			<ul>
+				<!--<li><h2></h2><p></p><input type="checkbox" checked/><span>111111</span><a>×</a></li>	-->
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript">
+	var arring=getCookie("doing");
+	var arrne=getCookie("done");
+	var str1="";
+	var str2="";
+	$(arring).each(function(i,n){
+		str1+=`<li><p></p><input type="checkbox"/><span>${n}</span><a>×</a></li>`
+	})
+	$(arrne).each(function(i,n){
+		str2+=`<li><p></p><input type="checkbox"checked/><span>${n}</span><a>×</a></li>`
+	})
+	$("#doing ul").append(str1)
+	$("#done ul").append(str2)
+	$("#doing div span").html(arring.length)
+	$("#done div span").html(arrne.length)
+	
+	$(window).keydown(function(e){
+		var e=e||event;
+		if(e.keyCode==13){
+			$("#doing ul").append(`<li><p></p><input type="checkbox"/><span>${$("#head input").val()}</span><a>×</a></li>`)
+			$("#doing div span").html(Number($("#doing div span").html())+1)
+			arring.push($("#head input").val())
+			setCookie("doing",JSON.stringify(arring),1)
+			$("#head input").val("")
+		}
+	})
+	$("#doing ul").on("click","input",function(){
+		$("#doing div span").html(Number($("#doing div span").html())-1)
+		$("#done div span").html(Number($("#done div span").html())+1)
+		arring.splice($(this).parent().index(),1)
+		arrne.push($(this).next("span").html())
+		setCookie("doing",JSON.stringify(arring),1)
+		setCookie("done",JSON.stringify(arrne),1)
+		$(this).parent().appendTo($("#done ul"))
+	})
+	$("#doing ul").on("click","a",function(){
+		arring.splice($(this).parent().index(),1)
+		setCookie("doing",JSON.stringify(arring),1)
+		$(this).parent().remove();
+		$("#doing div span").html(Number($("#doing div span").html())-1)
+		
+	})
+	$("#done ul").on("click","a",function(){
+		arrne.splice($(this).parent().index(),1)
+		setCookie("done",JSON.stringify(arrne),1)
+		$(this).parent().remove();
+		$("#done div span").html(Number($("#done div span").html())-1)	
+	})
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#ball{
+			width:30px;
+			height: 30px;
+			background: skyblue;
+			position: absolute;
+			left:500px;
+			top:100px;
+			border-radius: 50%;
+		}
+		
+		#circle{
+			border:1px solid red;
+			height:400px;
+			width:400px;
+			position: absolute;
+			top:129px;
+			left:314px;
+			border-radius:50%;
+		}
+	</style>
+	<body>
+		<div id="ball"></div>
+		<div id="circle"></div>
+	</body>
+</html>
+<script>
+	var ball = document.getElementById("ball");
+	var r = 200; 
+	//运动轨迹的半径
+	var deg = 0;//运动的初始角度
+	var timer = null;
+	//根据小球的位置  确定圆心的坐标
+	var centerPoint = {
+		x : ball.offsetLeft + ball.offsetWidth/2, 
+		y : ball.offsetTop + ball.offsetHeight/2 + r
+	}
+//	alert(ball.offsetLeft + ball.offsetWidth/2)
+//	alert(ball.offsetTop + ball.offsetHeight + r)
+	//515
+	//330
+	timer = setInterval(function(){
+		ball.style.left = centerPoint.x + r*Math.cos(deg*Math.PI/180)-15 + "px";
+		ball.style.top = centerPoint.y - r*Math.sin(deg*Math.PI/180)-15 + "px";
+		deg+=10000000000000000000000000000000000000;
+	},1 )
+	
+</script>

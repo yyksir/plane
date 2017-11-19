@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+		.top img{
+			height:168px;
+		}
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+		
+    </style>
+</head>
+<body>
+	<div class="top" id="top">
+	    <img src="images/top.png" alt=""/>
+	</div>
+	<div class="nav" id="Q-nav">
+	    <img src="images/nav.png" alt=""/>
+	</div>
+	<div class="main">
+	    <img src="images/main.png" alt=""/>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var nav = document.getElementById("Q-nav");
+	window.onscroll = function(){
+		//获取头部的高度 height = 168   
+		//当滚动条触发时，页面向上滚走的距离大于168时，开始实现吸顶效果  
+		var height = document.getElementById("top").offsetHeight;
+		//获取页面滚走的距离
+		var sTop = document.body.scrollTop || document.documentElement.scrollTop;
+		if( sTop > height ){
+			//实现吸顶：实际上就是将  nav进行固定定位
+			nav.style.position = "fixed";
+			nav.style.top = "0";
+		}else{
+			nav.style.position = "static"; // ""
+		}
+	}
+</script>
+ 

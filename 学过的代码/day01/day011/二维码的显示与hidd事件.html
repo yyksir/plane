@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="show"  value="显示"/>
+		<input type="button" id="hidden"  value="隐藏"/><br />
+		<img src="" alt="" id="pic" />
+		
+		<script>
+			var oShow=document.getElementById("show");
+			var oHidden=document.getElementById("hidden");
+			var oPic=document.getElementById("pic");
+			
+			oShow.onclick=function(){
+				oPic.src="1.jpg";
+			}
+			
+			oHidden.onclick=function(){
+				oPic.src="";
+			}
+			
+		</script>
+		
+	</body>
+</html>

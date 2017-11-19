@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="请求接口数据" />
+	</body>
+</html>
+<script type="text/javascript">
+	var oInput = document.querySelector("input");
+	oInput.onclick = function(){
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET","http://127.0.0.1/1719ajax/data1.php");
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				//alert(typeof ajax.responseText );
+				var _json = JSON.parse( ajax.responseText );
+			}
+		}
+	}
+</script>

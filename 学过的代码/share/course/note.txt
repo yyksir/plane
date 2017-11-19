@@ -1,0 +1,31 @@
+res.setHeader("Access-Control-Allow-Origin","*");  //设置无跨域---在writeoeHead之前
+
+
+
+var http = require("http");
+
+http.createServer((req, res) => {
+  
+  if(req.url !== '/favicon.ico'){
+    res.setHeader("Access-Control-Allow-Origin","*");
+    
+    res.writeHead(200,{'Content-Type':"text/html;charset=utf-8"});
+    
+    res.write(---)//string/buffer
+    
+    res.end()
+  }
+  
+}).listen(3000);
+
+
+模块化开发
+  定义模块
+    var obj = {}
+ 暴露模块
+    module.exports = obj;
+ 引用模块
+    var obj = require("./md.js");
+        如果是自定义的模块，那么必须以./开头，表示的是自定义的
+ 使用
+    obj

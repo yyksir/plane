@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="uu">
+			
+		</ul>
+	</body>
+</html>
+<script>
+	//json对象
+	var _json = {
+		"name" : "jack",
+		"age" : 12,
+		"addr" : "北京",
+		"tel":"1360193884",
+		"score" : 100
+	}
+	//获取json对象的信息
+	/*alert( _json.name );
+	alert( _json.age );*/
+	//alert( _json["name"] );
+	//json对象的遍历
+	/*for(var i in _json){
+		console.log(i + "-->" + _json[i]);
+	}*/
+	
+	var _json = {
+		"id" : 1,
+		"info" :[
+					{"name":"jack","age":12,"addr":"北京"},
+					{"name":"lily","age":18,"addr":"上海"},
+					{"name":"xiaohong","age":13,"addr":"北京"},
+					{"name":"xm","age":16,"addr":"天津"},
+					{"name":"xiaocai","age":19,"addr":"北京"}
+				]
+	}
+	//获取  lily  18   上海
+	/*console.log( _json.info[1].name )
+	console.log( _json.info[1].age )
+	console.log( _json.info[1].addr )*/
+	//将json中对象的信息显示到 页面中
+	var oUl = document.getElementById("uu");
+	var html = "";
+	for( var i = 0 ; i <_json.info.length ; i++  ){
+		html += "<li>"+_json.info[i].name+"-"+_json.info[i].age+"-"+_json.info[i].addr+"</li>"
+	}
+	oUl.innerHTML= html;
+</script>

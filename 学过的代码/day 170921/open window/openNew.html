@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		子窗口
+		<div id="d">我是谁 我为了谁</div>
+		<input type="button" value="操作父元素" id="btn" />
+	</body>
+</html>
+<script>
+	document.getElementById("btn").onclick=function(){
+		window.opener.document.body.style.backgroundColor="black"
+		
+		
+	}
+	
+	
+</script>

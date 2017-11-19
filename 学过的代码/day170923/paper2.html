@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			textarea{
+				height:200px;
+				width:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+		微博发布：		
+		<textarea ></textarea>
+		<input type="button" value="发布" />
+		</div>
+	</body>
+</html>
+<script>	
+		
+		var oTextarea=document.getElementsByTagName("textarea");
+		var oFabu=document.getElementsByTagName("input");
+		var oDiv=document.getElementsByTagName("div");
+//		var oDiv2=document.getElementbyId("box");
+//		var oDiv3=document.getElementbyId("big");
+		
+		oFabu.onclick=function(){
+			var oTxt=document.createElement("p")
+			oDiv.appendChild(oTxt);
+//			oTextarea.value=oTxt.innerHTML;
+			document.body.appendChild(oTxt);
+			
+			
+			
+		}
+
+
+
+</script>

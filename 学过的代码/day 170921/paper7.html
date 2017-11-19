@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>勾股定理</h1>
+		<input id="t1" class="tt" type="text" />+<input class="tt" id="t2" type="text" />=<input class="tt"  id="t3" type="text" />
+	</body>
+</html>
+<script>
+//		var oT1=document.getElementById("t1");
+//		var oT2=document.getElementById("t2");
+//		var oT3=document.getElementById("t3");
+		var oTt=document.getElementsByClassName("tt");
+	
+		for(var i=0;i<2;i++){
+			
+			
+			oTt[i].onkeyup=function(){
+			var tt1=oTt[0].value;
+			var tt2=oTt[1].value;
+			var tt3=oTt[2].value;
+			
+			if(tt1==""||tt2==""){ 
+				oTt[2].value="输入的数值不能为空";
+			}else{	
+//			alert(tt2)
+				oTt[2].value=Math.sqrt(Math.pow(tt1,2)+Math.pow(tt2,2)) ;	
+			}
+		}		
+	}
+	
+</script>

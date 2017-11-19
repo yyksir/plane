@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//创建一个工厂  ---  函数
+	function createStu(name,tel){
+		//备料  --- 创建一个对象
+		var obj = new Object();
+		//加工  --- 为对象添加属性和方法
+		obj.name = name;
+		obj.tel = tel;
+		obj.study = function(){
+			return obj.name + "在学习";
+		}
+		//出厂  --- 返回对象
+		return obj;
+	}
+	
+	
+	//创建一个工厂  ---  函数
+	function createDog(name,age){
+		//备料  --- 创建一个对象
+		var obj = new Object();
+		//加工  --- 为对象添加属性和方法
+		obj.name = name;
+		obj.age = age;
+		//出厂  --- 返回对象
+		return obj;
+	}
+	var dog =  createDog("小白",2);
+	var stu1 = createStu("小张","13283928282");
+	var stu2 = createStu("小王","13293928282");
+	var stu3 = createStu("小李","13293928282");
+	//alert( stu1.study() );
+	
+	alert( dog instanceof  Object );
+	alert( stu1 instanceof  Object );
+</script>

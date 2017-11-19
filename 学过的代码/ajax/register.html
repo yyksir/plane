@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="uname" id="uname" />
+		密码：<input type="text" name="upwd" id="upwd" />
+		<span id="s1"></span>
+		<input type="button" value="注册" id="btn" />
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("btn").onclick=function(){
+		var ajax=null;
+		
+		if(window.XMLHttpRequest){
+			ajax=new XMLHttpRequest();
+		}else{
+			ajax=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		var data="status=register&userID="+$("uname" ).value+"&password="+$("upwd").value;
+		ajax.open("get","http://datainfo.duapp.com/shopdata/userinfo.php?"+data);
+		ajax.send();
+		
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4&&ajax.status==200){
+				var str=ajax.responseText;
+				switch(str){
+					case "0":$("s1").innerHTML="用户名重名";break;
+					case "1":$("s1").innerHTML="注册成功";break;
+					case "2":$("s1").innerHTML="数据库报错";break;
+					
+				}
+			}
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+</script>

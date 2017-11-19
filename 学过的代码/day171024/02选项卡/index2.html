@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ol,ul{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		ul{
+			height: 26px;
+			width: 500px;
+		}
+		ul li{
+			float: left;
+			height: 26px;
+			background-color:gray;
+			padding:0 16px;
+			border-top:1px solid red;
+			cursor: pointer;
+		}
+		ol{
+			width:490px;
+			padding:5px;
+			background-color:pink;
+		}
+		ol li{
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<div id="tab">
+		<ul class="over">
+			<li style="background-color:pink;" >tab1</li>
+			<li>tab2</li>
+			<li>tab3</li>
+		</ul>
+		<ol>
+			<li  id="ff" style="display: block;"><img src="img/7.jpg"></li>
+			<li  ><img src="img/8.jpg"></li>
+			<li ><img src="img/9.jpg"></li>
+		</ol>
+	</div>	
+</body>
+</html>
+<script>
+	//  $().ready(function(){   })
+	//  $().click(function(){   })
+//	$(".over li").mouseover(function(){
+		//排他思想 ： 
+//		$(".over li").css("background","gray");//将所有标题的背景颜色清空默认色
+//		$(this).css("background","pink"); //留下当前操作的li的背景颜色
+//		
+//		//操作内容  
+//		$("ol li").css( "display","none" ); //先将所有内容隐藏   
+//		$("ol li").eq( $(this).index() ).css( "display","block" ); // 留下当前标题对应的内容  根据下标对应
+//	})
+	
+	
+	$(".over li").mouseover(function(){
+		$(".over li").css("background","gray");
+		$(this).css("background","pink");
+		
+		$("ol li").css("display","none");
+		$("ol li").eq($(this).index()).css("display","block")
+		
+	})
+	$(".over li").mouseout(function(){
+		$("ol li").css("display","none");
+//		$("ol li").eq($(this).index()).css("display","none")
+		
+	})
+	
+</script>

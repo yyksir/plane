@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//变量作用域： 全局变量和局部变量
+	//匿名函数 ： 
+	/*var fn = function (){
+		alert("匿名函数");
+	}
+	fn();*/
+	
+	//匿名函数自执行
+	//1--将一个匿名函数括起来  后面加一个小括号
+	/*(function(){
+		alert("匿名函数自执行");
+	})()*/
+	
+	//2 -- 匿名函数带参数
+	/*(function (a,b){
+		alert( a > b ? a : b );
+	})(3,2)*/
+	
+	//3--匿名函数带返回值
+	/*alert((function(a,b){
+		return a > b;
+	})(3,1))*/
+	
+	var fn = function (){
+		alert("匿名函数自执行");
+	}();
+</script>

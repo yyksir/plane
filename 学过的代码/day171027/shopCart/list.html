@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="main.css" />
+		<script src="jquery.min.js"></script>
+		<script src="cookie.js"></script>
+		<style>
+			.header{
+				height: 40px;
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+		</style>
+	</head>
+	<body>		 
+		<div class="header">
+			<span id="s"><a href="login.html">登录 / 注册</a></span>
+			<span id="s1">
+				
+			</span>
+		</div>
+		<div class="nav clearfix">
+			<!--<span>小米手机</span>-->
+		</div>
+		
+		<ul class="shoplist clearfix">
+			<!--<li>
+				<a href="page.html">
+					<img src="img/1.jpg" alt="" />
+					<p>小米1</p>
+					<p>890</p>
+				</a>
+				<button>加入购物车</button>
+			</li>-->
+		</ul>	
+	</body>
+</html>
+<script type="text/javascript">
+	var deffered=$.ajax({
+		type:"get",
+		url:"data.json",
+		datetype:"json"
+	})
+	deffered.done(function(res){
+		var html=""
+		var ch1="";
+		var ch2="";
+		
+		html=`<span>${res.classify001.name}</span>
+			<span>${res.classify002.name}</span>
+		`;
+		
+		$(".nav").html(html);
+			for(var i=0;i<res.classify001.list.length;i++){
+			ch1+=`<li>
+				<a href="page.html">
+					<img src="img/${res.classify001.list[i].src}" alt="" />
+					<p>${res.classify001.list[i].name}</p>
+					<p>${res.classify001.list[i].price}</p>
+				</a>
+				<button>加入购物车</button>
+			</li>
+			`
+		}
+		
+		$(".shoplist").html(ch1);
+		
+		$(".nav span").each(function(index){
+			if(index==0){
+				$(".nav span").eq(index).click(function(){
+					for(var i=0;i<res.classify001.list.length;i++){
+						ch1+=`<li>
+							<a href="page.html">
+								<img src="img/${res.classify001.list[i].src}" alt="" />
+								<p>${res.classify001.list[i].name}</p>
+								<p>${res.classify001.list[i].price}</p>
+							</a>
+							<button>加入购物车</button>
+						</li>
+						`
+					}
+					$(".shoplist").html(ch1);
+//					}
+				})
+				
+				
+			}else{
+				$(".nav span").eq(index).click(function(){
+					for(var i=0;i<res.classify002.list.length;i++){
+						ch2+=`<li>
+							<a href="page.html">
+								<img src="img/${res.classify002.list[i].src}" alt="" />
+								<p>${res.classify002.list[i].name}</p>
+								<p>${res.classify002.list[i].price}</p>
+							</a>
+							<button>加入购物车</button>
+						</li>
+						`
+					}
+					$(".shoplist").empty()
+					$(".shoplist").html(ch2);
+				})
+					}
+			
+		})
+		
+//		var id=1;
+		var infoArr=[];
+		$(".shoplist a").click(function(){
+			
+			/*<!--<img src="img/1.jpg" alt="" />
+			<p>小米1</p>
+			<p>333</p>
+			<button>购买</button>-->*/
+			
+			var _json={
+//					"pid":id++,
+					
+					"shopImg":  $(this).children().eq(0).attr("src"),
+					"shopName":$(this).children().eq(1).html(),
+					"shopPrice":$(this).children().eq(2).html()
+				}
+			infoArr.push(_json);
+			
+				setCookie("prolist",JSON.stringify(infoArr))
+				console.log(document.cookie)
+			
+			
+		})
+		
+		console.log(res)
+		
+	})
+	 
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<input type="button" value="请输入要发表的内容" />
+		
+		<textarea name="" id="" cols="30" rows="10">introduce yourself</textarea>
+		<span>限制十字内</span>
+	</body>
+</html>
+<script>
+	
+	$(function(){
+		$("textarea").focus(function(){
+			$(this).val("")
+		})
+		$("textarea").keyup(function(){
+			var v=$(this).val();
+			var len=$(this).val().length;
+			var sheng=10-len;
+			if(sheng>=0){
+				$("span").html("你还可以输入"+sheng+"个字")
+			}else{
+				$("textarea").val(v.substr(0,10));
+			}
+		})
+		
+		
+		
+		
+		
+	})
+	/*var count=0
+	$("textarea").bulr(function(){
+		
+	for(var i=0;i<$("textarea").html().length;i++){
+		alert()
+		count++;
+		$("span").html("还剩"+10-count+"个字")
+		if(count<=10){
+			$("textarea").html($("textarea").html())
+		}
+		
+	}
+	})*/
+	
+	
+	
+</script>

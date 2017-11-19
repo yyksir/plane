@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:350px;
+			height:350px;
+			border:1px solid black;
+			margin:200px;
+			position:relative;
+		}
+		#small{
+			position:relative;
+		}
+		#mask{
+			width:175px;
+			height:175px;
+			background:red;
+			opacity:.3;
+			position:absolute;
+			top:0;
+			left:0;
+			display:none;
+			cursor:move;
+		}
+		#big{
+			width:400px;
+			height:400px;
+			border:1px solid black;
+			position:absolute;
+			top:0;
+			left : 360px;
+			overflow:hidden;
+			display:none;
+		}
+		#bigImg{
+			position:absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="small">
+				<img src="001.jpg" alt="" id="smallImg"/>
+				<div id="mask"></div>
+			</div>
+			<div id="big">
+				<img src="0001.jpg" alt="" id="bigImg"/>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	//鼠标移入移出 小图区域  控制  大图区域和遮罩层的显示和隐藏
+	$("small").onmouseover = function(){
+		$("mask").style.display = "block";
+		$("big").style.display = "block";
+	}
+	$("small").onmouseout = function(){
+		$("mask").style.display = "none";
+		$("big").style.display = "none";
+	}
+	//鼠标在小图区域上移动   实现放大镜
+	$("small").onmousemove = function(e){
+		var e = e || event;
+		var x = e.pageX - $("mask").offsetWidth/2 - $("box").offsetLeft;
+		var y = e.pageY - $("mask").offsetHeight/2 - $("box").offsetTop;
+		var maxL = $("box").offsetWidth - $("mask").offsetWidth;
+		var maxT = $("box").offsetHeight - $("mask").offsetHeight;
+		//边界处理
+		/*if( x < 0 ){
+			x = 0;
+		}else if( x > maxL ){
+			x = maxL;
+		}*/
+		x = x < 0 ? 0 : ( x > maxL ? maxL : x )
+		y = y < 0 ? 0 : ( y > maxT ? maxT : y )
+		
+		$("mask").style.left = x + "px";
+		$("mask").style.top = y + "px";
+		
+		//比例关系 ： mask.left / 大图.left = 小图的宽度  / 大图的宽度  = mask的宽度/大图显示区宽度
+		var bigImgLeft = x*$("bigImg").offsetWidth/$("smallImg").offsetWidth;
+		var bigImgTop = y*$("bigImg").offsetHeight/$("smallImg").offsetHeight;
+		//设置大图的left值和top值
+		$("bigImg").style.left = -bigImgLeft + "px";
+		$("bigImg").style.top = -bigImgTop + "px";
+	}
+</script>

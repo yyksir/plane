@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+			<li>55</li>
+		</ul>
+	</body>
+</html>
+<script>
+	for( var i = 0 ; i < 3 ; i ++  ){
+		function fun(){
+			alert(i);
+		}
+	}
+	/*
+	 function fun(){
+	 	alert( i );
+	 }
+	 
+	 function fun(){
+	 	alert( i );
+	 }
+	 
+	 function fun(){
+	 	alert( i );
+	 }
+	 */
+	//fun(); // 3
+	
+	for( let i = 0 ; i < 3 ; i ++  ){
+		function fun(){
+			alert(i);
+		}
+	}
+	//fun(); // 2
+	/*
+	 	function fun(){
+			alert(0);	 		
+	 	}
+	 	
+	 	function fun(){
+			alert(1);	 		
+	 	}
+	 	
+	 	function fun(){
+			alert(2);	 		
+	 	}
+	*/
+	
+	//页面中有5个li ，  点击某个li获取该li下标
+	var list = document.getElementsByTagName("li");
+	for( let  i = 0 ; i < list.length ; i++ ){
+		list[i].onclick = function(){
+			alert( i );
+		}
+	}
+</script>

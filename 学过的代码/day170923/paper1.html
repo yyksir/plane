@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		行：<input type="text" id="t1" />
+		列：<input type="text" id="t2" />
+		<input type="button" id="btn"  value="创建表格"/>
+	
+	</body>
+</html>
+<script>
+		var oT1=document.getElementById("t1");
+		var oT2=document.getElementById("t2");
+		var oBtn=document.getElementById("btn");
+		
+		
+		oBtn.onclick=function(){
+			
+		function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1))+min;
+	}
+//			var t1=oT1.value;
+//			var t2=oT2.value;
+			
+			var oTable=document.createElement("table");
+			document.body.appendChild(oTable);
+//			oTable.style.border="1px solid gray";
+			
+			for(var i=0;i<oT1.value;i++){
+				var oTr=document.createElement("tr");
+					oTable.appendChild(oTr);	
+						oTr.style.height="50px";
+						oTr.style.border="1px solid gray"
+				for(var j=0;j<oT2.value;j++){
+				var oTd=document.createElement("td");
+						oTd.style.width="50px";
+						oTr.appendChild(oTd);
+						oTd.style.border="1px solid gray"
+						oTd.innerHTML=rand(1,100);
+//						oTd.style.text-align=center;
+					oTd.style.backgroundColor="rgb("+ rand(0,255)+","+ rand(0,255)+","+rand(0,255)+")";
+
+				}
+					var oInput=document.createElement("input")
+					oTr.appendChild(oInput);
+					oInput.type="button";
+					oInput.value="删除";
+					oInput.style.height=oInput.style.width="50px";
+			
+			}
+			for(var y=0;y<oTr.length;y++){
+					
+				document.getElementsByTagName("input")[y].onclick=function(){
+					if(confirm("确定 要删除吗？")){
+						
+					alert(y)
+					this.parentNode.remove();
+					
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}
+	
+	
+	
+</script>

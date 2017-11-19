@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="main.css" />
+		<style>
+			.header{
+				height: 40px;
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+			#box{
+				width: 300px;
+				height: 30px;
+				border: 1px solid black;
+				float: left;
+				margin-left:500px;
+			}
+			#box li{
+				float: left;
+				list-style: none;
+				display: inline-block;
+				padding: 0 5px;
+			}
+			#box li.active{
+				color: red;
+			}
+			#box ul{
+				/*float: left;*/
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>		 		 
+		<ul class="shoplist clearfix" id="main">
+			<!--<li>
+				<img src="img/1.jpg" alt="" />
+				<p>小米1</p>
+				<p>999</p>
+				<button>购买</button>
+			</li>-->
+		</ul>	
+		<div class="M-box" style="margin-left: 500px;"></div>
+	</body>
+</html>
+<script src="script/lib/jquery.min.js"></script>
+<script src="script/jquery.pagination.js"></script>
+<link rel="stylesheet" type="text/css" href="style/common.css"/>
+<link rel="stylesheet" type="text/css" href="style/pagination.css"/>
+<script type="text/javascript">
+	//页面加载 请求ajax  显示第一页
+	var deff = $.ajax({
+		url : "data.json",
+		type:"get"
+	})
+	deff.done(function(json){
+		//总页数 ： 
+		pageCount =Math.ceil( json.length / 4 ) ;
+		//显示第一页的数据
+		var html = "";
+        var index = 1;
+        for( var i = (index-1)*4 ; i < index*4 ; i++ ){
+        	if( i < json.length ){
+            	html += `<li>
+							<img src="img/${json[i].src}" alt="" />
+							<p>${json[i].name}</p>
+							<p>${json[i].price}</p>
+							<button>购买</button>
+						</li>`
+        	}
+        }
+        $("#main").html(html);
+        
+        
+        
+        
+        //分页请求
+        $(".M-box").pagination({
+			pageCount :pageCount,
+			callback:function(api){
+		        var data = {
+		            page: api.getCurrent()//获取当前页
+		        };
+		        $.getJSON('data.json',function(json){
+		            var html = "";
+		            var index = data.page;
+		            for( var i = (index-1)*4 ; i < index*4 ; i++ ){
+		            	if( i < json.length ){
+			            	html += `<li>
+										<img src="img/${json[i].src}" alt="" />
+										<p>${json[i].name}</p>
+										<p>${json[i].price}</p>
+										<button>购买</button>
+									</li>`
+		            	}
+		            }
+		            $("#main").html(html);
+		        });
+		    }
+		})
+	})
+	
+	
+	
+	
+</script>
+<!-- 
+	
+	页码 	 (页码-1)*4          页码 *4
+	1   	0----------   4
+	2  		4-------------8
+	3   	8-------------12
+	4   	12------------16
+		
+-->

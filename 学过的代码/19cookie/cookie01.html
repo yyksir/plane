@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			
+			/*form{
+				height:300px;
+				width:300px;
+				margin:100px auto;
+			}*/
+			
+		</style>
+	</head>
+	<body>
+		<form action="">
+		用户名：<input type="text" id="txt"  /><br>
+		密码：<input type="passworld" id="pass"  /><br>
+		<input type="button" value="注册" id="btn" />
+		
+		</form>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	$("btn").onclick=function(){
+		
+		var _json={
+			"name":$("txt").value,
+			"passworld":$("pass").value
+			
+		}
+		
+		document.cookie="intro="+JSON.stringify(_json);
+//		document.cookie="name=" + $("txt").value;
+//		document.cookie="passworld=" + $("pass").value;		
+		location.href="cookie02.html";
+	}
+//		document.cookie="intro="+JSON.stringify(_json);
+	
+	
+	
+</script>

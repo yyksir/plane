@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			tr{
+				height:100px;
+				width:100px;
+			}
+			td{
+				height:100px;
+				width:100px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+<!--		<table border=1>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			
+		</table>
+		-->
+		<div id="d">
+		<p>11</p>
+		<p id="d">11</p>
+		<p>11</p>
+		</div>
+		
+	</body>
+</html>
+<script>
+//	var oTr=document.getElementsByTagName("tr");
+/*	var oTd=document.getElementsByTagName("td");
+	
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1))+min;
+	}
+	
+	for(i=0;i<oTd.length;i++){
+		oTd[i].onclick=function(){
+		this.parentNode.style.backgroundColor="rgb("+ rand(0,255)+","+ rand(0,255)+","+rand(0,255)+")";
+		
+		this.innerHTML=rand(0,10);
+		}
+	}*/
+	
+	
+	
+	
+	
+	
+	var ps=document.getElementById("d").childNodes;
+	var ps2=document.getElementById("d").children;
+	alert(ps[0].nodeType);
+	
+	/*for(i=0;i<ps.length;i++){
+		if(ps[i].nodeType==1){
+			ps[i].style.fontSize="20px";
+		}
+	}*/
+	
+</script>

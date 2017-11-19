@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			background:black;
+		}
+		
+	</style>
+	<body>
+		
+		
+			
+			<!--<img src="star.gif" alt="" />-->
+		
+	</body>
+</html>
+
+
+<script>
+	
+	
+//	var oDiv=document.getElementsByTagName("div");
+//	var oImg=document.getElementsByTagName("img");
+	function rand( min,max ){
+    	return  Math.floor(  Math.random()*( max-min + 1 )  ) + min
+	}
+	var timer=setInterval(fun,100)
+	function fun(){
+	var oImg=document.createElement("img");
+		oImg.src="star.gif" ;
+		document.body.appendChild(oImg);
+		oImg.style.height=oImg.style.width=rand(50,100)+"px";
+		oImg.style.position="absolute";
+		oImg.style.left=rand(0,1000)+"px";
+		oImg.style.top=rand(0,1000)+"px";
+		
+		oImg.onmouseover=function(){
+			this.remove();
+		}
+//		document.getBody.insertBefore(oImg.cloneNode(),null);
+		
+		
+	}
+	
+	
+	
+	
+</script>

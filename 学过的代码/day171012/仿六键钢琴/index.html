@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/sport.js"></script>
+		<link rel="stylesheet" type="text/css"	 href="css/css.css" />
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>
+					<span class="keyA">A</span>
+					<P class="keyA"></P>
+				</li>
+				<li>
+					<span class="keyS">S</span>
+					<P class="keyS"></P>
+				</li>
+				<li>
+					<span class="keyD">D</span>
+					<P class="keyD"></P>
+				</li>
+				<li>
+					<span class="keyJ">J</span>
+					<P class="keyJ"></P>
+				</li>
+				<li>
+					<span class="keyK">K</span>
+					<P class="keyK"></P>
+				</li>
+				<li>
+					<span class="keyL">L</span>
+					<P class="keyL"></P>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr= [65,83,68,74,75,76];
+	var objp = document.getElementsByTagName("p");
+	var objSpan = document.getElementsByTagName("span");
+	
+	
+	
+	
+	document.onkeydown=function(e){
+		var e=e||event;
+		for(var i=0;i<objp.length;i++){
+			if(e.keyCode==arr[i]){
+				startMove(objp[i],{"height":300});
+				startMove(objSpan[i],{"opacity":100})
+			}
+		}
+	}
+	document.onkeyup=function(e){
+		var e=e||event;
+		for(var i=0;i<objp.length;i++){
+			if(e.keyCode==arr[i]){
+				startMove(objp[i],{"height":0})
+				startMove(objSpan[i],{"opacity":50})
+			}
+		}
+	}
+/*	
+	document.onkeydown = function(evt){
+		var e = evt || event;
+		for(var i = 0 ; i < objP.length ; i++){
+			if( e.keyCode == arr[i] ){
+				startMove(objP[i],{"height":300})
+				startMove(objSpan[i],{"opacity":100})
+			}
+		}
+	}
+	document.onkeyup = function(evt){
+		var e = evt || event;
+		for(var i = 0 ; i < objP.length ; i++){
+			if( e.keyCode == arr[i] ){
+				startMove(objP[i],{"height":0})
+				startMove(objSpan[i],{"opacity":50})
+				
+			}
+		}
+	}*/
+</script>

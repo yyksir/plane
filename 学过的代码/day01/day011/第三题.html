@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background:gray;
+			}
+			.first{
+				height:100px;
+				margin-bottom:30px;
+			}
+			.box{
+				height:100px;
+				width:200px;
+				background:blue;
+				line-height:100px;
+				text-align:center;
+				float:left;
+			}
+			.sp{
+				height:100px;
+				width:300px;
+				line-height:100px;
+				text-align:center;
+				float:left;
+				background:white;
+				margin-left:20px;
+				display:none;
+			}
+			
+		.box1{
+				/*display:block;*/
+				height:100px;
+				width:200px;
+				background:white;
+				float:left;
+				
+			}
+			.sp1{
+				height:100px;
+				width:300px;
+				line-height:100px;
+				text-align:center;
+				float:left;
+				background:white;
+				margin-left:20px;
+				float:left;
+				display:none;
+				
+			}
+			.big{
+				height:100px;
+				width
+			}
+		</style>
+	</head>
+	<body>
+		<div class="first">
+		<div class="box" id="txt">DIV</div>
+		<span class="sp" id="db"></span>
+		</div>
+			<div class="big" >
+		<textarea class="box1" id="txt1" value=""></textarea>
+		<span  class="sp1"  id="db1"></span>
+		</div>
+		<script>
+			var oTxt=document.getElementById("txt");
+			var oTxt1=document.getElementById("txt1");
+			var oDb=document.getElementById("db");
+			var oDb1=document.getElementById("db1");
+			
+			oTxt.ondblclick=function(){
+				oDb.style.display="block";
+				oDb.innerHTML="您刚刚双击了DIV，触发了dblclick事件";
+			}
+			
+			oTxt1.onkeypress=function(){
+				oDb1.style.display="block";
+				oDb1.innerHTML="您DIV，触发了onchange事件";
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

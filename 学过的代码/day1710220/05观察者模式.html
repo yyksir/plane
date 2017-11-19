@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function Child(dad,mum){
+		this.dad = dad;
+		this.mum = mum;
+		this.cry = function(){
+			this.dad.notify();//孩子哭了 通知父亲喂奶了
+		}
+		setTimeout(function(){
+			this.cry();//孩子哭了
+		}.bind(this),Math.random()*5000)
+	}
+	function Dad(){
+		this.notify = function(){
+			//通知父亲给孩子喂奶
+			this.weinai();
+		}
+		this.weinai = function(){
+			alert("孩子哭了  爸爸开始给孩子喂奶");
+		}
+	}
+	var dad = new Dad();
+	var child = new Child(dad,null);
+	
+</script>

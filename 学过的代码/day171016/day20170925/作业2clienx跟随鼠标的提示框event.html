@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body{font:12px; padding:0; margin:0;}
+#bigdiv{width:1000px;  margin:0 auto;}
+
+.smalldiv{width:auto; height:100px; background:#066;}
+.infoa{color:#fff;}
+.infodiv{color:#fff; width:200px; position:absolute; height:150px; background:gray; display:none;}
+
+</style>
+
+
+</head>
+
+<body>
+	<div id="bigdiv">
+		<div class="smalldiv">
+			<a href="#" class="infoa">个人信息AAA</a>
+		</div>
+		<div class="smalldiv">
+			<a href="#" class="infoa">个人信息BBB</a>
+		</div>
+		<div class="smalldiv">
+			<a href="#" class="infoa">个人信息CCC</a>
+		</div>
+		<div class="smalldiv">
+			<a href="#" class="infoa">个人信息DDD</a>
+		</div>
+		<div class="infodiv" id="infoDiv">弹出框</div>
+	</div>
+</body>
+</html>
+<script>
+	var oBtn=document.getElementsByClassName("infoa");
+	var oinfodiv=document.getElementById("infoDiv");
+	
+		for(i=0;i<oBtn.length;i++){
+			oBtn[i].onclick=function(){
+				var e=e||event;
+				oinfodiv.style.left=e.pageX+"px";
+				oinfodiv.style.top=e.pageY+"px";
+				oinfodiv.style.display="block";
+			}
+			oinfodiv.onclick=function(){
+				oinfodiv.style.display="none";
+			}
+			
+		}
+	 
+</script>

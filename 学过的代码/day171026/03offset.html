@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.min.js"></script>
+	<style type="text/css">
+		#parent{
+			width: 300px;
+			height: 300px;
+			/*position: absolute;
+			left: 300px;
+			top: 500px;*/
+			background: skyblue;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left: 350px;
+			top:200px;
+		}
+	</style>
+	<body>
+		<div id="parent">
+			<div id="son"></div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//console.log( $("#son").offset() );
+	console.log( $("#son").position() );
+</script>

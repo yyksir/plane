@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}	
+			tr{
+				height:50px;
+			
+			}
+			td{
+				width:100px;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<table border=1>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			
+		</table>
+		
+	</body>
+</html>
+<script>
+	var oTr=document.getElementsByTagName("tr");
+	
+	function rand( min,max ){
+    	return  Math.floor(  Math.random()*( max-min + 1 )  ) + min
+	}
+	
+	for(var j=0;j<oTr.length;j++){
+		oTr[j].style.backgroundColor="rgb("+ rand(0,255)+","+ rand(0,255)+","+rand(0,255)+")";
+	}
+	
+	
+	
+</script>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>购物车</title>  
+    <style>  
+    	*{
+    		margin:0;
+    		padding:0;
+    	}
+        #addToCart {  
+            position: fixed;  
+            left: 600px;  
+            cursor: pointer;  
+            width: 100px;  
+            height: 40px;  
+            line-height: 40px;  
+            border: 1px solid deeppink;  
+            text-align: center;  
+            color: deeppink;  
+            top:500px;
+        }  
+        #addToCart:hover {  
+            color: #fff;  
+            background-color: deeppink;  
+        }  
+  
+        #shopCart {  
+            position: fixed;  
+            right: 0;  
+            top: 200px;  
+            color: red;  
+        }  
+        #shopNum{
+        	width: 60px;
+        	height: 25px;
+        	background: deeppink;
+        	color:black;
+        	text-align: center;
+        	line-he0ight: 25px;
+        }
+    </style>
+	<body>
+		<div id="addToCart">  
+		   添加到购物车  
+		</div>  	
+		<div id="shopCart">  
+		    购物车  
+		  <p id="shopNum"></p>
+		</div>
+	</body>
+</html>  
+<script type="text/javascript">
+ 	function $(id){
+ 		return document.getElementById(id);
+ 	}
+ 	var num = 0;
+ 	$("addToCart").onclick = function(){
+ 		//1--确定三点坐标
+ 		//起点
+ 		var startPoint = {
+ 			x : $("addToCart").offsetLeft + $("addToCart").offsetWidth/2 ,
+ 			y : $("addToCart").offsetTop
+ 		}
+ 		//终点
+ 		var endPoint = {
+ 			x : $("shopCart").offsetLeft + $("shopCart").offsetWidth/2 ,
+ 			y : $("shopCart").offsetTop
+ 		}
+ 		//最高点
+ 		var topPoint = {
+ 			x : endPoint.x - 80,
+ 			y : endPoint.y - 60
+ 		}
+ 		
+ 		//2--根据三点坐标确定抛物线方程
+ 		var a = ((startPoint.y - endPoint.y) * (startPoint.x - topPoint.x) - (startPoint.y - topPoint.y) * (startPoint.x - endPoint.x)) / ((startPoint.x * startPoint.x - endPoint.x * endPoint.x) * (startPoint.x - topPoint.x)-(startPoint.x * startPoint.x - topPoint.x * topPoint.x) * (startPoint.x - endPoint.x));  
+		
+		var b = ((endPoint.y - startPoint.y) - a * (endPoint.x * endPoint.x - startPoint.x * startPoint.x)) / (endPoint.x - startPoint.x);  
+				
+		var c = startPoint.y - a * startPoint.x * startPoint.x - b * startPoint.x;
+ 		
+		 		
+ 		//3--创建商品
+ 		var good = document.createElement("div");
+ 		good.style.background = "red";
+ 		good.style.width = good.style.height = "25px";
+ 		good.style.position = "absolute";
+ 		var x = startPoint.x;//初始位置
+ 		var y = startPoint.y;
+ 		good.style.left = x + "px";
+ 		good.style.top = y + "px";
+ 		document.body.appendChild( good );
+ 		//4--启动定时器完成商品运动
+ 		var timer = setInterval(function(){
+ 			if( x < endPoint.x ){
+	 			x = x + 3;
+	 			y = a*x*x + b*x + c;
+	 			good.style.left = x + "px";
+	 			good.style.top = y + "px";
+ 			}else{
+ 				clearInterval(timer);
+ 				document.body.removeChild(good);
+ 				$("shopNum").innerHTML = ++num;
+ 			}
+ 		},10)
+ 		//5--商品运动到终点 累加商品个数 并停止定时器
+ 	}
+</script>
+

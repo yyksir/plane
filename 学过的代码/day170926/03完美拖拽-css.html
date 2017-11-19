@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>完美拖拽</title>
+	<style type="text/css">
+		html,body{overflow:hidden;}
+		body,div,h2,p{margin:0;padding:0;}
+		body{color:#fff;background:#000;font:12px/2 Arial;}
+		p{padding:0 10px;margin-top:10px;}
+		span{color:#ff0;padding-left:5px;}
+		#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;margin:-75px 0 0 -150px;}
+		#box h2{height:25px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+		#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+	</style>
+	<script type="text/javascript">
+	
+	
+	</script>
+</head>
+<body>
+	<div id="box" style="margin-left: 0px; margin-top: 0px; left: 533px; top: 231px;">
+	    <h2><a href="javascript:;" id="a1">点击回放拖动轨迹</a></h2>
+	    <p><strong>Drag:</strong><span>false</span></p>
+	    <p><strong>offsetTop:</strong><span>231</span></p>
+	    <p><strong>offsetLeft:</strong><span>533</span></p>
+	</div>
+</body></html>
+<script>
+	var oBox=document.getElementById("box");
+	
+	var oBtn=document.getElementById("a1");
+//	var arr=[];
+//	var brr=[];
+	var positionArr=[];
+	
+		oBox.onmousedown=function(e){
+			var e = e||event;
+			var disx=e.offsetX ;
+			var disy=e.offsetY  ;
+			document.onmousemove=function(e){
+				var e=e||event;
+				window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+				var x=e.pageX-disx;
+				var y=e.pageY-disy
+				var maxWidth=window.innerWidth-300;
+				var maxHeight=window.innerHeight-150;
+				
+			if(x<0){
+				x=0
+			}else if(x>maxWidth){
+				x=maxWidth;
+			}
+			if(y<0){
+				y=0
+			}else if(y>maxHeight){
+				y=maxHeight;
+			}
+				
+				oBox.style.left=x+"px";
+				oBox.style.top=y+"px";
+				
+				positionArr.push({"left":oBox.style.left,"top":oBox.style.top});
+//				positionArr.push({"left":oBox.style.left,"top":oBox.style.top});
+//				 arr.push(x);
+//			 		brr.push(y);
+			}
+			
+		}
+			
+		oBox.onmouseup=function(){
+			document.onmousemove="";
+		}
+		
+		oBtn.onclick=function(){
+				var i=positionArr.length-1;
+			
+			function move(){
+//				alert(i)
+				if(i==0){
+					clearInterval(timer)
+					positionArr=[]
+				}
+					oBox.style.left=positionArr[i].left;
+					oBox.style.top=positionArr[i].top;
+				
+				
+				i--;
+				
+			}
+			
+			var timer=setInterval(move,50)
+		}
+  
+</script>

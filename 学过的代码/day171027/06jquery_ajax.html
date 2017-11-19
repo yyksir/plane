@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	$.ajax({
+		type:"get",
+		url:"data.json",
+		data : {"username":"lll"},
+		datatype: "json",//请求数据的类型
+		success : function(res){
+			alert( res[0].uname );
+		}
+	});
+	
+	//promise --then
+	
+//	var deffered = $.ajax({
+//		type:"get",
+//		url:"data.json"
+//	});
+//	deffered.done(function(res){
+//		alert( res[1].uname );
+//	})
+</script>

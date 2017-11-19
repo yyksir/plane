@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table width=500 border=1>
+			<tr>
+				<td>1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<input type="button" value="上移" class="up">
+					<input type="button" value="下移" class="down">
+					<input type="button" value="置顶" class="top">
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><input type="button" value="上移" class="up">
+					<input type="button" value="下移" class="down">
+					<input type="button" value="置顶" class="top"></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><input type="button" value="上移" class="up">
+					<input type="button" value="下移" class="down">
+					<input type="button" value="置顶" class="top"></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><input type="button" value="上移" class="up">
+					<input type="button" value="下移" class="down">
+					<input type="button" value="置顶" class="top"></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><input type="button" value="上移" class="up">
+					<input type="button" value="下移" class="down">
+					<input type="button" value="置顶" class="top"></td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	var topBtn = document.getElementsByClassName("top");
+	var upBtn = document.getElementsByClassName("up");
+	var downBtn = document.getElementsByClassName("down");
+	 
+	//置顶操作 ：  将该行移动到最前端
+	for( var i = 0 ; i < topBtn.length ; i++ ){
+		topBtn[i].onclick = function(){
+			//用法 ： 父节点.insertBefore(要删除的子节点，参照节点)
+			this.parentNode.parentNode.parentNode.insertBefore(this.parentNode.parentNode,this.parentNode.parentNode.parentNode.children[0]);
+		}
+		//上移 ： 将当前行移动到它前一个兄弟节点的前面
+		upBtn[i].onclick = function(){
+			//判断当前行的前一个兄弟节点是否存在  如果不存在就点击无效
+			//alert( this.parentNode.parentNode.previousElementSibling );
+			if(this.parentNode.parentNode.previousElementSibling){
+				this.parentNode.parentNode.parentNode.insertBefore( this.parentNode.parentNode,this.parentNode.parentNode.previousElementSibling );
+			}
+		}
+		downBtn[i].onclick=function(){
+			
+			if(this.parentNode.parentNode.nextElementSibling){
+				
+				this.parentNode.parentNode.parentNode.insertBefore(this.parentNode.parentNode.nextElementSibling,this.parentNode.parentNode)
+				
+			}
+			
+			
+			
+		}
+		
+		
+		
+	}
+	
+</script>

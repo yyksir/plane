@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+//			first
+/*			var sum = 0;
+			function fun(n){
+				
+				if(n == 1){
+					return 1;
+				}else{
+					sum = n+fun(n-1);
+				}
+				return sum;		
+			}
+			alert(fun(100));*/
+			
+			
+//			sencond
+/*			var sum=1;
+			function fun(m){
+				if(m==1){
+					return 1;
+				}else{
+					sum=m*fun(m-1);
+				}
+				return sum;
+			}	
+		alert(fun(5))*/
+//				2
+/*			function hello(n){
+					if(n==1){
+						return "hello";
+					}else{
+						return "hello" +" "+ hello(n-1);
+					}
+			}
+			alert(hello(10));*/
+			
+			
+//			3
+			function fun(m){
+				if (m==1){
+					return 0;
+				}else if(m==2){
+					return 1;
+				}else{
+				 return  fun(m-1)+fun(m-2);			
+				}
+			}
+			
+			for(i=1;i<=10;i++){
+				document.write(fun(i));
+			}
+		
+			
+		</script>
+	</body>
+</html>

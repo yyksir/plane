@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" name="qx"/>全选
+		<input type="checkbox" name="fx" />反选
+		<input type="checkbox" name="h"/>篮球
+		<input type="checkbox" name="h"/>足球
+		<input type="checkbox" name="h"/>桌球
+	</body>
+</html>
+<script type="text/javascript">
+	//   []
+	$("input[name=qx]").click(function(){
+		//让操作的复选框和当前点击的复选框的checked值保持一致
+		//$(this).attr("checked")   获取当前操作的复选框的checked值
+		//alert( $(this).prop("checked") );
+		$("input[name=h]").prop( "checked" , $(this).prop("checked") );
+	})
+	$("input[name=fx]").click(function(){
+		var cks = $("input[name=h]");
+		for( var i = 0 ; i < cks.length ; i++ ){
+			if( cks.eq(i).prop("checked") ){
+				cks.eq(i).prop("checked",false);
+			}else{
+				cks.eq(i).prop("checked",true);
+			}
+		}
+	})
+</script>

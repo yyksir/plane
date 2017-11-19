@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<style>
+		 span{
+		 	padding: 10px;
+		 }
+		 li{
+			list-style:none;
+		 }
+		 li span{
+			width:150px;
+			display:inline-block;
+			text-align:center;
+		 }
+	</style>
+	<script>
+		
+	</script>
+</head>
+<body bgcolor="pink">
+	<ul id="demo">
+		<li><span>编号</span><span>名称</span><span>价格</span></li>				
+	</ul>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	总金额 ：<input type="text" id="t"><input type="button" value="点击结算" id="btn"/>
+</body>
+</html>
+<script src="cookie.js"></script>
+<script>
+	
+	window.onload=function(){
+		
+		var arr=getCookie( "list");
+		var str="";
+		var sum=0;
+		for(var i=0;i<arr.length;i++){
+		str+="<li><span>"+arr[i].pid +"</span><span>"+arr[i].pname +"</span><span>"+arr[i].pprice +"</span></li>"	;
+		
+			sum+=parseInt( arr[i].pprice )
+		}
+		var oUl=document.getElementById("demo");
+		oUl.innerHTML+=str;
+		document.getElementById("btn").onclick=function(){
+			document.getElementById("t").value=sum;
+			
+		}
+		
+
+		
+		
+	}
+	
+	
+	//页面加载时   取出cookie并显示到页面中
+/*	window.onload = function(){
+	 	var arr = getCookie("prolist");
+	 	console.log(arr);
+	 	var str = "";
+	 	var sum = 0;
+	 	//字符串模板 ：  `字符串 ${变量}`
+	 	for(var i = 0 ; i < arr.length ; i++){
+	 		str += `<li>
+				 		<span>${ arr[i].pid }</span>
+				 		<span>${ arr[i].pname }</span>
+				 		<span>${ arr[i].price }</span>
+				 	</li>`;
+			sum +=parseInt( arr[i].price ) ;
+	 	}
+	 	var oUl = document.getElementById("demo");
+	 	oUl.innerHTML += str;
+	 	document.getElementById("btn").onclick = function(){
+	 		document.getElementById("t").value = sum;
+	 	}
+	}*/
+</script>

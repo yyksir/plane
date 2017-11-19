@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+		用户名：<input type="text" id="txt"  /><br>
+		密码：<input type="passworld" id="pass"  /><br>
+		<input type="submit" value="登录" id="btn" />
+		
+		</form>
+	</body>
+</html>
+<script>
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("btn").onclick=function(){
+		var str=document.cookie;
+		var arr=str.split("; ");
+		var arr=arr[0].split("=");
+		var intro=arr[1];
+		var _json=JSON.parse(intro)
+		
+		if(_json.name==$("txt" ).value&&_json.passworld==$("pass" ).value){
+			alert("right");
+			
+		}else{
+			alert("wrong");
+		}
+		
+//		alert(_json)
+//		console.log(arr)
+		
+	}
+	
+	
+	
+	
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var pro = new Promise(function(success,failed){
+		//success("成功了");
+		//failed("失败了");
+		//第一个定时器控制多久后成功了
+		setTimeout(function(){
+			success("成功了");
+		},Math.random()*1000 + 3000);
+		
+		//第二个定时器控制多久后失败了
+		setTimeout(function(){
+			failed("失败了");
+		},4000)
+	})
+	pro.then(function(str){
+		alert( str );
+	},function(str){
+		alert(str);
+	})
+</script>

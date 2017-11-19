@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="main.css" />
+		<script src="jquery.min.js"></script>
+		<script src="cookie.js"></script>
+		<style>
+			.header{
+				height: 40px;
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+		</style>
+	</head>
+	<body>		 
+		<div class="header">
+			<span id="s"><a href="login.html">登录 / 注册</a></span>
+			<span id="s1">
+				
+			</span>
+		</div>
+		<div class="nav clearfix">
+			<!--<span>小米手机</span>-->
+		</div>
+		
+		<ul class="shoplist clearfix">
+			<!--<li>
+				<a href="page.html">
+					<img src="img/1.jpg" alt="" />
+					<p>小米1</p>
+					<p>890</p>
+				</a>
+				<button>加入购物车</button>
+			</li>-->
+		</ul>	
+	</body>
+</html>
+<script type="text/javascript">
+	//页面加载  请求ajax加载数据
+	$.ajax({
+		type:"get",
+		url:"data.json",
+		success : function(json){
+			var str = "";
+			var html = "";
+			for( var attr in json ){
+				str += `<span>${json[attr].name}</span>`;
+				//查找每一个图片的信息 存放在 json[attr].list
+				for( var i = 0 ; i < json[attr].list.length ; i++ ){
+					var item = json[attr].list[i];
+					html += `
+							<li>
+								<a href="page.html?pid=${item.id}&cname=${attr}">
+									<img src="img/${item.src}" alt="" />
+									<p>${item.name}</p>
+									<p>${item.price}</p>
+								</a>
+								<span style="display:none" data-name=${item.name} data-src=${item.src} data-price=${item.price}></span>
+								<button>加入购物车</button>
+							</li>`;
+				}
+			}
+			$(".nav").html(str);
+			$(".shoplist").html(html);
+		}
+	});
+	//购物车的添加   委托   data-*自定义属性    
+	$(".shoplist").on("click","button",function(){
+		var arr = [];
+		var json = {
+			name: $(this).prev().data("name"), 
+			src:$(this).prev().data("src"), 
+			price:$(this).prev().data("price"), 
+		}
+		//当再次点击按钮时 数组会被清空   同时cookie数据也会有所改变 将前面的数据覆盖了  不能存多个商品到购物车上
+		//可以先将cookie数据取出来 存入到数组中   
+		//首先做个判断：如果cookie中有数据  就先存入到数组中
+		oldCookie = getCookie("shoplist");
+		if( oldCookie.length != 0 ){
+			arr = oldCookie; // 先将cookie数据取出来 存入到数组中   
+		}
+		
+		arr.push( json );//将当前购买的商品存入到数组中
+		//将数组存入到 cookie中
+		setCookie("shoplist",JSON.stringify( arr ));
+		console.log(document.cookie);
+	})
+</script>

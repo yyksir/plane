@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>文字搬运工</title>
+	</head>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		body {
+			background: #C0C0C0;
+		}
+		
+		.container {
+			width: 840px;
+			height: 280px;
+			border-radius: 25px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -420px;
+			margin-top: -140px;
+			background: white;
+		}
+		
+		.content_1,.end {
+			width: 340px;
+			height: 240px;
+			background: #EFEFD6;
+			margin-left: 20px;
+			margin-top: 20px;
+			float: left;
+		}
+		
+		.middle {
+			width: 110px;
+			height: 240px;
+			margin-top: 20px;
+			margin-left: 5px;
+			float: left;
+		}
+		
+		.end {
+			background: #63EFF7;
+			margin-left: 5px;
+			overflow-y: scroll;
+		}
+		
+		.button {
+			background: red;
+			color: white;
+			font-size: 18px;
+			padding: 5px 10px;
+			cursor: pointer;
+		}
+		
+		.count {
+			font-size: 24px;
+			padding: 5px 0px;
+			line-height: 24px;
+			text-align: center;
+			margin-top: 15px;
+			width: 100%;
+			height: 30px;
+			background: white;
+			/*display: none;*/
+		}
+		
+		.progress {
+			width: 110px;
+			height: 30px;
+			background: white;
+			margin-top: 20px;
+			position: absolute;
+			display: none;
+		}
+		
+		.progress div {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 0px;
+			height: 30px;
+			background: #63EFF7;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<!--左边开始-->
+			<textarea id="text1" class="content_1">在这里输入文字，输入的文字就会出现在右边</textarea>
+			<!--左边结束-->
+			<!--中间开始-->
+			<div class="middle">
+				<!--按钮开始-->
+				<div class="button" id="button">把文字右移</div>
+				<!--按钮结束-->
+				<!--个数显示-->
+				<div class="count" id="count">0/0</div>
+				<!--个数显示结束-->
+				<!--进度条开始-->
+				<div class="progress" id="progress">
+					<div id="progress_content"></div>
+				</div>
+				<!--进度条结束-->
+			</div>
+			<!--中间结束-->
+			<!--尾巴开始-->
+			<div class="end" id="end">
+					
+			</div>
+			<!--尾巴结束-->
+		</div>
+		
+	</body>
+
+</html>
+<script>
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("button").onclick=function(){
+		var str=$("text1").value;
+		if(str==""){
+			alert("输入为空")
+		}else{
+			var arr=str.split("");
+			
+		}
+		
+		
+	}
+	
+	
+</script>

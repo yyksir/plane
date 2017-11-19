@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text"  name="uname" id="uname"/>
+		密码：    <input type="text" name="upwd" id="upwd"/>
+		<span id="s"></span>
+		<input type="button" value="注册" id="btn"/>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("btn").onclick = function(){
+		/*var ajax = new XMLHttpRequest();
+		var data = "status=register&userID="+$("uname").value + "&password="+$("upwd").value;
+		ajax.open("get","http://datainfo.duapp.com/shopdata/userinfo.php?"+data);
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				//alert( ajax.responseText );
+				var str = ajax.responseText;
+				switch(str){
+					case "0":
+						$("s").innerHTML = "用户名重名了";
+						break;
+					case "1":
+						$("s").innerHTML = "注册成功";
+						break;
+					case "2":
+						$("s").innerHTML = "下辈子再试试吧再见";
+						break;
+				}
+			}
+		}*/
+		var data = "status=register&userID="+$("uname").value + "&password="+$("upwd").value;
+		ajaxGet("http://datainfo.duapp.com/shopdata/userinfo.php",function(str){
+			switch(str){
+				case "0":
+					$("s").innerHTML = "用户名重名了";
+					break;
+				case "1":
+					$("s").innerHTML = "注册成功";
+					break;
+				case "2":
+					$("s").innerHTML = "下辈子再试试吧再见";
+					break;
+			}
+		},data)
+	}
+/*	function ajaxGet(url,callback,data){
+		//创建一个ajax对象
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		if( arguments.length == 3 ){
+			url = url + "?" + data;
+		}
+		//和服务器建立连接  
+		ajax.open("get",url,true);
+		
+		//客户端发送数据
+		ajax.send();
+		
+		//得到服务器返回的结果 并输出
+		ajax.onreadystatechange = function(){
+			//状态值 和  状态码的判断
+			if( ajax.readyState == 4 ){
+				if( ajax.status == 200 ){
+					callback(ajax.responseText);//通过回调函数将服务器返回的结果返回
+				}
+			}
+		}
+	}
+	var res = ajaxGet("1.txt",function(res){
+		alert( res );
+	});*/
+	
+	function ajaxGet(url,callback,date){
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		if(arguments.length==3){
+			url=url+"?"+date;
+		}
+		ajax.open("get",url,true)
+		ajax.send();
+		
+		ajax.onreadystatechange=function(){
+			
+			if( ajax.readyState == 4 ){
+				if( ajax.status == 200 ){
+					callback(ajax.responseText);//通过回调函数将服务器返回的结果返回
+				}
+			}
+		}
+		
+		
+	}
+	var res=ajaxGet("1.txt",function(res){
+			alert(res);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

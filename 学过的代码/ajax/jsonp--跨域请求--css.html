@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			div{
+				margin:200px auto;
+				width: 500px;
+			}
+			body{
+				background: #ccc;
+			}
+			input{
+				height:38px;
+				outline: none;
+				width: 300px;
+				font: 20px/30px "微软雅黑";
+				text-indent: 10px;
+			}
+			#btn{
+				width: 100px;
+				height:42px;
+				text-indent: 0px;
+			}
+			ul{
+				width:300px;
+			}
+			li{
+				list-style: none;
+				line-height: 26px;
+				padding-left:10px;
+			}
+			li:hover{
+				background: #fff;
+			}
+			a{
+				text-decoration: none;
+				color:black;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		<div>
+			<input type="text" id="search" />
+			<input type="button" id="btn" value="百度一下" />
+			<ul id="box">
+				<!--<li><a href="">aaa</a></li>-->
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	/*
+	* jsonp格式接口：
+	接口路径：   https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+txt+"&cb=fn
+	wd 参 数值为用户搜索的数据值
+	cb 为callback回调函数
+	*/
+	var oTxt = document.getElementById("search");
+	var oUl = document.getElementById("box");
+	oTxt.onkeyup = function(){
+		var txt = this.value;//搜索的内容
+		var sc = document.createElement("script");
+		sc.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+txt+"&cb=fn";
+		document.body.appendChild(sc);
+	}
+	function fn(msg){
+		console.log( msg );	
+		var arr = msg.s;
+//		console.log(arr);
+		var str = "";
+		//https://www.baidu.com/s?wd=360%E6%B5%8F%E8%A7%88%E5%99%A8
+		for (var i in arr) {
+			str += `<li><a href="https://www.baidu.com/s?wd=${ arr[i] }">${ arr[i] }</a></li>`;
+		}
+		oUl.innerHTML = str;
+	}
+</script>

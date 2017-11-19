@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 30px;
+			height: 30px;
+			background: skyblue;
+			position:absolute;
+			top:300px;
+			left:0px;
+			border-radius: 50%;
+		}
+	</style>
+	<body>
+		<input type="button" value="小球反弹" />
+		<div></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oBtn = document.getElementsByTagName("input")[0];
+	var ball = document.getElementsByTagName("div")[0];
+	var timer = null;
+	var speedX = 8;
+	var speedY = -18;
+	oBtn.onclick = function(){
+		timer = setInterval(function(){
+			ball.style.left = ball.offsetLeft + speedX + "px";
+			ball.style.top = ball.offsetTop + speedY + "px";
+			
+			//小球运动到窗口顶部  不能向上移动
+			if( ball.offsetTop < 0 ){
+				ball.style.top = 0 + "px";
+			}
+			var maxT = window.innerHeight - ball.offsetHeight;
+			//小球落地后 反弹
+			if( ball.offsetTop > maxT ){
+				ball.style.top = maxT + "px";//去掉滚动条
+				//反弹  由于小球落地后 会有能量损耗 
+				speedY *= -0.7;
+				
+				//小球落地后 横向的速度也会有能量损耗
+				speedX--;
+				
+				//当横向速度减到 小于0时   停止定时器
+				if( speedX < 0 ){
+					clearInterval(timer);
+				}
+			}
+			
+			//重力加速度  向上速度变慢  向下速度变快 
+			speedY++;
+		},30)
+	}
+</script>

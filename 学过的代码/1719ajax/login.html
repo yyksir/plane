@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		用户名：<input type="text" name="uname" id="uname"/>
+		密码：<input type="text" name="upsd" id="upsd"/>
+		<span id="s1"></span>
+		<input type="button" value="登陆" id="btn" />
+		
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("btn").onclick=function(){
+		var ajax=null;
+		if(window.XMLHttpRequest){
+			ajax=new XMLHttpRequest();
+		}else{
+			ajax=new ActiveXObject("Microsoft.XMLHTTP")
+		}
+		var data="status=login&userID="+$("uname").value+"&password="+$("upsd").value;
+		ajax.open("get"," http://datainfo.duapp.com/shopdata/userinfo.php?"+data);
+		ajax.send();
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4&&ajax.status==200){
+//				var str=ajax.responseText;
+				
+				if(ajax.responseText=="0"){
+					$("s1").innerHTML="用户名不存在";
+				}else if(ajax.responseText=="2"){
+					$("s1").innerHTML="用户名密码不符";
+					
+				}else{
+					$("s1").innerHTML="登陆成功";
+					return {code:'',userID:'',password:'', userimg_url:'', sex:''};
+					
+				}
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+</script>

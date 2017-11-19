@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery-1.11.1.min.js"></script>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#head{
+			width:960px;
+			height: 45px;
+			background: skyblue;
+			margin: 0 auto;
+		}
+		#main{
+			width:960px;
+			height: 600px;
+			background: orange;
+			margin: 10px auto;
+		}
+		#footer{
+			width:960px;
+			height: 200px;
+			background: skyblue;
+			margin: 0 auto;
+		}
+	</style>
+	<body>
+		<div id="head_wrap"></div>
+		<div id="main">主体</div>
+		<div id="foot_wrap"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	//通过load 方法请求 页面的头部信息
+	$("#head_wrap").load("public.html #head",function(){
+		//由于ajax是异步   要想为ajax请求的文件内容添加事件   事件必须写在回调函数中
+		$("#btn").click(function(){
+			alert("搜索");
+		})
+	});
+	
+	//请求底部文件内容   
+	//多个容器请求同一个文件内容  但是内容不一致  通过请求文件中的选择器来区分（这里的选择器一般为 基本选择器）
+	$("#foot_wrap").load("public.html #footer");
+</script>

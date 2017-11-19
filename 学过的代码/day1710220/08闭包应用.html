@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	/*var list = document.getElementsByTagName("li");
+	for( var i = 0 ; i < list.length ; i++ ){
+		list[i].onclick = fn(i);
+		function fn(k){
+			return function(k){
+				alert(k);
+			}
+		}
+	}*/
+	
+	var list = document.getElementsByTagName("li");
+	for( var i = 0 ; i < list.length ; i++ ){
+		list[i].onclick = (function(i){
+			return function(){
+				alert(i);
+			}
+		})(i)
+	}	
+</script>

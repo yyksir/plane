@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+		<input type="text" id="btn"/>
+		</form>
+		<script>
+			var oBtn=document.getElementById("btn");
+				
+				oBtn.onblur=function(){
+					if(oBtn.value==""){
+						alert("为空")
+					}else if((oBtn.value)%5==0&&(oBtn.value)%6==0){
+					alert("这个数同时可以被5和6整除");	
+					}else if((oBtn.value)%5==0&&(oBtn.value)%6!=0){
+					alert("这个数可以被5,但是不能被6整除");	
+					}else if((oBtn.value)%5!=0&&(oBtn.value)%6==0){
+					alert("这个数可以被6整除，但是不能被5整除");
+					}else {
+					alert("这个数不可以被5和6整除");	
+					}				
+				}
+					
+			
+			
+			
+		</script>
+	</body>
+</html>

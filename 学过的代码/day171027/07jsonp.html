@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	$.ajax({
+		type:"get",
+		url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+"李"+"&cb=fn",
+		dataType : "jsonp",//如果datatype值为jsonp  就表示要 跨域
+		jsonCallback :"fn" //设置回调函数名
+	});
+	//跨域 实现回调函数中 接收服务器返回的数据
+	function fn(res){
+		console.log( res );
+	}
+</script>

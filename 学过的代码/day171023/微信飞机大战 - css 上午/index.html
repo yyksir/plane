@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/dahuiji.css"/>
+ 
+	 
+	<body>
+		<div class="main" id="main">
+			<ul class="options" id="options">
+				<li level="1">非常简单</li>
+				<li level="2">比较简单</li>
+				<li level="3">比较困难</li>
+				<li level="4">春哥附体</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 分析 ：
+	 	游戏引擎  ---单例
+	 		菜单   --- 记录等级
+	 		logo   加载动画   背景动画
+		 飞机  --- 单例
+		 	初始化
+		 	开火  
+		 	移动
+		 敌机
+		 	初始化
+		 	移动
+		 	碰撞
+		 子弹
+		 	初始化
+		 	移动
+		 	碰撞
+		 	
+	 */
+	window.onload = function(){
+		new GameEngine().start();//开始游戏
+	}
+	function create(ele){
+		return document.createElement(ele);
+	}
+	//游戏引擎
+	function GameEngine(){
+		if( !GameEngine.instance ){
+			GameEngine.instance = {
+				body : document.getElementById("main"), // 引擎容器
+				level : 0,//记录游戏等级
+				start : function(){ //游戏开始
+					//初始化游戏菜单
+					this.initMenu();
+				},
+				initMenu : function(){ //初始化菜单
+					//点击每一个li  实现记录等级，同时菜单消失
+					var oUl = document.getElementById("options");
+					oUl.addEventListener("click",function(e){
+						var e = e || event;
+						var target = e.target || e.srcElement;
+						if( target.nodeName == "LI" ){
+							//记录等级
+							this.level = target.getAttribute("level");
+							//菜单消失
+							oUl.remove();
+							
+							//logo  loading动画出场 背景动画出场   
+							this.gameStart();
+						}
+					}.bind(this))
+				},
+				gameStart : function(){
+					//logo  loading动画出场 背景动画出场 
+					this.logo = create("div");
+					this.loading = create("div");
+					this.logo.className = "logo";
+					this.loading.className = "loading";
+					this.body.appendChild(this.logo);
+					this.body.appendChild(this.loading);
+					
+					//loading动画
+					var timer = null;
+					var index = 1;
+					timer = setInterval(function(){
+						this.loading.style.background = "url(images/loading"+(++index)+".png)";
+						if( index == 3 ){
+							index = 0;
+						}
+					}.bind(this),500)
+					
+					//背景移动
+					var count = 0;
+					setInterval(function(){
+						this.body.style.background = "url(images/bg.jpg) 0px " + (++count) + "px";
+					}.bind(this),30)
+					
+					//3秒后   logo 和 loading消失   飞机出场
+					setTimeout(function(){
+						clearInterval(timer);
+						this.logo.remove(); //  this.body.removeChild(this.logo);
+						this.loading.remove();
+						
+						//飞机出场了
+						new MyPlane().show();
+					}.bind(this),3000)
+				},
+				width : function(){
+					return this.body.offsetWidth;
+				},
+				height : function (){
+					return this.body.offsetHeight;
+				},
+				left :function(){
+					return this.body.offsetLeft;
+				}
+			}
+		}
+		return GameEngine.instance;
+	}
+	//战斗机
+	function MyPlane(){
+		if( !MyPlane.instance ){
+			MyPlane.instance = {
+				body : create("div"),//飞机元素
+				show : function(){
+					this.init();//初始化
+					this.addListener({ type:"mouse" }); //飞机移动   鼠标或键盘
+					//开火
+				},
+				addListener : function(obj){
+					switch(obj.type){
+						case "mouse": { //鼠标操作
+							new GameEngine().body.onmousemove = function(e){ //在游戏引擎上移动
+								var e = e || event;
+								var x = e.pageX - this.width()/2 - new GameEngine().left();
+								//x = x<0?0:(x>new GameEngine().width() - this.width() ? new GameEngine().width() - this.width() :x);
+								x = Math.min( new GameEngine().width() - this.width(), Math.max(0,x) ); 
+								// 0,x  Math.max(0,x)  取最小边界0
+								this.left(x);
+							}.bind(this)
+							break;
+						}
+						case "key" : {   //键盘操作
+							document.onkeydown = function(e){
+								var e = e || event;
+								var code = e.keyCode || e.which;
+								switch( code ){
+									case 37 : {
+										this.left( Math.max(0, this.left()-3 ) );
+										break;
+									}
+									case 39 : {
+										this.left( Math.min( new GameEngine().width()-this.width() , this.left()+3 ) );
+										break;
+									}
+								}
+							}.bind(this)
+							break;
+						}
+					}
+				},
+				init : function(){  //初始化飞机的样式及位置
+					this.body.className = "my-warplain";
+					new GameEngine().body.appendChild(this.body);//将战斗机添加到游戏引擎中
+					this.body.style.bottom = 0;
+					this.body.style.left = (new GameEngine().width() - this.width())/2 +"px";
+				},
+				width : function(){
+					return this.body.offsetWidth;
+				},
+				height : function(){
+					return this.body.offsetHeight;
+				},
+				left : function(val){
+					if(val){ //根据传递的值设置飞机的left
+						this.body.style.left = val + "px";
+					}
+					return this.body.offsetLeft;
+				},
+				top : function (){
+					return this.body.offsetTop;
+				}
+			}
+		}
+		return MyPlane.instance;
+	}
+	//子弹  
+	function Bullet(){
+		
+	}
+	//敌机
+	function Enemy(){
+		
+	}
+</script>
+ 

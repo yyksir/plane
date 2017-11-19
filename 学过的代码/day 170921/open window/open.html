@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		大大啊
+		<input type="button" value="改变子窗口" id="btn" />
+	</body>
+</html>
+<script>
+		
+/*	var newWidow=open("openNew.html","_bank","height=500 width=500 left=100 top=100")
+		
+		setTimeout(function(){
+			newWidow.close();
+		},5000);*/
+		
+var newWidow=open("openNew.html","_bank","height=500 width =500 left=200 top=100")
+		document.getElementById("btn").onclick=function(){
+			newDiv=newWidow.document.getElementById("d");
+			newDiv.style.color="red";
+			newDiv.style.fontSize="50px";
+			
+			newWidow.focus()
+		}
+		widow.onunload=function(){
+			if(!newWidow.closed){
+				newWidow.closed();
+				
+			}
+		}
+		
+		
+	/*	document.getElementById("btn").onclick=function(){
+			newDiv=newWidow.document.getElementById("d");
+			newDiv.style.color="red";
+			newDiv.style.fontSize="50px"
+			
+			newWidow.focus()
+		}
+		window.onunload=function(){
+			if(!newWidow.closed){
+				newWidow.closed();
+			}
+		}*/
+	
+</script>

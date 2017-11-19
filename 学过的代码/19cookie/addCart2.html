@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<style>
+		 span{
+		 	padding: 10px;
+		 }
+		 li{
+			list-style:none;
+			
+		 }
+		 li span{
+			width:150px;
+			display:inline-block;
+			text-align:center;
+		 }
+	</style>
+	<script>
+		
+	</script>
+</head>
+<body bgColor="pink">
+	   <ul id="u">
+			<li><span>名称</span><span>单价</span><span><a href="javascript:;" class="addMe">操作</a></span></li>	
+			<li><span>小米</span><span>2313</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>红米</span><span>1234</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>纸尿裤</span><span>453</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>水杯</span><span>34</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>三只小熊</span><span>455</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>大礼包</span><span>666</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>太阳镜</span><span>457</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+		</ul>
+		<a href="Cart2.html" style="margin-left:90px;">查看购物车</a>
+</body>
+</html>
+<script src="cookie.js"></script> 
+<script>
+	
+	var arr=[];
+	var id=1;
+	var uu=document.getElementById("u");
+	uu.onclick=function(e){
+		var e=e||event;
+		var target=e.target||e.srcElement;
+		if(target.tagName=="A"){
+			
+			var _json={
+				"pid":id++,
+				"pname":target.parentNode.parentNode.children[0].innerHTML,
+				"pprice":target.parentNode.parentNode.children[1].innerHTML
+			}
+			arr.push(_json);
+			
+			setCookie("list",JSON.stringify(arr));
+			console.log(document.cookie)
+
+		}
+	}
+	
+	
+/*	var arr = [];
+	var oUl = document.getElementById("u");
+	var id = 1;//商品编号
+	oUl.onclick = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName == "A" ){
+			var _json = {
+				"pid" : id++,
+				"pname" : target.parentNode.parentNode.children[0].innerHTML,
+				"price" : target.parentNode.parentNode.children[1].innerHTML
+			}
+			//将某个商品对象存入到数组
+			arr.push( _json );
+			//将数组存入到cookie
+			setCookie("prolist",JSON.stringify(arr));
+			console.log(document.cookie)
+		}
+	}*/
+</script>

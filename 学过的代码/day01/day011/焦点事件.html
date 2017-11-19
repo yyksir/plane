@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" value="all is fine" id="txt" /><span id="tip"></span>
+		
+		<script>
+			var oTxt=document.getElementById("txt");
+			var oTip=document.getElementById("tip");
+			oTxt.onfocus=function(){
+				this.value=" ";
+			}
+			oTxt.onblur=function(){				
+				var text=oTxt.value;
+				if(text==" "){
+					oTip.innerHTML="字符不能为空";
+					oTip.style.color="red";
+				}else if(isNaN(text)){
+					oTip.innerHTML="提示不合法";
+					oTip.style.color="red";
+					
+				}else if(text.length<6){
+					oTip.innerHTML="长度不够";
+					oTip.style.color="red";
+				}else{
+					oTip.innerHTML="正确";
+					oTip.style.color="green";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

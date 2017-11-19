@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	/*class Animal{
+		construct(name){
+			this.name = name;
+		}
+		eat(){
+			alert();
+		}
+	}*/
+	//构造函数定义  
+	function Animal(name,age){
+		this.name = name ; //实例属性
+		this.age = age;
+		this.eat = function(){ //实例方法
+			return  this.name + ",年龄：" + this.age + ",它在吃肉";
+		}
+	}
+	
+	function Student(name,score){
+		this.name = name;
+		this.score = score;
+		this.study = function(){
+			return "学生在学习";
+		}
+	}
+	var animal = new Animal("小黑",2);
+	var stu = new Student("小明",89);
+	var stu2 = new Student("大明",90);
+	//alert( stu2.study );
+	alert( stu.study == stu2.study );//false  不是同一个函数
+	//alert( animal.eat() );
+//	alert( stu instanceof Animal );
+//	alert( stu instanceof Student );
+</script>

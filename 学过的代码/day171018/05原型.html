@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function Student(){
+		
+	}
+	Student.prototype.name = "小明"; //原型属性
+	Student.prototype.age = 20;
+	Student.prototype.study = function(){ //原型方法
+		return this.name + "在学习";
+	}
+	
+	var stu = new Student();
+	var stu2 = new Student();
+	//alert( stu.study == stu2.study );
+	//alert( stu.study() );
+	alert( stu.name );
+	alert( stu2.name );
+</script>

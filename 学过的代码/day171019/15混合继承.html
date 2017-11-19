@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function Father(age,salary){
+		this.age = age;
+		this.salary = salary;
+	}
+	Father.prototype.dance = function(){
+		return "跳舞";
+	}
+	function Son(age,salary){
+		Father.call( this,age,salary );
+	}
+	//原型继承
+	Son.prototype = new Father();
+	
+	var son = new Son(18,999);
+</script>

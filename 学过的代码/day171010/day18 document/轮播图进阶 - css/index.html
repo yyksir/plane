@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.banner{
+		position: relative;
+		width: 810px;
+		height: 320px;
+		margin: 50px auto;
+		background: grey;
+		overflow: hidden;
+	}
+	.img-list{
+		list-style:none;
+		position: absolute;
+		left:0; top:0;
+		width: 5240px;
+		height: 320px;
+	}
+	.img-list li{
+		float: left;
+	}
+	.banner-nav-list{
+		list-style:none;
+		position: absolute;
+		right:100px; bottom:50px;
+		
+	}
+	.banner-nav-list li {
+		background: red;
+		float: left;
+		width: 20px; height: 20px;
+		margin-right: 10px;
+		cursor: pointer;
+		text-align: center;
+	}
+	
+	.banner-nav-list li.active{
+		background: yellow;
+	}
+	.banner .toLeft {
+		width: 60px;
+		height: 60px;
+		background: url(images/btn.gif);
+		position: absolute;
+		left: 30px; top: 120px;
+		/*opacity: 0;*/
+	}
+	.banner .toRight {
+		width: 60px;
+		height: 60px;
+		background: url(images/btn.gif) 0px 60px;
+		position: absolute;
+		right: 30px; top: 120px;
+		/*opacity: 0;*/
+	}
+	#arr{
+		opacity: 0;
+	}
+</style>
+
+<script  src="sport5.js"></script>
+<script type="text/javascript">
+	 
+	
+</script>
+</head>
+
+<body>
+	<div class="banner" id="banner">
+		<ul class="img-list" id="img-list">
+			<li><img src="images/001.jpg"></li>
+			<li><img src="images/002.jpg"></li>
+			<li><img src="images/003.jpg"></li>
+			<li><img src="images/004.jpg"></li>
+			<li><img src="images/001.jpg"></li>
+		</ul>
+		
+		<ul class="banner-nav-list" id="banner-nav-list">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="arr">
+			<div class="toLeft" id="toLeft"></div>
+			<div class="toRight" id="toRight"></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	/*
+	  1 、 定时器自动实现无缝轮播
+	  2、 鼠标移入移出大容器 ，定时器停止和启动定时器 ，完成 箭头的显示和隐藏
+	  3、鼠标操作数字  找到对应的图片
+	  4、点击左右按钮  完成图片移动 和  数字背景的改变
+	 */
+ 
+</script>

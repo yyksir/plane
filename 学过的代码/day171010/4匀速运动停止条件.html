@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			position: absolute;
+			left: 0;
+			top: 60px;
+		}
+	</style>
+	<body>
+		<input type="button" value="向右" />
+		<input type="button" value="向左" />
+		<div></div>
+	</body>
+</html>
+<script>
+	//点击向右按钮 实现让盒子匀速向右运动300px  
+	//点击向左按钮 实现让和盒子匀速运动到 0px
+	var oBtnR = document.getElementsByTagName("input")[0];
+	var oBtnL = document.getElementsByTagName("input")[1];
+	var box = document.getElementsByTagName('div')[0];
+	oBtnL.onclick = function(){ //向左
+		startMove(0);
+	}
+	oBtnR.onclick = function(){ //向右
+		startMove(300);
+	}
+	var timer = null;
+	function startMove(target){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var speed = target-box.offsetLeft>0?7:-7 ;//判断方向
+			if( Math.abs(box.offsetLeft - target) < 7 ){
+				box.style.left = target + "px";//在某个范围内  强制将盒子移动到目标位置
+				clearInterval(timer);
+			}else{
+				box.style.left = box.offsetLeft + speed + "px";
+			}
+		},30)
+	}
+</script>

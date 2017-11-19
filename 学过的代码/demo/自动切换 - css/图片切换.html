@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: relative;
+				margin: 100px auto;
+				width: 300px;
+			}
+			li{
+				list-style: none;
+			}
+			ul li{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			ol li{
+				
+				width: 20px;
+				height: 20px;
+				background: yellow;
+				border-radius: 50%;
+				float: left;
+				text-align: center;
+				line-height: 20px;
+				margin-right: 3px;
+			}
+			ol{
+				position: absolute;
+				right: 32px;
+				bottom: -180px;
+				z-index: 99999;
+			}
+			.red{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="up">
+				<li style="z-index: 1;"><img src="a.jpg" alt="" /></li>
+				<li><img src="b.jpg" alt="" /></li>
+				<li><img src="c.jpg" alt="" /></li>
+				<li><img src="d.jpg" alt="" /></li>
+			</ul>
+			<ol id="down">
+				<li class="red">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ol>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 思路：
+	    页面加载启动定时器：  控制某个图片和对应的下标显示  其余图片隐藏   下标的样式清空（选项卡）
+	    当前的图片和当前的下标：  通过一个全局变量控制
+	*/
+	function $(id){
+		return document.getElementById(id);
+	}
+	var imgList = $("up").getElementsByTagName("li");
+	var olList = $("down").getElementsByTagName("li");
+	var index = 0; //控制图片和文字的下标对应关系
+	var timer = null;
+	timer =setInterval(autoPlay,1000);
+	function autoPlay(){
+		// 排他思想
+		for( var i = 0 ; i < olList.length ; i++ ){
+			olList[i].className = "";
+			imgList[i].style.display = "none";
+		}
+		index++;//该行代码写在上面 避免初次运行时 加载延时1秒
+		if( index == olList.length ){
+			index  = 0;
+		}
+		//操作当前index对应的文字和图片
+		olList[index].className = "red";
+		imgList[index].style.display = "block";
+	}
+	
+	//鼠标移入到某个文字上 显示对应的图片
+	for( var i = 0 ; i < olList.length ; i++ ){
+		//鼠标滑过文字时需要获取当前li的下标  所以在此记录下标
+		olList[i].index = i;
+		olList[i].onmouseover = function(){
+			clearInterval(timer);
+			index = this.index-1;//将当前鼠标移入的li的index值赋值给全局变量index  
+			//  目的为了让 文字的样式和图片相对应
+			autoPlay();
+		}
+		//鼠标离开  重新启动定时器
+		olList[i].onmouseout = function(){
+			timer =setInterval(autoPlay,1000);
+		}
+	}
+</script>

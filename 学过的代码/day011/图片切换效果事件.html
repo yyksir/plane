@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="2.jpg" alt=""  id="pic" height="500px" width="500px"/>
+		
+		
+		<script>
+			var oPic=document.getElementById("pic");
+			
+			oPic.onmouseover=function(){
+				
+				this.src="1.jpg";
+				this.style.width="500px";
+				this.style.height="500px";
+				
+			}
+			oPic.onmouseout=function(){
+				
+				this.src="2.jpg";
+				this.style.width="500px"
+				this.style.height="500px";
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//		var computer =(parseInt (Math.random()*3) + 1);
+//		var person =(parseInt (prompt("请输入一个1~3的随机数")));
+//		
+//		switch (person){
+//			case 1 :{
+//				switch (computer){
+//					case 1 : alert("平局") ;break;
+//					case 2 : alert("person胜") ;break;
+//					case 3 : alert("computer胜") ;break;
+//				}
+//			}
+//			break;
+//			case 2 :{
+//				switch (computer){
+//					case 1 : alert("computer胜") ;break;
+//					case 2 : alert("平局") ;break;
+//					case 3 : alert("person胜") ;break;
+//				}
+//			}
+//			break;
+//			case 3 :{
+//				switch (computer){
+//					case 1 : alert("person胜") ;break;
+//					case 2 : alert("computer胜") ;break;
+//					case 3 : alert("平局") ;break;
+//				}
+//			}
+//		}
+			
+//			var iNum = parseInt(prompt("请输入你的成绩"));
+//			switch (iNum){
+//				case 60 :alert("建议在学一学");break;
+//				case 70 :alert("需要多努力");break;
+//				case 80 :alert("良好");break;
+//				case 100 :alert("优秀");break;			
+//			}
+//			
+			var iNum =prompt("请输入你的成绩");
+			if ( iNum<0 || iNum>100 || isNaN( iNum ) ) {
+				alert("请确认您的分数");
+			}else if(iNum<60){
+					alert("建议在学一学");				
+			}else if ( 60 <iNum && iNum <70 ){				
+					alert("需要多努力");				
+			}else if( 70 < iNum && iNum < 80 ){
+					alert("良好");
+			}else{
+					alert("优秀");
+			}
+			
+		</script>
+	</body>
+</html>
